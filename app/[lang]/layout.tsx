@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 import { DEVELOPMENT } from "@/utils/env";
 import { type Locale, getLocalInfo } from "@/internalization/app/localization";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const faSans = localFont({
   display: "swap",
@@ -123,7 +124,9 @@ export default async function RootLayout({
           />
         )}
       </head>
-      <body className="min-h-full flex flex-col scroll-smooth">{children}</body>
+      <body className="min-h-full flex flex-col scroll-smooth">
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
     </html>
   );
 }
