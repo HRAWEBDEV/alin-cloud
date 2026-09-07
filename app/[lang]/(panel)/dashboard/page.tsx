@@ -1,10 +1,10 @@
 import { Separator } from "@/components/ui/separator";
-import SidebarProvider from "../[lang]/(panel)/services/side-bar/SidebarProvider";
-import AppSidebar from "../[lang]/(panel)/services/side-bar/components/AppSidebar";
+import SidebarProvider from "../../../[lang]/(panel)/services/side-bar/SidebarProvider";
+import AppSidebar from "../../../[lang]/(panel)/services/side-bar/components/AppSidebar";
 import {
   SidebarInset,
   SidebarTrigger,
-} from "../[lang]/(panel)/services/side-bar/components/Sidebar";
+} from "../../../[lang]/(panel)/services/side-bar/components/Sidebar";
 
 export default function Page() {
   return (
