@@ -6,6 +6,7 @@ import { DEVELOPMENT } from "@/utils/env";
 import { type Locale, getLocalInfo } from "@/internalization/app/localization";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import BaseConfigProvider from "@/services/base-config/BaseConfigProvider";
+import QueryClientProvider from "@/services/react-query/ReactQueryProvider";
 
 const faSans = localFont({
   display: "swap",
@@ -128,7 +129,7 @@ export default async function RootLayout({
       <body className="min-h-full flex flex-col scroll-smooth">
         <TooltipProvider>
           <BaseConfigProvider activeLocale={lang as Locale}>
-            {children}
+            <QueryClientProvider>{children}</QueryClientProvider>
           </BaseConfigProvider>
         </TooltipProvider>
       </body>
