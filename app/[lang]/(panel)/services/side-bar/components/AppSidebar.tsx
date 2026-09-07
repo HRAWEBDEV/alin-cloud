@@ -12,6 +12,7 @@ export default function AppSidebar({
       variant="inset"
       {...props}
       side={localeInfo.contentDirection === "rtl" ? "right" : "left"}
+      className="overflow-hidden"
     ></Sidebar>
   );
 }
