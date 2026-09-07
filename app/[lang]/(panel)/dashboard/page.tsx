@@ -1,33 +1,16 @@
-import { Separator } from "@/components/ui/separator";
 import SidebarProvider from "../../../[lang]/(panel)/services/side-bar/SidebarProvider";
 import AppSidebar from "../../../[lang]/(panel)/services/side-bar/components/AppSidebar";
-import {
-  SidebarInset,
-  SidebarTrigger,
-} from "../../../[lang]/(panel)/services/side-bar/components/Sidebar";
+import { SidebarInset } from "../../../[lang]/(panel)/services/side-bar/components/Sidebar";
+import Header from "../components/header/Header";
+import MainWrapper from "../components/main/MainWrapper";
 
 export default function Page() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator
-              orientation="vertical"
-              className="mr-2 data-vertical:h-4 data-vertical:self-auto"
-            />
-          </div>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-screen flex-1 rounded-xl bg-muted/50 md:min-h-min" />
-        </div>
+        <Header />
+        <MainWrapper>test</MainWrapper>
       </SidebarInset>
     </SidebarProvider>
   );
