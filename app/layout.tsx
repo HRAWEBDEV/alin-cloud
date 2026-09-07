@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
+import { DEVELOPMENT } from "@/utils/env";
 
 const faSans = localFont({
   display: "swap",
@@ -106,6 +107,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "text-foreground",
       )}
     >
+      <head>
+        {process.env.NEXT_PUBLIC_MODE === DEVELOPMENT && (
+          <script
+            crossOrigin="anonymous"
+            src="//unpkg.com/react-scan/dist/auto.global.js"
+            async
+          />
+        )}
+      </head>
       <body className="min-h-full flex flex-col scroll-smooth">{children}</body>
     </html>
   );
