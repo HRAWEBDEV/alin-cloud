@@ -41,8 +41,8 @@ function getLocaleOrDefault(locale: Locale): Locale {
 const localesList = Object.keys(locales);
 
 const supportedDateFns = {
-  fa: dateFnsJalali,
-  en: dateFns,
+  jalali: dateFnsJalali,
+  gregorian: dateFns,
 } as const;
 
 const dateFnsLocale = {
