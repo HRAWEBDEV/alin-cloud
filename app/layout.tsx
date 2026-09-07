@@ -106,7 +106,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "text-foreground",
       )}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col scroll-smooth">{children}</body>
     </html>
   );
 }
