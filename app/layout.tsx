@@ -1,18 +1,88 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const faSans = localFont({
+  display: "swap",
+  variable: "--font-fa-sans",
+  src: [
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-UltraLight.woff2",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-UltraLight.woff",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Light.woff",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Bold.woff",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/fa/sans/IRANSansWebFaNum-Black.woff",
+      weight: "900",
+      style: "normal",
+    },
+  ],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const enRoboto = localFont({
+  display: "swap",
+  variable: "--font-en-roboto",
+  src: [
+    {
+      path: "../../public/fonts/en/roboto/Roboto-VariableFont_wdth,wght.ttf",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/en/roboto/Roboto-Italic-VariableFont_wdth,wght.ttf",
+      style: "italic",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -27,10 +97,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn(
         "h-full",
         "antialiased",
-        geistSans.variable,
-        geistMono.variable,
+        faSans.variable,
+        enRoboto.variable,
         "font-sans",
-        inter.variable,
+        "font-en-roboto",
+        "[[dir='rtl']]:font-fa-sans",
+        "bg-background",
+        "text-foreground",
       )}
     >
       <body className="min-h-full flex flex-col">{children}</body>
