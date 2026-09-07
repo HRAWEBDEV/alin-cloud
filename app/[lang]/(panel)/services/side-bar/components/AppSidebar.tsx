@@ -1,5 +1,5 @@
 "use client";
-import * as React from "react";
+import { ComponentProps } from "react";
 import { NavMain } from "./nav-main";
 import { NavProjects } from "./nav-projects";
 import { NavSecondary } from "./nav-secondary";
@@ -25,6 +25,7 @@ import {
   MapIcon,
   TerminalIcon,
 } from "lucide-react";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 const data = {
   user: {
@@ -151,9 +152,14 @@ const data = {
 };
 export default function AppSidebar({
   ...props
-}: React.ComponentProps<typeof Sidebar>) {
+}: ComponentProps<typeof Sidebar>) {
+  const { localeInfo } = useBaseConfig();
   return (
-    <Sidebar variant="inset" {...props}>
+    <Sidebar
+      variant="inset"
+      {...props}
+      side={localeInfo.contentDirection === "rtl" ? "right" : "left"}
+    >
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

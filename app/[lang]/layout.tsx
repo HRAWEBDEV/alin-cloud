@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import { DEVELOPMENT } from "@/utils/env";
 import { type Locale, getLocalInfo } from "@/internalization/app/localization";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import BaseConfigProvider from "@/services/base-config/BaseConfigProvider";
 
 const faSans = localFont({
   display: "swap",
@@ -125,7 +126,11 @@ export default async function RootLayout({
         )}
       </head>
       <body className="min-h-full flex flex-col scroll-smooth">
-        <TooltipProvider>{children}</TooltipProvider>
+        <TooltipProvider>
+          <BaseConfigProvider activeLocale={lang as Locale}>
+            {children}
+          </BaseConfigProvider>
+        </TooltipProvider>
       </body>
     </html>
   );
