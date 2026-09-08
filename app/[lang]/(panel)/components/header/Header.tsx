@@ -1,11 +1,21 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "../../services/side-bar/components/Sidebar";
+import PanelAddress from "./PanelAddress";
+import HeaderProfile from "./HeaderProfile";
 
 export default function Header() {
   return (
     <header className="flex h-(--panel-header-height) shrink-0 items-center gap-2 border-b border-border">
-      <div className="flex items-center gap-2 px-4">
+      <div className="flex items-center gap-2 ps-4 grow">
         <SidebarTrigger className="-ml-1" />
+        <Separator
+          orientation="vertical"
+          className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+        />
+        <PanelAddress />
+      </div>
+      <div className="flex flex-row-reverse items-center gap-2 pe-4">
+        <HeaderProfile />
         <Separator
           orientation="vertical"
           className="mr-2 data-vertical:h-4 data-vertical:self-auto"
