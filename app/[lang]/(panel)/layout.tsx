@@ -4,6 +4,7 @@ import { SidebarInset } from "../../[lang]/(panel)/services/side-bar/components/
 import Header from "./components/header/Header";
 import MainWrapper from "./components/main/MainWrapper";
 import ProfileProvider from "../../[lang]/(panel)/services/profile/ProfileProvider";
+import TabsNav from "./components/tabs/TabsNav";
 
 export default function PanelLayout({ children }: LayoutProps<"/[lang]">) {
   return (
@@ -13,6 +14,7 @@ export default function PanelLayout({ children }: LayoutProps<"/[lang]">) {
         <SidebarInset>
           <Header />
           <MainWrapper>{children}</MainWrapper>
+          <TabsNav />
         </SidebarInset>
       </ProfileProvider>
     </SidebarProvider>

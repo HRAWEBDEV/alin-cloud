@@ -11,7 +11,7 @@ export default function HeaderProfile() {
         <AvatarImage src="https://github.com/shadcn.png" alt="profile image" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <p className="text-sm text-neutral-700 dark:text-neutral-400 font-normal truncate max-w-32">
+      <p className="text-sm text-neutral-700 dark:text-neutral-400 font-normal truncate max-w-32 hidden md:block">
         حمیدرضا اکبری
       </p>
     </Button>
