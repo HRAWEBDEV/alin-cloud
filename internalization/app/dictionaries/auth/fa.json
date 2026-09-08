@@ -11,7 +11,7 @@
     "withPassword": {
       "username": "نام کاربری",
       "password": "رمز عبور",
-      "forgetPassword": "فراموشی رمز عبور؟"
+      "forgotPassword": "فراموشی رمز عبور؟"
     }
   }
 }

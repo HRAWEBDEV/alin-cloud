@@ -2,7 +2,13 @@
 import { useState } from "react";
 import { type AuthDictionary } from "@/internalization/app/dictionaries/auth/dictionary";
 import { Button } from "@/components/ui/button";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldDescription,
+  FieldContent,
+} from "@/components/ui/field";
 import {
   InputGroupInput,
   InputGroup,
@@ -11,6 +17,7 @@ import {
 import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa6";
 import SignInOptions from "./SignInOptions";
 import SingUpNow from "./SingUpNow";
+import Link from "next/link";
 
 export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -62,6 +69,11 @@ export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
               </Button>
             </InputGroupAddon>
           </InputGroup>
+          <FieldContent>
+            <FieldDescription>
+              <Link href="#">{dic.signIn.withPassword.forgotPassword}</Link>
+            </FieldDescription>
+          </FieldContent>
         </Field>
         <Field>
           <Button type="submit" size="lg" className="min-h-11 text-md">
