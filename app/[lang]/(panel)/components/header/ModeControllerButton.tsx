@@ -9,13 +9,11 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuContent,
-  DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { type AppModes, appModes } from "@/utils/appModes";
 
 export default function ModeControllerButton() {
-  const [open, setOpen] = useState(true);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const {
@@ -46,12 +44,12 @@ export default function ModeControllerButton() {
           </Button>
         }
       />
-      <DropdownMenuContent>
+      <DropdownMenuContent align="end">
         <DropdownMenuGroup>
           {appModes.map((mode) => (
             <DropdownMenuItem
               key={mode}
-              className="text-neutral-700 dark:text-neutral-400"
+              className="text-neutral-700 dark:text-neutral-400 h-10"
               onClick={() => {
                 setTheme(mode);
               }}
