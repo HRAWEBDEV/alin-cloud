@@ -12,6 +12,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import BaseConfigProvider from "@/services/base-config/BaseConfigProvider";
 import QueryClientProvider from "@/services/react-query/ReactQueryProvider";
 import { getMetaDictionary } from "@/internalization/app/dictionaries/meta/dictionary";
+import { getAuthDictionary } from "@/internalization/app/dictionaries/auth/dictionary";
+import { getShareDictionary } from "@/internalization/app/dictionaries/share/dictionary";
+import ShareDictionaryProvider from "@/services/share-dictionary/ShareDictionaryProvider";
 
 export function generateStaticParams(): { lang: Locale }[] {
   return localesList.map((lang) => ({
@@ -115,8 +118,14 @@ export default async function RootLayout({
 }: LayoutProps<"/[lang]">) {
   const { lang } = await params;
   const { contentDirection } = getLocalInfo(lang as Locale);
+  const [authDic, shareDic, metaDic] = await Promise.all([
+    getAuthDictionary({ locale: lang as Locale }),
+    getShareDictionary({ locale: lang as Locale }),
+    getMetaDictionary({ locale: lang as Locale }),
+  ]);
   return (
     <html
+      suppressHydrationWarning
       lang={lang}
       dir={contentDirection}
       className={cn(
@@ -142,9 +151,15 @@ export default async function RootLayout({
       </head>
       <body className="min-h-full flex flex-col scroll-smooth">
         <TooltipProvider>
-          <BaseConfigProvider activeLocale={lang as Locale}>
-            <QueryClientProvider>{children}</QueryClientProvider>
-          </BaseConfigProvider>
+          <ShareDictionaryProvider
+            authDictionary={authDic}
+            metaDictionary={metaDic}
+            shareDictionary={shareDic}
+          >
+            <BaseConfigProvider activeLocale={lang as Locale}>
+              <QueryClientProvider>{children}</QueryClientProvider>
+            </BaseConfigProvider>
+          </ShareDictionaryProvider>
         </TooltipProvider>
       </body>
     </html>

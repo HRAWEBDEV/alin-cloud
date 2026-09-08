@@ -8,6 +8,7 @@ import {
 } from "./baseConfigContext";
 import { type Locale, locales } from "@/internalization/app/localization";
 import { setUserLocale } from "@/utils/userLocaleManager";
+import { ThemeProvider } from "next-themes";
 
 interface Props {
   activeLocale: Locale;
@@ -49,7 +50,9 @@ export default function BaseConfigProvider({ children, activeLocale }: Props) {
 
   return (
     <baseConfigContext.Provider value={ctx}>
-      {children}
+      <ThemeProvider attribute="class" defaultTheme="system">
+        {children}
+      </ThemeProvider>
     </baseConfigContext.Provider>
   );
 }

@@ -2,6 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "../../services/side-bar/components/Sidebar";
 import PanelAddress from "./PanelAddress";
 import HeaderProfile from "./HeaderProfile";
+import HeaderTools from "./HeaderTools";
 
 export default function Header() {
   return (
@@ -14,12 +15,13 @@ export default function Header() {
         />
         <PanelAddress />
       </div>
-      <div className="flex flex-row-reverse items-center gap-2 pe-4">
+      <div className="flex flex-row-reverse items-center gap-1 pe-4">
         <HeaderProfile />
         <Separator
           orientation="vertical"
-          className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+          className="me-2 data-vertical:h-4 data-vertical:self-auto"
         />
+        <HeaderTools />
       </div>
     </header>
   );

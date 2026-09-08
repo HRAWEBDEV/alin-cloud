@@ -1,0 +1,11 @@
+{
+  "title": "share dictionary",
+  "components": {
+    "modeController": {
+      "title": "حالت روشنایی",
+      "light": "روشن",
+      "dark": "تاریک",
+      "system": "سیستم"
+    }
+  }
+}
