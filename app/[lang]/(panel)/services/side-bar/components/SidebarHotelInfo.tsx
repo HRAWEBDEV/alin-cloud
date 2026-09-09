@@ -1,10 +1,13 @@
+"use client";
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { IoMdArrowDropup } from "react-icons/io";
 import { LiaHotelSolid } from "react-icons/lia";
 import ConnectivityInfo from "@/app/[lang]/(panel)/components/ConnectivityInfo";
+import { useSettingsContext } from "../../settings/settingsContext";
 
 export default function SidebarHotelInfo() {
+  const { toggleOpen } = useSettingsContext();
   return (
     <div>
       <div className="mb-1">
@@ -13,6 +16,7 @@ export default function SidebarHotelInfo() {
       <Button
         variant="outline"
         className="w-full justify-stretch text-start p-2 h-auto bg-transparent rounded-none border-0 border-t"
+        onClick={() => toggleOpen(true)}
       >
         <div className="flex gap-2 items-center grow text-neutral-700 dark:text-neutral-400">
           <LiaHotelSolid className="size-12" />

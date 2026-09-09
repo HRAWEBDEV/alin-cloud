@@ -17,9 +17,13 @@ import { FaEye, FaEyeSlash, FaLock, FaUser } from "react-icons/fa6";
 import SignInOptions from "./SignInOptions";
 import SingUpNow from "./SingUpNow";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
   const [showPassword, setShowPassword] = useState(false);
+  const { locale } = useBaseConfig();
+  const router = useRouter();
 
   return (
     <>
@@ -68,7 +72,15 @@ export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
         </FieldContent>
       </Field>
       <Field>
-        <Button type="submit" size="lg" className="min-h-11 text-md">
+        <Button
+          type="submit"
+          size="lg"
+          className="min-h-11 text-md"
+          onClick={(e) => {
+            e.preventDefault();
+            router.push(`/${locale}`);
+          }}
+        >
           {dic.signIn.signIn}
         </Button>
       </Field>

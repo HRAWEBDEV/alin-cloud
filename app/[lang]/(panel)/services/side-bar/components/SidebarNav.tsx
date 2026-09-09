@@ -1,4 +1,4 @@
-import { ChevronRightIcon, FolderIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,

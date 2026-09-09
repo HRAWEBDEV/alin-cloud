@@ -52,13 +52,13 @@ export default function ConnectivityInfo() {
         <Tooltip>
           <TooltipTrigger
             render={
-              <>
+              <div>
                 {isOnline ? (
                   <ImConnection className="size-5 text-primary" />
                 ) : (
                   <MdSignalWifiConnectedNoInternet0 className="size-5 text-destructive" />
                 )}
-              </>
+              </div>
             }
           />
           <TooltipContent>

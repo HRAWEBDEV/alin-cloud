@@ -10,6 +10,15 @@
     "connectivity": {
       "connectionLost": "اتصال به اینترنت قطع شده است",
       "connected": "متصل"
+    },
+    "settings": {
+      "title": "تنظیمات",
+      "logoutConfirmMessage": "از برنامه خارج می‌شود؟",
+      "userInfo": "اطلاعات کاربری",
+      "general": "عمومی",
+      "logout": "خروج",
+      "confirm": "تایید",
+      "cancel": "انصراف"
     }
   }
 }
