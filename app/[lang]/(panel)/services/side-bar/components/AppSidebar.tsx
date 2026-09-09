@@ -4,6 +4,7 @@ import { Sidebar } from "./Sidebar";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 import SidebarLogo from "./SidebarLogo";
 import SidebarHotelInfo from "./SidebarHotelInfo";
+import SidebarNav from "./SidebarNav";
 
 export default function AppSidebar({
   ...props
@@ -17,7 +18,7 @@ export default function AppSidebar({
       className="overflow-hidden p-0"
     >
       <SidebarLogo />
-      <div className="grow"></div>
+      <SidebarNav />
       <SidebarHotelInfo />
     </Sidebar>
   );
