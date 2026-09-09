@@ -141,13 +141,13 @@ export default async function RootLayout({
       )}
     >
       <head>
-        {process.env.NEXT_PUBLIC_MODE === DEVELOPMENT && (
-          <script
-            crossOrigin="anonymous"
-            src="//unpkg.com/react-scan/dist/auto.global.js"
-            async
-          />
-        )}
+        {/* {process.env.NEXT_PUBLIC_MODE === DEVELOPMENT && ( */}
+        {/*   <script */}
+        {/*     crossOrigin="anonymous" */}
+        {/*     src="//unpkg.com/react-scan/dist/auto.global.js" */}
+        {/*     async */}
+        {/*   /> */}
+        {/* )} */}
       </head>
       <body className="min-h-full flex flex-col scroll-smooth">
         <TooltipProvider>

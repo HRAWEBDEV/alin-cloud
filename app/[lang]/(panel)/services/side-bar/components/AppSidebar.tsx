@@ -2,6 +2,7 @@
 import { ComponentProps } from "react";
 import { Sidebar } from "./Sidebar";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import SidebarHotelInfo from "./SidebarHotelInfo";
 
 export default function AppSidebar({
   ...props
@@ -12,7 +13,11 @@ export default function AppSidebar({
       variant="inset"
       {...props}
       side={localeInfo.contentDirection === "rtl" ? "right" : "left"}
-      className="overflow-hidden"
-    ></Sidebar>
+      className="overflow-hidden p-0"
+    >
+      <div>logo</div>
+      <div className="grow">test</div>
+      <SidebarHotelInfo />
+    </Sidebar>
   );
 }

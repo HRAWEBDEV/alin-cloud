@@ -6,6 +6,10 @@
       "light": "روشن",
       "dark": "تاریک",
       "system": "سیستم"
+    },
+    "connectivity": {
+      "connectionLost": "اتصال به اینترنت قطع شده است",
+      "connected": "متصل"
     }
   }
 }
