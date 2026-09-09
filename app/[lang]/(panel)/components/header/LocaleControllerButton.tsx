@@ -26,11 +26,8 @@ export default function LocaleControllerButton() {
             size="icon-lg"
             className="relative rounded-full bg-transparent text-neutral-600 dark:text-neutral-400"
           >
-            <div className="absolute -top-1 -inset-e-2">
-              <Badge
-                variant="secondary"
-                className="p-1 rounded-full size-6 bg-primary text-primary-foreground"
-              >
+            <div className="absolute top-0 -inset-e-1">
+              <Badge variant="default" className="p-1 rounded-full size-5">
                 {localeInfo.localeShortName}
               </Badge>
             </div>
