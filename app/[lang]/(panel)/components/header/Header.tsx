@@ -3,15 +3,17 @@ import { SidebarTrigger } from "../../services/side-bar/components/Sidebar";
 import PanelAddress from "./PanelAddress";
 import HeaderProfile from "./HeaderProfile";
 import HeaderTools from "./HeaderTools";
+import HistoryControllers from "../../services/history/components/HistoryControllers";
 
 export default function Header() {
   return (
     <header className="flex h-(--panel-header-height) shrink-0 items-center gap-2 border-b border-border">
-      <div className="flex items-center gap-2 ps-4 grow">
-        <SidebarTrigger className="-ml-1" />
+      <div className="flex items-center gap-1 ps-4 grow">
+        <SidebarTrigger />
+        <HistoryControllers />
         <Separator
           orientation="vertical"
-          className="mr-2 data-vertical:h-4 data-vertical:self-auto"
+          className="me-2 data-vertical:h-4 data-vertical:self-auto"
         />
         <PanelAddress />
       </div>
