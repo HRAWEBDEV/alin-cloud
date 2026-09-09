@@ -9,7 +9,7 @@ export default function NotificationControllerButton() {
       type="button"
       variant="ghost"
       size="icon-lg"
-      className="relative rounded-full bg-transparent text-neutral-600 dark:text-neutral-400 text-destructive"
+      className="relative rounded-full text-destructive"
     >
       <div className="absolute top-0 -inset-e-1">
         <Badge
