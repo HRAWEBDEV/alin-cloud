@@ -15,6 +15,7 @@ import { getMetaDictionary } from "@/internalization/app/dictionaries/meta/dicti
 import { getAuthDictionary } from "@/internalization/app/dictionaries/auth/dictionary";
 import { getShareDictionary } from "@/internalization/app/dictionaries/share/dictionary";
 import ShareDictionaryProvider from "@/services/share-dictionary/ShareDictionaryProvider";
+import AxiosBaseConfig from "@/services/axios-interceptors/AxiosBaseConfig";
 
 export function generateStaticParams(): { lang: Locale }[] {
   return localesList.map((lang) => ({
@@ -151,12 +152,14 @@ export default async function RootLayout({
       </head>
       <body className="min-h-full flex flex-col scroll-smooth">
         <TooltipProvider>
+          <AxiosBaseConfig />
           <ShareDictionaryProvider
             authDictionary={authDic}
             metaDictionary={metaDic}
             shareDictionary={shareDic}
           >
             <BaseConfigProvider activeLocale={lang as Locale}>
+              <AxiosBaseConfig />
               <QueryClientProvider>{children}</QueryClientProvider>
             </BaseConfigProvider>
           </ShareDictionaryProvider>
