@@ -10,7 +10,9 @@ export default function Header() {
     <header className="flex h-(--panel-header-height) shrink-0 items-center gap-2 border-b border-border">
       <div className="flex items-center gap-1 ps-4 grow">
         <SidebarTrigger />
-        <HistoryControllers />
+        <div className="hidden lg:block">
+          <HistoryControllers />
+        </div>
         <Separator
           orientation="vertical"
           className="me-2 data-vertical:h-4 data-vertical:self-auto"

@@ -4,7 +4,7 @@ import NotificationControllerButton from "./NotificationControllerButton";
 
 export default function HeaderTools() {
   return (
-    <div className="flex items-center flex-row-reverse">
+    <div className="flex gap-2 items-center flex-row-reverse">
       <ModeControllerButton />
       <LocaleControllerButton />
       <NotificationControllerButton />
