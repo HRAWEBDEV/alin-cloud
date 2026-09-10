@@ -26,8 +26,8 @@ export default function SettingsModal() {
           <DialogTitle>{dic.title}</DialogTitle>
           <DialogDescription className="hidden">{dic.title}</DialogDescription>
         </DialogHeader>
-        <div className="grid grid-cols-[11rem_1fr] grow overflow-hidden">
-          <div className="bg-neutral-100 dark:bg-neutral-900 overflow-auto flex flex-col">
+        <div className="flex flex-col sm:grid sm:grid-cols-[11rem_1fr] grow overflow-hidden">
+          <div className="bg-neutral-100 dark:bg-neutral-800 overflow-auto flex sm:flex-col">
             {settingItems.map((item) => (
               <Button
                 variant="ghost"
@@ -46,7 +46,7 @@ export default function SettingsModal() {
               </Button>
             ))}
           </div>
-          <div className="overflow-auto"></div>
+          <div className="overflow-auto grow"></div>
         </div>
       </DialogContent>
     </Dialog>
