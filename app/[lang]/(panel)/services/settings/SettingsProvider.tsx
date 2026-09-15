@@ -14,12 +14,14 @@ import {
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { IoIosWarning } from "react-icons/io";
 import { useLogout } from "../../hooks/useLogout";
+import { type SettingItem } from "./utils/settingItems";
 
 export default function SettingsProvider({
   children,
 }: {
   children: ReactNode;
 }) {
+  const [activeTab, setActiveTab] = useState<SettingItem>("userInfo");
   const logout = useLogout();
   const {
     shareDictionary: {
@@ -29,13 +31,18 @@ export default function SettingsProvider({
   const [open, setOpen] = useState(false);
   const [showConfirmLogout, setShowConfirmlogout] = useState(false);
 
-  function onToggle(state?: boolean) {
-    setOpen((pre) => (state === undefined ? !pre : state));
+  function onToggle(state?: boolean, tab?: SettingItem) {
+    const newState = state === undefined ? !open : state;
+    if (newState) {
+      setActiveTab(tab || "userInfo");
+    }
+    setOpen(newState);
   }
 
   const ctx: SettingsContextProps = {
     open,
     showConfirmLogout,
+    activeTab,
     setShowConfirmlogout,
     toggleOpen: onToggle,
   };
