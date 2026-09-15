@@ -1,6 +1,14 @@
 {
   "title": "share dictionary",
   "components": {
+    "navigation": {
+      "reservation": "رزرواسیون",
+      "newReservation": "رزرو جدید",
+      "reception": "پذیرش",
+      "roomsRack": "رک اتاق‌ها",
+      "settings": "تنظیمات",
+      "rooms": "اتاق‌ها"
+    },
     "modeController": {
       "title": "حالت روشنایی",
       "light": "روشن",

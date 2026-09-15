@@ -6,32 +6,43 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { MdOutlineBedroomParent } from "react-icons/md";
-
-type FileTreeItem = { name: string } | { name: string; items: FileTreeItem[] };
+import {
+  type NavigationItem,
+  navigationItems,
+} from "../../../utils/navigationItems";
+import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
+import { getNavigationIcons } from "../../../utils/getNavigationIcons";
 
 export default function SidebarNav() {
-  const fileTree: FileTreeItem[] = [];
-
-  const renderItem = (fileItem: FileTreeItem) => {
-    if ("items" in fileItem) {
+  const {
+    shareDictionary: {
+      components: { navigation: dic },
+    },
+  } = useShareDictionary();
+  const renderItem = (navItem: NavigationItem) => {
+    if ("items" in navItem) {
       return (
-        <Collapsible key={fileItem.name}>
+        <Collapsible key={navItem.name}>
           <CollapsibleTrigger
             render={
               <Button
                 variant="ghost"
                 size="sm"
-                className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-2 font-normal"
+                className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-3 font-normal min-h-10 text-sm"
               >
-                <MdOutlineBedroomParent className="size-7" />
-                <div className="grow">{fileItem.name}</div>
+                {getNavigationIcons(navItem.name, {
+                  className: "size-7",
+                })}
+                <div className="grow">
+                  {dic[navItem.name as keyof typeof dic]}
+                </div>
                 <ChevronRightIcon className="transition-transform group-data-[panel-open]:rotate-90 rtl:rotate-180" />
               </Button>
             }
           />
-          <CollapsibleContent className="mt-1 ms-8 style-lyra:ms-8">
+          <CollapsibleContent>
             <div className="flex flex-col gap-1">
-              {fileItem.items.map((child) => renderItem(child))}
+              {navItem.items?.map((child) => renderItem(child))}
             </div>
           </CollapsibleContent>
         </Collapsible>
@@ -39,20 +50,20 @@ export default function SidebarNav() {
     }
     return (
       <Button
-        key={fileItem.name}
+        key={navItem.name}
         variant="link"
         size="sm"
-        className="w-full justify-start gap-2 text-foreground font-normal"
+        className="w-full justify-start gap-3 text-foreground font-normal ps-14 min-h-10 text-sm"
       >
-        <span>{fileItem.name}</span>
+        <span>{dic[navItem.name as keyof typeof dic]}</span>
       </Button>
     );
   };
 
   return (
     <div className="w-full grow overflow-auto">
-      <div className="flex flex-col gap-1">
-        {fileTree.map((item) => renderItem(item))}
+      <div className="flex flex-col gap-1 text-neutral-800 dark:text-neutral-200">
+        {navigationItems.map((item) => renderItem(item))}
       </div>
     </div>
   );
