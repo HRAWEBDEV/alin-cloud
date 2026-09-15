@@ -11,7 +11,12 @@
     "withPassword": {
       "username": "نام کاربری",
       "password": "رمز عبور",
-      "forgotPassword": "فراموشی رمز عبور؟"
+      "forgotPassword": "فراموشی رمز عبور؟",
+      "mobileNo": "شماره همراه",
+      "editMobileNo": "ویرایش شماره همراه",
+      "confirmCode": "کد تایید",
+      "sendCode": "ارسال کد تایید",
+      "confirm": "تایید"
     }
   }
 }

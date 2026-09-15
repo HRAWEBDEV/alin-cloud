@@ -19,6 +19,8 @@ import SingUpNow from "./SingUpNow";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import ForgotPasswordDialogContent from "./ForgotPasswordDialogContent";
 
 export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
   const [showPassword, setShowPassword] = useState(false);
@@ -67,7 +69,14 @@ export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
         </InputGroup>
         <FieldContent>
           <FieldDescription>
-            <Link href="#">{dic.signIn.withPassword.forgotPassword}</Link>
+            <Dialog>
+              <DialogTrigger
+                render={
+                  <Link href="#">{dic.signIn.withPassword.forgotPassword}</Link>
+                }
+              />
+              <ForgotPasswordDialogContent />
+            </Dialog>
           </FieldDescription>
         </FieldContent>
       </Field>
