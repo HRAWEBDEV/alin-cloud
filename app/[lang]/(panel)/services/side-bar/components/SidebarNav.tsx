@@ -5,7 +5,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { MdOutlineBedroomParent } from "react-icons/md";
 import {
   type NavigationItem,
   navigationItems,
