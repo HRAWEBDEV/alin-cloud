@@ -51,7 +51,7 @@ export default function SettingsModal() {
                   key={item.key}
                   data-active={isActive}
                   data-logout={item.key === "logout"}
-                  className="text-start justify-stretch rounded-none font-normal text-neutral-700 dark:text-neutral-400 data-[logout='true']:text-destructive data-[active='true']:bg-primary data-[active='true']:text-primary-foreground h-11 gap-3"
+                  className="text-start justify-stretch rounded-none font-normal text-neutral-700 dark:text-neutral-400 data-[logout='true']:text-destructive data-[active='true']:bg-primary! data-[active='true']:text-primary-foreground h-11 gap-3"
                   onClick={() => {
                     if (item.key === "logout") {
                       setShowConfirmlogout(true);

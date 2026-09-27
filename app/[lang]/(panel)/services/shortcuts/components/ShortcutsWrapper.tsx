@@ -6,7 +6,7 @@ import {
   InputGroupAddon,
   InputGroupInput,
 } from "@/components/ui/input-group";
-import { FaSearch } from "react-icons/fa";
+import { IoIosSearch } from "react-icons/io";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { useShortcutsContext } from "../shortcutsContext";
 import {
@@ -28,7 +28,7 @@ export default function ShortcutsWrapper() {
 
   return (
     <div className="pt-0 p-4">
-      <div className="py-4 sticky top-0 bg-background dark:bg-neutral-900">
+      <div className="py-4 sticky top-0 bg-popover">
         <div className="grid gap-2 grid-cols-1">
           <Field>
             <InputGroup className="bg-neutral-100 dark:bg-neutral-900">
@@ -40,7 +40,7 @@ export default function ShortcutsWrapper() {
                 onChange={(e) => setSearchText(e.target.value)}
               />
               <InputGroupAddon align="inline-end">
-                <FaSearch className="size-4" />
+                <IoIosSearch className="size-5" />
               </InputGroupAddon>
             </InputGroup>
           </Field>
