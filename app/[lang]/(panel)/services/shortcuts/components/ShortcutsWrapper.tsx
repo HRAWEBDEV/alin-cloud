@@ -16,6 +16,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Kbd } from "@/components/ui/kbd";
 import NoItemFound from "../../../components/NoItemFound";
+import Highlighter from "react-highlight-words";
 
 export default function ShortcutsWrapper() {
   const [searchText, setSearchText] = useState("");
@@ -39,7 +40,7 @@ export default function ShortcutsWrapper() {
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
-              <InputGroupAddon align="inline-end">
+              <InputGroupAddon align="inline-start">
                 <IoIosSearch className="size-5" />
               </InputGroupAddon>
             </InputGroup>
@@ -75,7 +76,11 @@ export default function ShortcutsWrapper() {
                           variant="outline"
                           className="w-full text-start justify-stretch h-10 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400 gap-6 grid grid-cols-2"
                         >
-                          <span>{dic[typedItem]}</span>
+                          <Highlighter
+                            textToHighlight={dic[typedItem]}
+                            searchWords={[searchText]}
+                            autoEscape={true}
+                          />
                           <div>
                             <Kbd dir="ltr" className="bg-background">
                               {info.keys as string}
