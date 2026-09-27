@@ -7,21 +7,24 @@ import ProfileProvider from "../../[lang]/(panel)/services/profile/ProfileProvid
 import TabsNav from "./components/tabs/TabsNav";
 import SettingsProvider from "./services/settings/SettingsProvider";
 import SettingsModal from "./services/settings/components/SettingsModal";
+import ShortcutsProvider from "./services/shortcuts/ShortcutsProvider";
 
 export default function PanelLayout({ children }: LayoutProps<"/[lang]">) {
   return (
-    <SidebarProvider>
-      <ProfileProvider>
-        <SettingsProvider>
-          <AppSidebar />
-          <SidebarInset>
-            <Header />
-            <MainWrapper>{children}</MainWrapper>
-            <TabsNav />
-            <SettingsModal />
-          </SidebarInset>
-        </SettingsProvider>
-      </ProfileProvider>
-    </SidebarProvider>
+    <ShortcutsProvider>
+      <SidebarProvider>
+        <ProfileProvider>
+          <SettingsProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <Header />
+              <MainWrapper>{children}</MainWrapper>
+              <TabsNav />
+              <SettingsModal />
+            </SidebarInset>
+          </SettingsProvider>
+        </ProfileProvider>
+      </SidebarProvider>
+    </ShortcutsProvider>
   );
 }

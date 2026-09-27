@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { settingItems } from "../utils/settingItems";
 import { getSettingsIcon } from "../utils/getSettingsIcon";
 import UserInterfaceSettings from "../../userInterface/components/UserInterfaceSettings";
+import ShortcutsWrapper from "../../shortcuts/components/ShortcutsWrapper";
 
 export default function SettingsModal() {
   const { open, activeTab, toggleOpen, setShowConfirmlogout } =
@@ -26,6 +27,8 @@ export default function SettingsModal() {
     switch (activeTab) {
       case "userInterface":
         return <UserInterfaceSettings />;
+      case "shortcuts":
+        return <ShortcutsWrapper />;
       default:
         return null;
     }

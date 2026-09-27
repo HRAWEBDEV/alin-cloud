@@ -10,6 +10,10 @@
       "settings": "تنظیمات",
       "rooms": "اتاق‌ها"
     },
+    "noItemFound": {
+      "title": "آیتمی یافت نشد",
+      "searchedText": "جستجو شده"
+    },
     "modeController": {
       "title": "حالت روشنایی",
       "light": "روشن",
@@ -28,10 +32,19 @@
       "logoutConfirmMessage": "از برنامه خارج می‌شوید؟",
       "userInfo": "اطلاعات کاربری",
       "userInterface": "رابط کاربری",
+      "shortcuts": "میانبرها",
       "general": "عمومی",
       "logout": "خروج",
       "confirm": "تایید",
       "cancel": "انصراف"
+    },
+    "shortcuts": {
+      "title": "میانبرها",
+      "search": "جستجو",
+      "general": "عمومی",
+      "toggleNavigation": "باز و بستن منو",
+      "toggleSettings": "باز و بستن تنظیمات",
+      "toggleShortcuts": "باز و بستن میانبرها"
     },
     "history": {
       "back": "بازگشت"

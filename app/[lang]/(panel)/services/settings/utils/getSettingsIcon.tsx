@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlineWeb } from "react-icons/md";
+import { FaRegKeyboard } from "react-icons/fa";
 import { settingItems } from "./settingItems";
 
 export function getSettingsIcon(
@@ -14,6 +15,8 @@ export function getSettingsIcon(
       return <FaUserCircle {...props} />;
     case "userInterface":
       return <MdOutlineWeb {...props} />;
+    case "shortcuts":
+      return <FaRegKeyboard {...props} />;
     case "general":
       return <IoSettingsSharp {...props} />;
     case "logout":

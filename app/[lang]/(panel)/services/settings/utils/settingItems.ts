@@ -7,6 +7,9 @@ export const settingItems = [
     key: "general",
   },
   {
+    key: "shortcuts",
+  },
+  {
     key: "userInterface",
   },
   {
