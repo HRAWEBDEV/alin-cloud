@@ -72,7 +72,9 @@ export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
             <Dialog>
               <DialogTrigger
                 render={
-                  <Link href="#">{dic.signIn.withPassword.forgotPassword}</Link>
+                  <Link href="#" className="text-primary">
+                    {dic.signIn.withPassword.forgotPassword}
+                  </Link>
                 }
               />
               <ForgotPasswordDialogContent />

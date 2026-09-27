@@ -5,7 +5,10 @@ import Link from "next/link";
 export default function SingUpNow({ dic }: { dic: AuthDictionary }) {
   return (
     <FieldDescription className="text-center">
-      {dic.signIn.doNotHaveAnAccount} <Link href="#">{dic.signIn.singUp}</Link>
+      {dic.signIn.doNotHaveAnAccount}{" "}
+      <Link href="#" className="text-primary">
+        {dic.signIn.singUp}
+      </Link>
     </FieldDescription>
   );
 }
