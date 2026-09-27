@@ -68,7 +68,7 @@ export default function SidebarNav() {
 
   return (
     <div className="w-full grow overflow-auto">
-      <div className="p-2 bg-sidebar sticky top-0 z-1">
+      <div className="p-2.5 py-2 bg-sidebar sticky top-0 z-1">
         <Field>
           <InputGroup className="bg-background">
             <InputGroupInput type="search" placeholder={dic.search + " ..."} />
