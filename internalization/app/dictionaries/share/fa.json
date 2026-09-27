@@ -2,6 +2,7 @@
   "title": "share dictionary",
   "components": {
     "navigation": {
+      "search": "جستجو",
       "reservation": "رزرواسیون",
       "newReservation": "رزرو جدید",
       "reception": "پذیرش",

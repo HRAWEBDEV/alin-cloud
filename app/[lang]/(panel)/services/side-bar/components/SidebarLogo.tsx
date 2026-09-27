@@ -11,7 +11,7 @@ export default function SidebarHotelInfo() {
         render={
           <Link href="#">
             <div className="flex gap-4 items-center grow text-neutral-700 dark:text-neutral-400">
-              <LogoShape className="size-13" />
+              <LogoShape className="size-12" />
               <div className="grow grid">
                 <h3 className="mb-0.5 truncate">آلین کلود</h3>
                 <p className="text-xs text-neutral-500">
