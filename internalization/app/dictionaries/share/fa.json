@@ -15,6 +15,9 @@
       "dark": "تاریک",
       "system": "سیستم"
     },
+    "userInterface": {
+      "colorTemplates": "رنگ‌بندی"
+    },
     "connectivity": {
       "connectionLost": "اتصال به اینترنت قطع شده است",
       "connected": "متصل"
@@ -23,6 +26,7 @@
       "title": "تنظیمات",
       "logoutConfirmMessage": "از برنامه خارج می‌شوید؟",
       "userInfo": "اطلاعات کاربری",
+      "userInterface": "رابط کاربری",
       "general": "عمومی",
       "logout": "خروج",
       "confirm": "تایید",

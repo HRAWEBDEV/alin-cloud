@@ -11,6 +11,7 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { Button } from "@/components/ui/button";
 import { settingItems } from "../utils/settingItems";
 import { getSettingsIcon } from "../utils/getSettingsIcon";
+import UserInterfaceSettings from "../../userInterface/components/UserInterfaceSettings";
 
 export default function SettingsModal() {
   const { open, activeTab, toggleOpen, setShowConfirmlogout } =
@@ -20,6 +21,16 @@ export default function SettingsModal() {
       components: { settings: dic },
     },
   } = useShareDictionary();
+
+  function renderContent() {
+    switch (activeTab) {
+      case "userInterface":
+        return <UserInterfaceSettings />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <Dialog open={open} onOpenChange={(state) => toggleOpen(state)}>
       <DialogContent className="p-0 gap-0 sm:max-w-2xl h-[85dvh] max-h-160 flex flex-col overflow-hidden">
@@ -52,7 +63,7 @@ export default function SettingsModal() {
               );
             })}
           </div>
-          <div className="overflow-auto grow"></div>
+          <div className="overflow-auto grow relative">{renderContent()}</div>
         </div>
       </DialogContent>
     </Dialog>

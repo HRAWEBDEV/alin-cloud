@@ -2,6 +2,7 @@ import { SVGProps } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";
 import { IoSettingsSharp } from "react-icons/io5";
+import { MdOutlineWeb } from "react-icons/md";
 import { settingItems } from "./settingItems";
 
 export function getSettingsIcon(
@@ -11,6 +12,8 @@ export function getSettingsIcon(
   switch (mode) {
     case "userInfo":
       return <FaUserCircle {...props} />;
+    case "userInterface":
+      return <MdOutlineWeb {...props} />;
     case "general":
       return <IoSettingsSharp {...props} />;
     case "logout":
