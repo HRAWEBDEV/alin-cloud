@@ -27,6 +27,24 @@
       "connectionLost": "اتصال به اینترنت قطع شده است",
       "connected": "متصل"
     },
+    "userInfo": {
+      "changesSavedSuccessfully": "تغییرات با موفقیت ذخیره شد",
+      "username": "نام کاربری",
+      "firstName": "نام",
+      "lastName": "نام خانوادگی",
+      "email": "ایمیل",
+      "phoneNumber": "شماره همراه",
+      "saveChanges": "ذخیره تغییرات",
+      "changeAvatar": "ویرایش تصویر",
+      "removeAvatar": "حذف تصویر",
+      "removeAvatarConfirmMessage": "آیا از حذف تصویر اطمینان دارید؟",
+      "verified": "تایید شده",
+      "notVerified": "تایید نشده",
+      "verify": "تایید",
+      "confirm": "تایید",
+      "cancel": "انصراف",
+      "exit": "خروج"
+    },
     "settings": {
       "title": "تنظیمات",
       "logoutConfirmMessage": "از برنامه خارج می‌شوید؟",
