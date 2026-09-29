@@ -30,7 +30,7 @@ export default function HistoryTabs() {
                 <TabsTrigger
                   key={item.type}
                   value={item.type}
-                  className="text-start justify-start bg-neutral-200 cursor-pointer font-normal"
+                  className="text-start justify-start bg-neutral-200 dark:bg-neutral-900 cursor-pointer font-normal"
                 >
                   <div className="grow truncate">{item.title}</div>
                   <div className="p-1">
