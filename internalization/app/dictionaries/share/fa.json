@@ -23,6 +23,17 @@
     "userInterface": {
       "colorTemplates": "رنگ‌بندی"
     },
+    "organizationInfo": {
+      "changesSavedSuccessfully": "تغییرات با موفقیت ذخیره شد",
+      "name": "نام سازمان",
+      "description": "توضیحات",
+      "saveChanges": "ذخیره تغییرات",
+      "changeAvatar": "ویرایش تصویر",
+      "removeAvatar": "حذف تصویر",
+      "removeAvatarConfirmMessage": "آیا از حذف تصویر اطمینان دارید؟",
+      "confirm": "تایید",
+      "cancel": "انصراف"
+    },
     "connectivity": {
       "connectionLost": "اتصال به اینترنت قطع شده است",
       "connected": "متصل"
@@ -49,6 +60,7 @@
       "title": "تنظیمات",
       "logoutConfirmMessage": "از برنامه خارج می‌شوید؟",
       "userInfo": "اطلاعات کاربری",
+      "organizationInfo": "سازمان",
       "userInterface": "رابط کاربری",
       "shortcuts": "میانبرها",
       "general": "عمومی",

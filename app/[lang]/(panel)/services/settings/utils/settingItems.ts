@@ -4,6 +4,9 @@ export const settingItems = [
     key: "userInfo",
   },
   {
+    key: "organizationInfo",
+  },
+  {
     key: "general",
   },
   {
