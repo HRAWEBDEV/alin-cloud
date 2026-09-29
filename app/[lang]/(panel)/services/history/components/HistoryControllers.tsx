@@ -1,5 +1,6 @@
 "use client";
 import { IoArrowBackSharp } from "react-icons/io5";
+import { GoHistory } from "react-icons/go";
 import {
   Tooltip,
   TooltipTrigger,
@@ -22,10 +23,25 @@ export default function HistoryControllers() {
             <Button
               type="button"
               variant="ghost"
-              size="icon-lg"
+              size="icon"
+              className="rounded-full bg-transparent"
+            >
+              <GoHistory className="size-5" />
+            </Button>
+          }
+        />
+        <TooltipContent>{dic.histroy}</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger
+          render={
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
               className="rounded-full bg-transparent text-destructive"
             >
-              <IoArrowBackSharp className="rtl:rotate-180 size-6" />
+              <IoArrowBackSharp className="rtl:rotate-180 size-5" />
             </Button>
           }
         />

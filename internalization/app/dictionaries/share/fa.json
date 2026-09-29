@@ -47,7 +47,8 @@
       "toggleShortcuts": "باز و بستن میانبرها"
     },
     "history": {
-      "back": "بازگشت"
+      "back": "بازگشت",
+      "histroy": "تاریخچه"
     }
   }
 }

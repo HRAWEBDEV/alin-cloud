@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className="flex h-(--panel-header-height) shrink-0 items-center gap-2 border-b border-border">
       <div className="flex items-center gap-1 ps-4 grow">
-        <SidebarTrigger />
+        <SidebarTrigger className="rounded-full" />
         <div className="hidden lg:block">
           <HistoryControllers />
         </div>

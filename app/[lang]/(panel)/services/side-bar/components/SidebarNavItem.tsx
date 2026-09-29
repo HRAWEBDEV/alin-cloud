@@ -10,6 +10,7 @@ import {
 import { getNavigationIcons } from "../../../utils/getNavigationIcons";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { useState, useEffect } from "react";
+import Highlighter from "react-highlight-words";
 
 export default function SidebarNavItem({
   navItem,
@@ -97,7 +98,10 @@ export default function SidebarNavItem({
       size="sm"
       className="text-[0.8rem] w-full justify-start gap-3 text-foreground font-normal ps-14 min-h-10 rounded-none"
     >
-      <span>{dic[navItem.name as keyof typeof dic]}</span>
+      <Highlighter
+        searchWords={[searchText || ""]}
+        textToHighlight={dic[navItem.name as keyof typeof dic]}
+      />
     </Button>
   );
 }
