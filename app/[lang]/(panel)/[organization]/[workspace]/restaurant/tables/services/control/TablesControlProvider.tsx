@@ -3,7 +3,7 @@ import {
   type TablesControlContextProps,
   TablesControlContext,
 } from "./tablesControlContext";
-import TablesWrapper from "../components/TablesWrapper";
+import TablesWrapper from "../../components/TablesWrapper";
 import { type TablesDictionary } from "@/internalization/app/dictionaries/panel/restaurant/tables/dictionary";
 
 export default function TablesControlProvider({

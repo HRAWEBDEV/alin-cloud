@@ -8,9 +8,10 @@ import {
   ComboboxList,
 } from "@/components/ui/combobox";
 import { InputGroupAddon } from "@/components/ui/input-group";
-import { useTablesControlContext } from "../control/tablesControlContext";
+import { useTablesControlContext } from "../services/control/tablesControlContext";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import LinearLoading from "@/app/[lang]/(panel)/components/LinearLoading";
+import { Button } from "@/components/ui/button";
 
 export default function TablesFilters() {
   const { dic } = useTablesControlContext();
@@ -21,10 +22,12 @@ export default function TablesFilters() {
   } = useShareDictionary();
   return (
     <header className="sticky top-0 bg-background z-2 p-4">
-      <div className="absolute inset-x-0 top-0">
-        <LinearLoading />
-      </div>
-      <div className="grid gap-4 grid-cols-[minmax(10rem,15rem)]">
+      {false && (
+        <div className="absolute inset-x-0 top-0">
+          <LinearLoading />
+        </div>
+      )}
+      <div className="grid gap-4 grid-cols-[minmax(10rem,15rem)_max-content]">
         <Combobox items={[]}>
           <ComboboxInput showClear>
             <InputGroupAddon align="inline-start">
@@ -42,6 +45,7 @@ export default function TablesFilters() {
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
+        <Button>{dic.filters.newTable}</Button>
       </div>
     </header>
   );

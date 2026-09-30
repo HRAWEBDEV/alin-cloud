@@ -1,6 +1,7 @@
 {
   "title": "میزها",
   "filters": {
-    "salon": "سالن"
+    "salon": "سالن",
+    "newTable": "میز جدید"
   }
 }
