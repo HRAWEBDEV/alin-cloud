@@ -22,7 +22,7 @@ export default function SidebarNav() {
 
   return (
     <div className="w-full grow overflow-auto">
-      <div className="p-2.5 py-2 bg-sidebar sticky top-0 z-1">
+      <div className="p-2.5 py-2 bg-sidebar sticky top-0 z-3">
         <Field>
           <InputGroup className="bg-background">
             <InputGroupInput
@@ -37,7 +37,7 @@ export default function SidebarNav() {
           </InputGroup>
         </Field>
       </div>
-      <div className="flex flex-col gap-1 text-neutral-800 dark:text-neutral-200">
+      <div className="flex flex-col text-neutral-800 dark:text-neutral-200">
         {navigationItems.map((item) => (
           <SidebarNavItem
             key={item.name}

@@ -29,7 +29,8 @@ export default function SidebarHotelInfo() {
           {/* </Avatar> */}
           <div className="grow grid">
             <h3 className="mb-0.5 truncate">مدیر سیستم</h3>
-            <p className="text-xs text-primary truncate">هتل عباسی</p>
+            <p className="mb-0.5 text-xs text-primary truncate">هتل عباسی</p>
+            <p className="text-xs truncate">رستوران هتل</p>
           </div>
           <IoMdArrowDropup />
         </div>

@@ -16,6 +16,10 @@ export const navigationItems: NavigationItem[] = [
         name: "tables",
         path: "/restaurant/tables",
       },
+      {
+        name: "salons",
+        path: "/restaurant/salons",
+      },
     ],
   },
   {

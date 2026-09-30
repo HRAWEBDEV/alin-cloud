@@ -12,6 +12,7 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
 import Link from "next/link";
+import { FaBookBookmark } from "react-icons/fa6";
 
 export default function SidebarNavItem({
   navItem,
@@ -63,6 +64,7 @@ export default function SidebarNavItem({
         key={navItem.name}
         open={open}
         onOpenChange={(state) => setOpen(state)}
+        className="data-[open]:mb-4"
       >
         <CollapsibleTrigger
           render={
@@ -102,10 +104,11 @@ export default function SidebarNavItem({
         paddingInlineStart:
           level === 1 ? "0.625rem" : (level - 1) * 3.5 + "rem",
       }}
+      data-active-menu={navItem.name === "tables"}
       key={navItem.name}
       variant="link"
       size="sm"
-      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none"
+      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800"
       render={
         <Link href={`${basePath}${navItem.path}`}>
           {getNavigationIcons(navItem.name, {
@@ -115,6 +118,20 @@ export default function SidebarNavItem({
             searchWords={[searchText || ""]}
             textToHighlight={dic[navItem.name as keyof typeof dic]}
           />
+          <div className="absolute inset-e-0 z-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="text-amber-700"
+              onClick={(e) => {
+                e.stopPropagation();
+                e.preventDefault();
+              }}
+            >
+              <FaBookBookmark />
+            </Button>
+          </div>
         </Link>
       }
     ></Button>

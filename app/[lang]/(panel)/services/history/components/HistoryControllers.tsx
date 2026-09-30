@@ -8,6 +8,14 @@ import {
 } from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
+import {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu";
 
 export default function HistoryControllers() {
   const {
@@ -17,8 +25,8 @@ export default function HistoryControllers() {
   } = useShareDictionary();
   return (
     <div>
-      <Tooltip>
-        <TooltipTrigger
+      <DropdownMenu>
+        <DropdownMenuTrigger
           render={
             <Button
               type="button"
@@ -30,8 +38,20 @@ export default function HistoryControllers() {
             </Button>
           }
         />
-        <TooltipContent>{dic.histroy}</TooltipContent>
-      </Tooltip>
+        <DropdownMenuContent align="start">
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>{dic.histroy}</DropdownMenuLabel>
+            {[1, 2, 3].map((item) => (
+              <DropdownMenuItem
+                key={item}
+                className="text-neutral-700 dark:text-neutral-400 min-h-10"
+              >
+                <span>میزها</span>
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuGroup>
+        </DropdownMenuContent>
+      </DropdownMenu>
       <Tooltip>
         <TooltipTrigger
           render={
