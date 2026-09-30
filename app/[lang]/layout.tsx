@@ -28,7 +28,7 @@ export const generateMetadata = async (
   props: LayoutProps<"/[lang]">,
 ): Promise<Metadata> => {
   const { lang } = await props.params;
-  const meta = getMetaDictionary({ locale: lang as Locale });
+  const meta = await getMetaDictionary({ locale: lang as Locale });
   return meta;
 };
 
