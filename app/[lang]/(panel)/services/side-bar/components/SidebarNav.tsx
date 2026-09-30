@@ -11,6 +11,8 @@ import {
 import { IoIosSearch } from "react-icons/io";
 import SidebarNavItem from "./SidebarNavItem";
 import NoItemFound from "../../../components/NoItemFound";
+import { FaBookBookmark } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
 
 export default function SidebarNav() {
   const [searchText, setSearchText] = useState("");
@@ -33,6 +35,11 @@ export default function SidebarNav() {
             />
             <InputGroupAddon align="inline-start">
               <IoIosSearch className="size-5" />
+            </InputGroupAddon>
+            <InputGroupAddon align="inline-end" className="-me-2">
+              <Button variant="ghost" size="icon">
+                <FaBookBookmark className="size-4" />
+              </Button>
             </InputGroupAddon>
           </InputGroup>
         </Field>
