@@ -12,6 +12,7 @@ import { useTablesControlContext } from "../services/control/tablesControlContex
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import LinearLoading from "@/app/[lang]/(panel)/components/LinearLoading";
 import { Button } from "@/components/ui/button";
+import { FaPlus } from "react-icons/fa";
 
 export default function TablesFilters() {
   const { dic } = useTablesControlContext();
@@ -45,7 +46,10 @@ export default function TablesFilters() {
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
-        <Button>{dic.filters.newTable}</Button>
+        <Button>
+          <FaPlus />
+          {dic.filters.newTable}
+        </Button>
       </div>
     </header>
   );

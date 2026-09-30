@@ -3,5 +3,15 @@
   "filters": {
     "salon": "سالن",
     "newTable": "میز جدید"
+  },
+  "editTable": {
+    "addTable": "افزودن میز",
+    "editTable": "ویرایش میز",
+    "tableType": "نوع میز",
+    "maxCapacity": "حداکثر ظرفیت",
+    "salon": "سالن",
+    "tableNo": "شماره میز",
+    "close": "بستن",
+    "saveChanges": "ذخیره تغییرات"
   }
 }

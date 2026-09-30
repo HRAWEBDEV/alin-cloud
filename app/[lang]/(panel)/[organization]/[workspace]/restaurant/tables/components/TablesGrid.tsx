@@ -28,15 +28,15 @@ export default function TablesGrid() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
             <TableRow
               key={item}
               className="even:bg-neutral-100 dark:even:bg-neutral-900"
             >
-              <TableCell className="text-center">1</TableCell>
+              <TableCell className="text-center">{item}</TableCell>
               <TableCell>سالن اصلی</TableCell>
               <TableCell className="text-center">میز</TableCell>
-              <TableCell className="text-center">12</TableCell>
+              <TableCell className="text-center">{item}</TableCell>
               <TableCell></TableCell>
               <TableCell></TableCell>
             </TableRow>
