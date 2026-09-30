@@ -15,7 +15,7 @@ export default function SidebarHotelInfo() {
               <div className="grow grid">
                 <h3 className="mb-0.5 truncate">آلین کلود</h3>
                 <p className="text-xs text-neutral-500">
-                  نرم‌افزار مدیریت اقامتگاه
+                  نرم‌افزار مدیریت رستوران
                 </p>
               </div>
             </div>

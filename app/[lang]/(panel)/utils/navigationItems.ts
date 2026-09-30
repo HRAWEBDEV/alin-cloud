@@ -3,25 +3,9 @@ export interface NavigationItem {
   path: string;
   items?: NavigationItem[];
 }
-export const navigationItems = [
+export const navigationItems: NavigationItem[] = [
   {
-    name: "reservation",
+    name: "tablesRack",
     path: "",
-    items: [
-      {
-        name: "newReservation",
-        path: "",
-      },
-    ],
-  },
-  {
-    name: "reception",
-    path: "",
-    items: [{ name: "roomsRack", path: "" }],
-  },
-  {
-    name: "settings",
-    path: "",
-    items: [{ name: "rooms", path: "" }],
   },
 ];

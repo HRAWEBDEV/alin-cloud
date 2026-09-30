@@ -3,12 +3,7 @@
   "components": {
     "navigation": {
       "search": "جستجو",
-      "reservation": "رزرواسیون",
-      "newReservation": "رزرو جدید",
-      "reception": "پذیرش",
-      "roomsRack": "رک اتاق‌ها",
-      "settings": "تنظیمات",
-      "rooms": "اتاق‌ها"
+      "tablesRack": "رک میزها"
     },
     "noItemFound": {
       "title": "آیتمی یافت نشد",

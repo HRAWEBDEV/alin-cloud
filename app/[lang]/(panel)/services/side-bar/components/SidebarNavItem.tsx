@@ -15,9 +15,11 @@ import Highlighter from "react-highlight-words";
 export default function SidebarNavItem({
   navItem,
   searchText,
+  level = 1,
 }: {
   navItem: NavigationItem;
   searchText?: string;
+  level?: number;
 }) {
   const [open, setOpen] = useState(false);
   const {
@@ -65,10 +67,10 @@ export default function SidebarNavItem({
             <Button
               variant="ghost"
               size="sm"
-              className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-3 font-normal min-h-10 text-[0.8rem] rounded-none"
+              className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-4 font-normal min-h-10 text-[0.8rem] rounded-none"
             >
               {getNavigationIcons(navItem.name, {
-                className: "size-7",
+                className: "size-8",
               })}
               <div className="grow">
                 {dic[navItem.name as keyof typeof dic]}
@@ -84,6 +86,7 @@ export default function SidebarNavItem({
                 key={child.name}
                 navItem={child}
                 searchText={searchText}
+                level={level + 1}
               />
             ))}
           </div>
@@ -93,11 +96,18 @@ export default function SidebarNavItem({
   }
   return (
     <Button
+      style={{
+        paddingInlineStart:
+          level === 1 ? "0.625rem" : (level - 1) * 3.5 + "rem",
+      }}
       key={navItem.name}
       variant="link"
       size="sm"
-      className="text-[0.8rem] w-full justify-start gap-3 text-foreground font-normal ps-14 min-h-10 rounded-none"
+      className="text-[0.8rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none"
     >
+      {getNavigationIcons(navItem.name, {
+        className: "size-8",
+      })}
       <Highlighter
         searchWords={[searchText || ""]}
         textToHighlight={dic[navItem.name as keyof typeof dic]}
