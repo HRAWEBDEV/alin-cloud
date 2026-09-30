@@ -3,6 +3,10 @@ import { OutOfContext } from "@/utils/OutOfContext";
 
 interface HistoryContextProps {
   title: "historyContext";
+  historyList: {
+    path: string;
+    search: string;
+  }[];
 }
 
 const HistoryContext = createContext<HistoryContextProps | null>(null);

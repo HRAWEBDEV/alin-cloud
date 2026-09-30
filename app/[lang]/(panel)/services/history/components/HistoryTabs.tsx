@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LiaTimesSolid } from "react-icons/lia";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -19,12 +20,13 @@ const historyTest = [
 ];
 
 export default function HistoryTabs() {
+  const [activeTab, setActiveTab] = useState<string>("registration");
   const matched = useIsMobile();
   return (
     <>
       {matched ? null : (
         <div>
-          <Tabs value="registration">
+          <Tabs value={activeTab} onValueChange={setActiveTab}>
             <TabsList className="rounded-none w-full [&>button]:grow-0 [&>button]:min-w-40 justify-start gap-1">
               {historyTest.map((item) => (
                 <TabsTrigger
