@@ -7,6 +7,9 @@ export const settingItems = [
     key: "organizationInfo",
   },
   {
+    key: "organizationMembers",
+  },
+  {
     key: "general",
   },
   {
