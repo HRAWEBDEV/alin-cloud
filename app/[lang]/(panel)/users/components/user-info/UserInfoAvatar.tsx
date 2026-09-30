@@ -17,8 +17,10 @@ import {
 } from "@/components/ui/alert-dialog";
 import { IoIosWarning } from "react-icons/io";
 import { RiLogoutBoxRFill } from "react-icons/ri";
+import { useSettingsContext } from "../../../services/settings/settingsContext";
 
 export default function UserInfoAvatar() {
+  const { setShowConfirmlogout } = useSettingsContext();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isRemoveAvatarDialogOpen, setIsRemoveAvatarDialogOpen] =
     useState(false);
@@ -30,7 +32,11 @@ export default function UserInfoAvatar() {
   return (
     <div className="flex flex-col items-center mb-6 relative">
       <div className="absolute top-0 inset-e-0">
-        <Button variant="destructive">
+        <Button
+          variant="destructive"
+
+          onClick={() => setShowConfirmlogout(true)}
+        >
           <RiLogoutBoxRFill className="size-5" />
           {dic.exit}
         </Button>

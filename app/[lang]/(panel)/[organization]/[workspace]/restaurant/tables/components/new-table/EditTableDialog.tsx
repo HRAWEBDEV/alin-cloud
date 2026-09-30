@@ -20,15 +20,16 @@ import {
 } from "@/components/ui/combobox";
 import { Button } from "@/components/ui/button";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function EditTableDialog({ dic }: { dic: TablesDictionary }) {
   const {
     shareDictionary: {
-      components: { noItemFound },
+      components: { noItemFound, settings },
     },
   } = useShareDictionary();
   return (
-    <Dialog>
+    <Dialog open>
       <DialogContent className="p-0 gap-0 max-h-[90svh] flex flex-col overflow-hidden">
         <form className="flex flex-col overflow-hidden grow">
           <DialogHeader className="border-b border-border p-4">
@@ -77,7 +78,15 @@ export default function EditTableDialog({ dic }: { dic: TablesDictionary }) {
               </div>
             </FieldGroup>
           </div>
-          <DialogFooter className="py-2 px-4">
+          <DialogFooter className="py-2 px-4 sm:items-center">
+            <div className="grow">
+              <Field orientation="horizontal" className="gap-2">
+                <Checkbox className="scale-110" />
+                <FieldLabel className="text-neutral-500">
+                  {settings.closeAfter}
+                </FieldLabel>
+              </Field>
+            </div>
             <Button variant="outline" className="sm:w-28">
               {dic.editTable.close}
             </Button>
