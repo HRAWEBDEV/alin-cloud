@@ -16,6 +16,7 @@ import { getAuthDictionary } from "@/internalization/app/dictionaries/auth/dicti
 import { getShareDictionary } from "@/internalization/app/dictionaries/share/dictionary";
 import ShareDictionaryProvider from "@/services/share-dictionary/ShareDictionaryProvider";
 import AxiosBaseConfig from "./services/axios-interceptors/AxiosBaseConfig";
+import { Toaster } from "sonner";
 
 export function generateStaticParams(): { lang: Locale }[] {
   return localesList.map((lang) => ({
@@ -157,6 +158,7 @@ export default async function RootLayout({
             metaDictionary={metaDic}
             shareDictionary={shareDic}
           >
+            <Toaster richColors />
             <BaseConfigProvider activeLocale={lang as Locale}>
               <AxiosBaseConfig />
               <QueryClientProvider>{children}</QueryClientProvider>

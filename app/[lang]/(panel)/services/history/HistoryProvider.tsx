@@ -1,11 +1,10 @@
 "use client";
 import { ReactNode, useState, useEffect } from "react";
 import { type HistoryContextProps, HistoryContext } from "./historyContext";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function HistoryProivder({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [historyList, setHistoryList] = useState<
     HistoryContextProps["historyList"]
   >([]);
@@ -20,9 +19,7 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     historyList,
   };
   // when path,search changes
-  useEffect(() => {
-    console.log(pathname, searchParams.toString());
-  }, [pathname, searchParams]);
+  useEffect(() => {}, [pathname]);
   return (
     <HistoryContext.Provider value={ctx}>{children}</HistoryContext.Provider>
   );

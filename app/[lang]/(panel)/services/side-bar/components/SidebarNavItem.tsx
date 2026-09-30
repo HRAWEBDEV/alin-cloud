@@ -11,6 +11,7 @@ import { getNavigationIcons } from "../../../utils/getNavigationIcons";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
+import Link from "next/link";
 
 export default function SidebarNavItem({
   navItem,
@@ -27,6 +28,7 @@ export default function SidebarNavItem({
       components: { navigation: dic },
     },
   } = useShareDictionary();
+  const basePath = "/main/main";
 
   const filteredNavItems = (() => {
     if (!searchText || !navItem.items) return navItem.items;
@@ -67,10 +69,10 @@ export default function SidebarNavItem({
             <Button
               variant="ghost"
               size="sm"
-              className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-4 font-normal min-h-10 text-[0.8rem] rounded-none"
+              className="group w-full justify-start transition-none hover:bg-accent hover:text-accent-foreground text-start gap-4 font-normal min-h-10 text-[0.85rem] rounded-none"
             >
               {getNavigationIcons(navItem.name, {
-                className: "size-8",
+                className: "size-7",
               })}
               <div className="grow">
                 {dic[navItem.name as keyof typeof dic]}
@@ -103,15 +105,18 @@ export default function SidebarNavItem({
       key={navItem.name}
       variant="link"
       size="sm"
-      className="text-[0.8rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none"
-    >
-      {getNavigationIcons(navItem.name, {
-        className: "size-8",
-      })}
-      <Highlighter
-        searchWords={[searchText || ""]}
-        textToHighlight={dic[navItem.name as keyof typeof dic]}
-      />
-    </Button>
+      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none"
+      render={
+        <Link href={`${basePath}${navItem.path}`}>
+          {getNavigationIcons(navItem.name, {
+            className: "size-7",
+          })}
+          <Highlighter
+            searchWords={[searchText || ""]}
+            textToHighlight={dic[navItem.name as keyof typeof dic]}
+          />
+        </Link>
+      }
+    ></Button>
   );
 }

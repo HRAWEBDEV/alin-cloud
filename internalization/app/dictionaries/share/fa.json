@@ -3,7 +3,10 @@
   "components": {
     "navigation": {
       "search": "جستجو",
-      "tablesRack": "رک میزها"
+      "tablesRack": "رک میزها",
+      "capacityAndPricing": "قیمت و ظرفیت",
+      "tables": "میزها",
+      "settings": "تنظیمات"
     },
     "noItemFound": {
       "title": "آیتمی یافت نشد",

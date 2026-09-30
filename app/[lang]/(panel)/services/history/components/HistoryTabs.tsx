@@ -6,16 +6,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const historyTest = [
   {
-    type: "reservation",
-    title: "رزرو",
-  },
-  {
-    type: "rack",
-    title: "رک اتاق‌ها",
-  },
-  {
-    type: "registration",
-    title: "پذیرش",
+    type: "tablesRack",
+    title: "رک میزها",
   },
 ];
 
