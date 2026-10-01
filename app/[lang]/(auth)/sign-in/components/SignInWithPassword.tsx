@@ -71,6 +71,7 @@ export default function SignInWithPassword({ dic }: { dic: AuthDictionary }) {
           <FieldDescription>
             <Dialog>
               <DialogTrigger
+                nativeButton={false}
                 render={
                   <Link href="#" className="text-primary">
                     {dic.signIn.withPassword.forgotPassword}

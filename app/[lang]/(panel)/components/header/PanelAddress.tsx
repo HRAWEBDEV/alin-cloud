@@ -9,7 +9,7 @@ import {
 export default function PanelAddress() {
   return (
     <Breadcrumb>
-      <BreadcrumbList className="group-data-[rich-color='true']:text-neutral-200 dark:group-data-[rich-color='true']:text-neutral-400">
+      <BreadcrumbList className="group-data-[rich-color='true']:text-neutral-300 dark:group-data-[rich-color='true']:text-neutral-300">
         <BreadcrumbItem className="hidden lg:block">
           <BreadcrumbLink href="#">خـــانه</BreadcrumbLink>
         </BreadcrumbItem>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useEffect } from "react";
 import {
   type SettingsContextProps,
   type PanelSettings,
@@ -39,8 +39,8 @@ export default function SettingsProvider({
   } = useShareDictionary();
   const [open, setOpen] = useState(false);
   const [showConfirmLogout, setShowConfirmlogout] = useState(false);
-  const [panelSettings, setPanelSettings] = useState<PanelSettings>(() =>
-    typeof window === "undefined" ? defaultPanelSettings : getPanelSettings(),
+  const [panelSettings, setPanelSettings] = useState<PanelSettings>(
+    () => defaultPanelSettings,
   );
 
   function handleChangeSettings<K extends keyof PanelSettings>(
@@ -69,6 +69,11 @@ export default function SettingsProvider({
     panelSettings,
     handleChangeSettings,
   };
+
+  useEffect(() => {
+    setPanelSettings(getPanelSettings());
+  }, []);
+
   return (
     <SettingsContext.Provider value={ctx}>
       {children}

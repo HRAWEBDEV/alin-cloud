@@ -109,6 +109,7 @@ export default function SidebarNavItem({
       variant="link"
       size="sm"
       className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+      nativeButton={false}
       render={
         <Link href={`${basePath}${navItem.path}`}>
           {getNavigationIcons(navItem.name, {

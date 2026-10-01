@@ -11,6 +11,7 @@ export default function SidebarHotelInfo() {
       <Button
         variant="ghost"
         className="w-full justify-stretch text-start p-2 h-auto bg-transparent rounded-none min-h-(--panel-header-height)"
+        nativeButton={false}
         render={
           <Link href={homePath}>
             <div className="flex gap-4 items-center grow text-neutral-700 dark:text-neutral-400">

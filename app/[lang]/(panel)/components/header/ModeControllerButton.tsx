@@ -34,7 +34,7 @@ export default function ModeControllerButton() {
             type="button"
             variant="ghost"
             size="icon-lg"
-            className="rounded-full bg-transparent text-neutral-600 dark:text-neutral-400 group-data-[rich-color='true']:text-primary-foreground!"
+            className="rounded-full bg-transparent text-neutral-600 dark:text-neutral-400 group-data-[rich-color='true']:text-primary-foreground dark:group-data-[rich-color='true']:text-primary-foreground"
           >
             {mounted &&
               theme &&
