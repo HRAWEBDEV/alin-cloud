@@ -1,6 +1,11 @@
 "use client";
 import { useState, ReactNode } from "react";
-import { type SettingsContextProps, SettingsContext } from "./settingsContext";
+import {
+  type SettingsContextProps,
+  type PanelSettings,
+  SettingsContext,
+  defaultPanelSettings,
+} from "./settingsContext";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,6 +20,10 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { IoIosWarning } from "react-icons/io";
 import { useLogout } from "../../hooks/useLogout";
 import { type SettingItem } from "./utils/settingItems";
+import {
+  getPanelSettings,
+  savePanelSettings,
+} from "./utils/panelSettingsManager";
 
 export default function SettingsProvider({
   children,
@@ -30,6 +39,18 @@ export default function SettingsProvider({
   } = useShareDictionary();
   const [open, setOpen] = useState(false);
   const [showConfirmLogout, setShowConfirmlogout] = useState(false);
+  const [panelSettings, setPanelSettings] = useState<PanelSettings>(() =>
+    typeof window === "undefined" ? defaultPanelSettings : getPanelSettings(),
+  );
+
+  function handleChangeSettings<K extends keyof PanelSettings>(
+    key: K,
+    option: PanelSettings[K],
+  ) {
+    const newPanelSettings = { ...panelSettings, [key]: option };
+    setPanelSettings(newPanelSettings);
+    savePanelSettings(newPanelSettings);
+  }
 
   function onToggle(state?: boolean, tab?: SettingItem) {
     const newState = state === undefined ? !open : state;
@@ -45,6 +66,8 @@ export default function SettingsProvider({
     activeTab,
     setShowConfirmlogout,
     toggleOpen: onToggle,
+    panelSettings,
+    handleChangeSettings,
   };
   return (
     <SettingsContext.Provider value={ctx}>

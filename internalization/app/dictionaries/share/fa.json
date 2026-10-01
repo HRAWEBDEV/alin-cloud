@@ -20,7 +20,12 @@
       "system": "سیستم"
     },
     "userInterface": {
-      "colorTemplates": "رنگ‌بندی"
+      "colorTemplates": "رنگ‌بندی",
+      "panelHeaderBg": {
+        "title": "رنگ پس زمینه هدر سایت",
+        "rich": "رنگ اصلی",
+        "noColor": "بدون رنگ"
+      }
     },
     "organizationInfo": {
       "changesSavedSuccessfully": "تغییرات با موفقیت ذخیره شد",

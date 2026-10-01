@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useTheme } from "next-themes";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 import { appColorTemplates } from "@/utils/colorPalletes";
+import { headerBgColors } from "../../settings/settingsContext";
 
 export default function UserInterfaceSettings() {
   const {
@@ -50,6 +51,23 @@ export default function UserInterfaceSettings() {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="mb-4 flex flex-col gap-4">
+        <div>
+          <h3 className="font-medium">{dic.panelHeaderBg.title}</h3>
+        </div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          {headerBgColors.map((item) => {
+            return (
+              <button
+                key={item}
+                className="size-36 border border-border rounded-md flex flex-col cursor-pointer"
+              >
+                <div className="h-6 border-b border-border"></div>
+              </button>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
