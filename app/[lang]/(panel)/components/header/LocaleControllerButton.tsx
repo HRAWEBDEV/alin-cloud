@@ -24,7 +24,7 @@ export default function LocaleControllerButton() {
             type="button"
             variant="ghost"
             size="icon-lg"
-            className="relative rounded-full bg-transparent text-neutral-600 dark:text-neutral-400"
+            className="relative rounded-full bg-transparent text-neutral-600 dark:text-neutral-400 group-data-[rich-color='true']:text-primary-foreground"
           >
             <div className="absolute top-0 -inset-e-1">
               <Badge variant="default" className="p-1 rounded-full size-5">

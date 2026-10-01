@@ -5,8 +5,13 @@ import { useTheme } from "next-themes";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 import { appColorTemplates } from "@/utils/colorPalletes";
 import { headerBgColors } from "../../settings/settingsContext";
+import { useSettingsContext } from "../../settings/settingsContext";
 
 export default function UserInterfaceSettings() {
+  const {
+    panelSettings: { headerBgColor },
+    handleChangeSettings,
+  } = useSettingsContext();
   const {
     shareDictionary: {
       components: { modeController: modeDic, userInterface: dic },
@@ -59,12 +64,24 @@ export default function UserInterfaceSettings() {
         <div className="flex flex-wrap gap-4 justify-center">
           {headerBgColors.map((item) => {
             return (
-              <button
+              <div
+                data-active={item === headerBgColor}
                 key={item}
-                className="size-36 border border-border rounded-md flex flex-col cursor-pointer"
+                className="group text-center"
               >
-                <div className="h-6 border-b border-border"></div>
-              </button>
+                <button
+                  className="size-36 border border-border rounded-md flex flex-col cursor-pointer mb-2  group-data-[active='true']:border-2 group-data-[active='true']:border-primary overflow-hidden"
+                  onClick={() => handleChangeSettings("headerBgColor", item)}
+                >
+                  <div
+                    data-rich-color={item === "rich"}
+                    className="h-6 border-b border-border data-[rich-color='true']:bg-primary"
+                  ></div>
+                </button>
+                <p className="text-sm text-neutral-700 dark:text-neutral-400">
+                  {dic["panelHeaderBg"][item]}
+                </p>
+              </div>
             );
           })}
         </div>

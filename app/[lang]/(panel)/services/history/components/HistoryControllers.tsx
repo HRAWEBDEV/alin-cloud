@@ -32,7 +32,7 @@ export default function HistoryControllers() {
               type="button"
               variant="ghost"
               size="icon"
-              className="rounded-full bg-transparent"
+              className="rounded-full bg-transparent group-data-[rich-color='true']:text-primary-foreground"
             >
               <GoHistory className="size-5" />
             </Button>

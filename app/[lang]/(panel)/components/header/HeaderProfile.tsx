@@ -8,14 +8,14 @@ export default function HeaderProfile() {
   return (
     <Button
       variant="ghost"
-      className="gap-1 items-center flex-row-reverse p-0 rounded-none"
+      className="gap-1 items-center flex-row-reverse p-0 rounded-none hover:bg-transparent"
       onClick={() => toggleOpen(true)}
     >
       <Avatar>
         <AvatarImage src="https://github.com/shadcn.png" alt="profile image" />
         <AvatarFallback>CN</AvatarFallback>
       </Avatar>
-      <p className="text-sm text-neutral-700 dark:text-neutral-400 font-normal truncate max-w-32 hidden md:block">
+      <p className="text-sm text-neutral-700 dark:text-neutral-400 font-normal truncate max-w-32 hidden md:block group-data-[rich-color='true']:text-primary-foreground">
         حمیدرضا اکبری
       </p>
     </Button>
