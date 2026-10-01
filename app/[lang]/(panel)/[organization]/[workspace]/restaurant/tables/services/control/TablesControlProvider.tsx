@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   type TablesControlContextProps,
   TablesControlContext,
@@ -12,14 +13,28 @@ export default function TablesControlProvider({
 }: {
   dic: TablesDictionary;
 }) {
+  const [showEditTable, setShowEditTable] = useState(false);
+
+  function handleToggleEditTable(state: boolean, id: number | null) {
+    setShowEditTable(state);
+  }
+
   const ctx: TablesControlContextProps = {
     title: "tablesControlContext",
     dic,
+    editTable: {
+      open: showEditTable,
+      onToggle: handleToggleEditTable,
+    },
   };
   return (
     <TablesControlContext.Provider value={ctx}>
       <TablesWrapper />
-      <EditTableDialog dic={dic} />
+      <EditTableDialog
+        dic={dic}
+        open={showEditTable}
+        onToggle={handleToggleEditTable}
+      />
     </TablesControlContext.Provider>
   );
 }

@@ -5,6 +5,10 @@ import { type TablesDictionary } from "@/internalization/app/dictionaries/panel/
 interface TablesControlContextProps {
   title: "tablesControlContext";
   dic: TablesDictionary;
+  editTable: {
+    open: boolean;
+    onToggle(state: boolean, id: number | null): unknown;
+  };
 }
 
 const TablesControlContext = createContext<TablesControlContextProps | null>(

@@ -22,14 +22,27 @@ import { Button } from "@/components/ui/button";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { Checkbox } from "@/components/ui/checkbox";
 
-export default function EditTableDialog({ dic }: { dic: TablesDictionary }) {
+export default function EditTableDialog({
+  dic,
+  open,
+  onToggle,
+}: {
+  dic: TablesDictionary;
+  open: boolean;
+  onToggle(state: boolean, id: number | null): unknown;
+}) {
   const {
     shareDictionary: {
       components: { noItemFound, settings },
     },
   } = useShareDictionary();
   return (
-    <Dialog open>
+    <Dialog
+      open={open}
+      onOpenChange={(state) => {
+        onToggle(state, null);
+      }}
+    >
       <DialogContent className="p-0 gap-0 max-h-[90svh] flex flex-col overflow-hidden">
         <form className="flex flex-col overflow-hidden grow">
           <DialogHeader className="border-b border-border p-4">

@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { FaPlus } from "react-icons/fa";
 
 export default function TablesFilters() {
-  const { dic } = useTablesControlContext();
+  const { dic, editTable } = useTablesControlContext();
   const {
     shareDictionary: {
       components: { noItemFound },
@@ -46,7 +46,11 @@ export default function TablesFilters() {
             </ComboboxList>
           </ComboboxContent>
         </Combobox>
-        <Button>
+        <Button
+          onClick={() => {
+            editTable.onToggle(true, null);
+          }}
+        >
           <FaPlus />
           {dic.filters.newTable}
         </Button>
