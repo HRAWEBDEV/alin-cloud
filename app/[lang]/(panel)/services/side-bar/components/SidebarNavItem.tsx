@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import Highlighter from "react-highlight-words";
 import Link from "next/link";
 import { FaBookBookmark } from "react-icons/fa6";
+import { useSidebar } from "../sidebarContext";
 
 export default function SidebarNavItem({
   navItem,
@@ -23,6 +24,7 @@ export default function SidebarNavItem({
   searchText?: string;
   level?: number;
 }) {
+  const { setOpenMobile } = useSidebar();
   const [open, setOpen] = useState(false);
   const {
     shareDictionary: {
@@ -111,7 +113,10 @@ export default function SidebarNavItem({
       className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800"
       nativeButton={false}
       render={
-        <Link href={`${basePath}${navItem.path}`}>
+        <Link
+          href={`${basePath}${navItem.path}`}
+          onClick={() => setOpenMobile(false)}
+        >
           {getNavigationIcons(navItem.name, {
             className: "size-7",
           })}
