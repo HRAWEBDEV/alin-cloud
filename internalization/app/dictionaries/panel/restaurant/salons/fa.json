@@ -1,3 +1,12 @@
 {
-  "title": "سالن‌ها"
+  "title": "سالن‌ها",
+  "filters": {
+    "search": "جستجو",
+    "newSalon": "افزودن سالن"
+  },
+  "editSalon": {
+    "addSalon": "افزودن سالن",
+    "editSalon": "ویرایش سالن",
+    "saveChanges": "ذخیره تغییرات"
+  }
 }

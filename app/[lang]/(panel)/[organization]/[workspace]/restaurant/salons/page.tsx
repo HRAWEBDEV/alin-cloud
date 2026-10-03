@@ -1,6 +1,7 @@
 import { type Locale } from "@/internalization/app/localization";
 import { Metadata } from "next";
 import { getSalonsDictionary } from "@/internalization/app/dictionaries/panel/restaurant/salons/dictionary";
+import SalonsControlProvider from "./services/control/SalonsControlProvider";
 
 export const generateMetadata = async (
   props: LayoutProps<"/[lang]/[organization]/[workspace]/restaurant">,
@@ -15,5 +16,5 @@ export default async function SalonsPage(
 ) {
   const { lang } = await props.params;
   const dic = await getSalonsDictionary({ locale: lang as Locale });
-  return <></>;
+  return <SalonsControlProvider dic={dic} />;
 }
