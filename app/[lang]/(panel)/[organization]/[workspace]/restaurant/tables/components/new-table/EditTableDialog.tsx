@@ -21,6 +21,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Switch } from "@/components/ui/switch";
 
 export default function EditTableDialog({
   dic,
@@ -54,6 +55,13 @@ export default function EditTableDialog({
           <div className="p-4 overflow-auto">
             <FieldGroup className="gap-4">
               <div className="grid gap-4 grid-cols-2">
+                <Field orientation="horizontal">
+                  <Switch id="switch-focus-mode" dir="ltr" />
+                  <FieldLabel htmlFor="switch-focus-mode">
+                    {dic.editTable.VIP}
+                  </FieldLabel>
+                </Field>
+                <div></div>
                 <Field className="gap-2">
                   <FieldLabel>{dic.editTable.tableType}</FieldLabel>
                   <InputGroup>
