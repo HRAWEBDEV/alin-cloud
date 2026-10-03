@@ -86,6 +86,10 @@
       "toggleShortcuts": "نمایش میانبرها",
       "addingItem": "افزودن آیتم"
     },
+    "help": {
+      "title": "راهنما",
+      "search": "جستجو"
+    },
     "history": {
       "back": "بازگشت",
       "histroy": "تاریخچه"

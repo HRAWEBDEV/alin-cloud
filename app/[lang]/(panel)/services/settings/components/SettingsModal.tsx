@@ -15,6 +15,7 @@ import UserInterfaceSettings from "../../userInterface/components/UserInterfaceS
 import ShortcutsWrapper from "../../shortcuts/components/ShortcutsWrapper";
 import UserInfo from "../../../users/components/user-info/UserInfo";
 import OrganizationInfo from "../../../organization/components/organization-info/OrganizationInfo";
+import HelpWrapper from "../../../help/components/HelpWrapper";
 
 export default function SettingsModal() {
   const { open, activeTab, toggleOpen, setShowConfirmlogout } =
@@ -35,6 +36,8 @@ export default function SettingsModal() {
         return <UserInterfaceSettings />;
       case "shortcuts":
         return <ShortcutsWrapper />;
+      case "help":
+        return <HelpWrapper />;
       default:
         return null;
     }
