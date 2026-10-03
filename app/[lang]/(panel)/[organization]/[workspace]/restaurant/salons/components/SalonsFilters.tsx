@@ -37,7 +37,7 @@ export default function SalonsFilters() {
         </div>
       )}
       <div className="flex gap-4 flex-wrap items-center justify-between">
-        <div className="grid gap-4 grid-cols-[minmax(10rem,12rem)]">
+        <div className="grid gap-4 grid-cols-[minmax(10rem,13rem)]">
           <Field>
             <InputGroup>
               <InputGroupAddon align="inline-start">
