@@ -1,15 +1,18 @@
 import { use, createContext } from "react";
 import { OutOfContext } from "@/utils/OutOfContext";
 import { type SettingItem } from "./utils/settingItems";
+import { gridRowsCountOptions } from "./utils/gridRowsCountOptions";
 
 const headerBgColors = ["rich", "noColor"] as const;
 
 interface PanelSettings {
   headerBgColor: (typeof headerBgColors)[number];
+  gridDefaultRowsCount: number;
 }
 
 const defaultPanelSettings: PanelSettings = {
   headerBgColor: "noColor",
+  gridDefaultRowsCount: gridRowsCountOptions[1],
 };
 
 interface SettingsContextProps {

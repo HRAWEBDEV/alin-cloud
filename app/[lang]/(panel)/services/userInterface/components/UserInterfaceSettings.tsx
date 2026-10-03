@@ -6,10 +6,18 @@ import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 import { appColorTemplates } from "@/utils/colorPalletes";
 import { headerBgColors } from "../../settings/settingsContext";
 import { useSettingsContext } from "../../settings/settingsContext";
+import { gridRowsCountOptions } from "../../settings/utils/gridRowsCountOptions";
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox";
 
 export default function UserInterfaceSettings() {
   const {
-    panelSettings: { headerBgColor },
+    panelSettings: { headerBgColor, gridDefaultRowsCount },
     handleChangeSettings,
   } = useSettingsContext();
   const {
@@ -84,6 +92,31 @@ export default function UserInterfaceSettings() {
               </div>
             );
           })}
+        </div>
+      </div>
+      <div className="mb-4 flex flex-wrap gap-4 items-center">
+        <div>
+          <h3 className="font-medium">{dic.gridDefaultRowsCount}</h3>
+        </div>
+        <div className="max-w-20">
+          <Combobox
+            items={gridRowsCountOptions}
+            value={gridDefaultRowsCount}
+            onValueChange={(value) =>
+              handleChangeSettings("gridDefaultRowsCount", value as number)
+            }
+          >
+            <ComboboxInput />
+            <ComboboxContent>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
         </div>
       </div>
     </div>

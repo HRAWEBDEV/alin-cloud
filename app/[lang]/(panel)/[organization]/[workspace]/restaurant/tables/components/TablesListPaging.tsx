@@ -1,12 +1,14 @@
+import { gridRowsCountOptions } from "@/app/[lang]/(panel)/services/settings/utils/gridRowsCountOptions";
 import { Button } from "@/components/ui/button";
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox";
 import { Field } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
-import {
-  Select,
-  SelectContent,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import {
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,
@@ -18,13 +20,19 @@ import { NumericFormat } from "react-number-format";
 export default function TablesListPaging() {
   return (
     <div className="shrink-0 border-t border-input p-1 flex gap-2">
-      <div>
-        <Select>
-          <SelectTrigger>
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent></SelectContent>
-        </Select>
+      <div className="max-w-20">
+        <Combobox items={gridRowsCountOptions}>
+          <ComboboxInput />
+          <ComboboxContent>
+            <ComboboxList>
+              {(item) => (
+                <ComboboxItem key={item} value={item}>
+                  {item}
+                </ComboboxItem>
+              )}
+            </ComboboxList>
+          </ComboboxContent>
+        </Combobox>
       </div>
       <div className="flex gap-1 items-center text-neutral-600 dark:text-neutral-400 grow justify-end">
         {true && (

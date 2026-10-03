@@ -25,7 +25,8 @@
         "title": "رنگ پس زمینه هدر سایت",
         "rich": "رنگ اصلی",
         "noColor": "بدون رنگ"
-      }
+      },
+      "gridDefaultRowsCount": "تعداد ردیف‌های پیشفرض جدول‌ها"
     },
     "organizationInfo": {
       "changesSavedSuccessfully": "تغییرات با موفقیت ذخیره شد",
