@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Field, FieldLabel } from "@/components/ui/field";
+import { Field } from "@/components/ui/field";
 import { InputGroup, InputGroupInput } from "@/components/ui/input-group";
 import {
   Select,
@@ -13,6 +13,7 @@ import {
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { NumericFormat } from "react-number-format";
 
 export default function TablesListPaging() {
   return (
@@ -30,7 +31,7 @@ export default function TablesListPaging() {
           <div className="basis-24 hidden md:block">
             <Field>
               <InputGroup className="grow">
-                <InputGroupInput />
+                <NumericFormat customInput={InputGroupInput} />
               </InputGroup>
             </Field>
           </div>
