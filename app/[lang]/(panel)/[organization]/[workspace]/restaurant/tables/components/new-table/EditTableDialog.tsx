@@ -66,7 +66,7 @@ export default function EditTableDialog({
                 <Field className="gap-2">
                   <FieldLabel>{dic.editTable.tableType}</FieldLabel>
                   <InputGroup>
-                    <InputGroupInput />
+                    <InputGroupInput autoFocus />
                   </InputGroup>
                 </Field>
                 <Field className="gap-2">

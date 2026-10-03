@@ -36,6 +36,7 @@ export default function HelpWrapper() {
               <InputGroupInput
                 id="search"
                 type="search"
+                autoFocus
                 placeholder={dic.search + " ..."}
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
