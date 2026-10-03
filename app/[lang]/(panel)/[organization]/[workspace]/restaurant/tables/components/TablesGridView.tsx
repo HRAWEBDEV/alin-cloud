@@ -25,24 +25,24 @@ export default function TablesGridView() {
               <div className="absolute bottom-0 inset-e-0 z-0">
                 <MdTouchApp className="size-10 text-neutral-200 dark:text-neutral-800" />
               </div>
-              <div className="mb-1 flex gap-2">
+              <div className="mb-0.5 flex gap-2">
                 <span className="font-medium text-3xl text-primary">
                   {item}
                 </span>
               </div>
-              <div className="mb-2 flex gap-2">
+              <div className="mb-1 flex gap-2">
                 <span className="text-neutral-600 dark:text-neutral-400 text-sm">
                   {dic.editTable.salon}:
                 </span>
                 <span>سالن شماره یک</span>
               </div>
-              <div className="mb-2 flex gap-2">
+              <div className="mb-1 flex gap-2">
                 <span className="text-neutral-600 dark:text-neutral-400 text-sm">
                   {dic.editTable.tableType}:
                 </span>
                 <span className="text-teal-700 dark:text-teal-400">آلاچیق</span>
               </div>
-              <div className="mb-1 flex gap-2">
+              <div className="flex gap-2">
                 <span className="text-neutral-600 dark:text-neutral-400 text-sm">
                   {dic.editTable.maxCapacity}:
                 </span>
