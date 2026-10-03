@@ -17,13 +17,13 @@ export default function Header() {
       className="group data-[rich-color='true']:bg-primary flex h-(--panel-header-height) shrink-0 items-center gap-2 border-b border-border"
     >
       <div className="flex items-center ps-4 grow">
-        <SidebarTrigger className="rounded-full group-data-[rich-color='true']:text-primary-foreground" />
+        <SidebarTrigger className="rounded-full group-data-[rich-color='true']:text-primary-foreground hidden md:block" />
         <div className="hidden lg:block">
           <HistoryControllers />
         </div>
         <Separator
           orientation="vertical"
-          className="mx-2 data-vertical:h-4 data-vertical:self-auto"
+          className="mx-2 data-vertical:h-4 data-vertical:self-auto hidden md:block"
         />
         <PanelAddress />
       </div>
