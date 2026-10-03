@@ -16,6 +16,7 @@ import ShortcutsWrapper from "../../shortcuts/components/ShortcutsWrapper";
 import UserInfo from "../../../users/components/user-info/UserInfo";
 import OrganizationInfo from "../../../organization/components/organization-info/OrganizationInfo";
 import HelpWrapper from "../../../help/components/HelpWrapper";
+import { appVersion } from "@/services/base-config/baseConfigContext";
 
 export default function SettingsModal() {
   const { open, activeTab, toggleOpen, setShowConfirmlogout } =
@@ -47,7 +48,9 @@ export default function SettingsModal() {
     <Dialog open={open} onOpenChange={(state) => toggleOpen(state)}>
       <DialogContent className="p-0 gap-0 w-full h-full max-sm:rounded-none max-sm:max-w-none sm:max-w-2xl sm:h-[85dvh] sm:max-h-160 flex flex-col overflow-hidden">
         <DialogHeader className="border-b border-border p-4">
-          <DialogTitle>{dic.title}</DialogTitle>
+          <DialogTitle>
+            {dic.title} <span className="font-en-roboto">V({appVersion})</span>
+          </DialogTitle>
           <DialogDescription className="hidden">{dic.title}</DialogDescription>
         </DialogHeader>
         <div className="flex flex-col sm:grid sm:grid-cols-[11rem_1fr] grow overflow-hidden">
