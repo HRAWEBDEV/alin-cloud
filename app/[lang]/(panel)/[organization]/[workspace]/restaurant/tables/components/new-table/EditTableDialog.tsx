@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
+import { IoIosAdd } from "react-icons/io";
 
 export default function EditTableDialog({
   dic,
@@ -79,7 +80,15 @@ export default function EditTableDialog({
                   <Combobox items={[]}>
                     <ComboboxInput showClear />
                     <ComboboxContent>
-                      <ComboboxEmpty>{noItemFound.title}</ComboboxEmpty>
+                      <ComboboxEmpty>
+                        <div>
+                          <p className="mb-2">{noItemFound.title}</p>
+                          <Button>
+                            <IoIosAdd className="size-5" />
+                            {dic.editTable.newSalon}
+                          </Button>
+                        </div>
+                      </ComboboxEmpty>
                       <ComboboxList>
                         {(item) => (
                           <ComboboxItem key={item} value={item}>
