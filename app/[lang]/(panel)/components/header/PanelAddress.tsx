@@ -15,12 +15,12 @@ export default function PanelAddress() {
         </BreadcrumbItem>
         <BreadcrumbSeparator className="hidden lg:block" />
         <BreadcrumbItem className="hidden lg:block">
-          <BreadcrumbLink href="#">اقامتی</BreadcrumbLink>
+          <BreadcrumbLink href="#">رستوران</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator className="hidden lg:block" />
         <BreadcrumbItem>
           <BreadcrumbPage className="group-data-[rich-color='true']:text-primary-foreground">
-            رزرو جدید
+            میزها
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>

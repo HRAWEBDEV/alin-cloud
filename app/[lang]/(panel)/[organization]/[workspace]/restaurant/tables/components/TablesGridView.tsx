@@ -9,10 +9,10 @@ export default function TablesGridView() {
       <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(10rem,14rem))] content-start justify-center">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
           return (
-            <div
+            <button
               key={item}
               data-is-vip={item % 2 === 0}
-              className="group border border-border rounded-md p-2 relative isolate overflow-hidden bg-neutral-100 dark:bg-neutral-900  data-[is-vip='true']:border-amber-500"
+              className="block group border border-border rounded-md p-2 relative isolate overflow-hidden bg-neutral-100 dark:bg-neutral-900  data-[is-vip='true']:border-amber-500 cursor-pointer"
             >
               <div className="absolute -top-2 -inset-e-2 -z-1">
                 <IoStar className="size-18 text-neutral-500/20 group-data-[is-vip='true']:text-amber-500/20" />
@@ -40,7 +40,7 @@ export default function TablesGridView() {
                 </span>
                 <span className="font-medium">{item}</span>
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
