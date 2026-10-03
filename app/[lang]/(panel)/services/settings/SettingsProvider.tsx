@@ -69,6 +69,9 @@ export default function SettingsProvider({
   useHotkey(onGetShortcutKeys("general", "toggleSettings"), () => {
     onToggle(true, "userInterface");
   });
+  useHotkey(onGetShortcutKeys("general", "toggleHelp"), () => {
+    onToggle(true, "help");
+  });
 
   const ctx: SettingsContextProps = {
     open,

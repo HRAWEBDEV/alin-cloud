@@ -22,8 +22,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/getSettingsIcon";
+import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
 
 export default function TablesFilters() {
+  const { toggleOpen } = useSettingsContext();
   const { dic, editTable } = useTablesControlContext();
   const {
     shareDictionary: {
@@ -79,13 +81,23 @@ export default function TablesFilters() {
               }
             />
             <DropdownMenuContent align="end">
-              <DropdownMenuItem className="h-11">
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  toggleOpen(true, "shortcuts");
+                }}
+              >
                 {getSettingsIcon("shortcuts", {
                   className: "size-5",
                 })}
                 <span>{settings.shortcuts}</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="h-11">
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  toggleOpen(true, "help");
+                }}
+              >
                 {getSettingsIcon("help", {
                   className: "size-5",
                 })}

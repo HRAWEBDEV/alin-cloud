@@ -80,9 +80,11 @@
       "title": "میانبرها",
       "search": "جستجو",
       "general": "عمومی",
+      "toggleHelp": "نمایش راهنما",
       "toggleNavigation": "باز و بستن منو",
-      "toggleSettings": "باز و بستن تنظیمات",
-      "toggleShortcuts": "باز و بستن میانبرها"
+      "toggleSettings": "نمایش تنظیمات",
+      "toggleShortcuts": "نمایش میانبرها",
+      "addingItem": "افزودن آیتم"
     },
     "history": {
       "back": "بازگشت",

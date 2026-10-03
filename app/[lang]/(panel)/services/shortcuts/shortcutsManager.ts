@@ -20,6 +20,12 @@ const defaultShortcuts = {
     toggleShortcuts: {
       keys: "Shift+\/" as RegisterableHotkey,
     },
+    toggleHelp: {
+      keys: "F1" as RegisterableHotkey,
+    },
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
   },
 } as const;
 
