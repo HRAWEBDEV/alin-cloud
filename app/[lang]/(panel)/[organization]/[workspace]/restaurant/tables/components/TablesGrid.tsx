@@ -17,6 +17,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { FaTrashCan } from "react-icons/fa6";
 
 export default function TablesGrid() {
   return (
@@ -54,9 +55,9 @@ export default function TablesGrid() {
                   }
                 />
                 <DropdownMenuContent align="end">
-                  <DropdownMenuGroup>
-                    <DropdownMenuItem></DropdownMenuItem>
-                  </DropdownMenuGroup>
+                  <DropdownMenuItem variant="destructive" className="h-11">
+                    <FaTrashCan className="size-5" />
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </TableCell>
