@@ -13,12 +13,21 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import LinearLoading from "@/app/[lang]/(panel)/components/LinearLoading";
 import { Button } from "@/components/ui/button";
 import { FaPlus } from "react-icons/fa";
+import { IoReload } from "react-icons/io5";
+import { IoSettingsSharp } from "react-icons/io5";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/getSettingsIcon";
 
 export default function TablesFilters() {
   const { dic, editTable } = useTablesControlContext();
   const {
     shareDictionary: {
-      components: { noItemFound },
+      components: { noItemFound, settings },
     },
   } = useShareDictionary();
   return (
@@ -28,32 +37,63 @@ export default function TablesFilters() {
           <LinearLoading />
         </div>
       )}
-      <div className="grid gap-4 grid-cols-[minmax(10rem,15rem)_max-content]">
-        <Combobox items={[]}>
-          <ComboboxInput showClear>
-            <InputGroupAddon align="inline-start">
-              {dic.filters.salon}
-            </InputGroupAddon>
-          </ComboboxInput>
-          <ComboboxContent>
-            <ComboboxEmpty>{noItemFound.title}</ComboboxEmpty>
-            <ComboboxList>
-              {(item) => (
-                <ComboboxItem key={item} value={item}>
-                  {item}
-                </ComboboxItem>
-              )}
-            </ComboboxList>
-          </ComboboxContent>
-        </Combobox>
-        <Button
-          onClick={() => {
-            editTable.onToggle(true, null);
-          }}
-        >
-          <FaPlus />
-          {dic.filters.newTable}
-        </Button>
+      <div className="flex gap-4 flex-wrap items-center justify-between">
+        <div className="grid gap-4 grid-cols-[minmax(10rem,12rem)]">
+          <Combobox items={[]}>
+            <ComboboxInput showClear>
+              <InputGroupAddon align="inline-start">
+                {dic.filters.salon}
+              </InputGroupAddon>
+            </ComboboxInput>
+            <ComboboxContent>
+              <ComboboxEmpty>{noItemFound.title}</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
+        </div>
+        <div className="flex gap-2">
+          <Button
+            onClick={() => {
+              editTable.onToggle(true, null);
+            }}
+          >
+            <FaPlus />
+            <span className="hidden md:inline">{dic.filters.newTable}</span>
+          </Button>
+          <Button variant="outline" size="icon">
+            <IoReload />
+          </Button>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="destructive" size="icon">
+                  <IoSettingsSharp />
+                </Button>
+              }
+            />
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem className="h-11">
+                {getSettingsIcon("shortcuts", {
+                  className: "size-5",
+                })}
+                <span>{settings.shortcuts}</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="h-11">
+                {getSettingsIcon("help", {
+                  className: "size-5",
+                })}
+                <span>{settings.help}</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   );

@@ -2,10 +2,6 @@
 
 ### Todos
 
-- add settings setup
-- add multi theme setup
-- add keymap setup
-
 ### Features
 
 ### Bug fixes

@@ -24,12 +24,15 @@ import {
   getPanelSettings,
   savePanelSettings,
 } from "./utils/panelSettingsManager";
+import { useShortcutsContext } from "../shortcuts/shortcutsContext";
+import { useHotkey } from "@tanstack/react-hotkeys";
 
 export default function SettingsProvider({
   children,
 }: {
   children: ReactNode;
 }) {
+  const { onGetShortcutKeys } = useShortcutsContext();
   const [activeTab, setActiveTab] = useState<SettingItem>("userInfo");
   const logout = useLogout();
   const {
@@ -59,6 +62,13 @@ export default function SettingsProvider({
     }
     setOpen(newState);
   }
+  // shortcuts
+  useHotkey(onGetShortcutKeys("general", "toggleShortcuts"), () => {
+    onToggle(true, "shortcuts");
+  });
+  useHotkey(onGetShortcutKeys("general", "toggleSettings"), () => {
+    onToggle(true, "userInterface");
+  });
 
   const ctx: SettingsContextProps = {
     open,

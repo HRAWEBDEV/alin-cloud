@@ -19,6 +19,9 @@ export const settingItems = [
     key: "userInterface",
   },
   {
+    key: "help",
+  },
+  {
     key: "logout",
   },
 ] as const;
