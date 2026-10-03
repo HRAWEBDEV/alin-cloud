@@ -84,7 +84,8 @@
       "toggleNavigation": "باز و بستن منو",
       "toggleSettings": "نمایش تنظیمات",
       "toggleShortcuts": "نمایش میانبرها",
-      "addingItem": "افزودن آیتم"
+      "addingItem": "افزودن آیتم",
+      "globalSearch": "جستجو"
     },
     "help": {
       "title": "راهنما",

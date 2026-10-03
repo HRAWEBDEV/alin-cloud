@@ -26,6 +26,9 @@ const defaultShortcuts = {
     addingItem: {
       keys: "C" as RegisterableHotkey,
     },
+    globalSearch: {
+      keys: "Control+\/" as RegisterableHotkey,
+    },
   },
 } as const;
 

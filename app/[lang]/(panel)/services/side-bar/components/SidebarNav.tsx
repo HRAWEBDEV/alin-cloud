@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { navigationItems } from "../../../utils/navigationItems";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { Field } from "@/components/ui/field";
@@ -13,14 +13,23 @@ import SidebarNavItem from "./SidebarNavItem";
 import NoItemFound from "../../../components/NoItemFound";
 import { FaBookBookmark } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import { useHotkey } from "@tanstack/react-hotkeys";
+import { useShortcutsContext } from "../../shortcuts/shortcutsContext";
 
 export default function SidebarNav() {
+  const { onGetShortcutKeys } = useShortcutsContext();
   const [searchText, setSearchText] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const {
     shareDictionary: {
       components: { navigation: dic },
     },
   } = useShareDictionary();
+
+  // hotkey setup
+  useHotkey(onGetShortcutKeys("general", "globalSearch"), () => {
+    searchInputRef.current?.focus();
+  });
 
   return (
     <div className="w-full grow overflow-auto">
@@ -30,6 +39,7 @@ export default function SidebarNav() {
             <InputGroupInput
               type="search"
               placeholder={dic.search + " ..."}
+              ref={searchInputRef}
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
