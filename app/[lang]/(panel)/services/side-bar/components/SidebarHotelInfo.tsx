@@ -16,7 +16,7 @@ export default function SidebarHotelInfo() {
       <Button
         variant="outline"
         className="w-full justify-stretch text-start p-2 h-auto bg-transparent rounded-none border-0 border-t"
-        onClick={() => toggleOpen(true)}
+        onClick={() => toggleOpen(true, "organizationInfo")}
       >
         <div className="flex gap-2 items-center grow text-neutral-700 dark:text-neutral-400">
           <LiaHotelSolid className="size-12" />
