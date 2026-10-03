@@ -1,4 +1,5 @@
 "use client";
+import { MdTouchApp } from "react-icons/md";
 import { useTablesControlContext } from "../services/control/tablesControlContext";
 import { IoStar } from "react-icons/io5";
 
@@ -16,6 +17,10 @@ export default function TablesGridView() {
             >
               <div className="absolute -top-2 -inset-e-2 -z-1">
                 <IoStar className="size-18 text-neutral-500/20 group-data-[is-vip='true']:text-amber-500/20" />
+              </div>
+
+              <div className="absolute bottom-0 inset-e-0 z-0">
+                <MdTouchApp className="size-10 text-neutral-200 dark:text-neutral-800" />
               </div>
               <div className="mb-1 flex gap-2">
                 <span className="font-medium text-3xl text-primary">
