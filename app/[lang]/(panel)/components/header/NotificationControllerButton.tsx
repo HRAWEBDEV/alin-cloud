@@ -9,14 +9,14 @@ export default function NotificationControllerButton() {
       type="button"
       variant="ghost"
       size="icon-lg"
-      className="relative rounded-full text-destructive"
+      className="relative rounded-full text-destructive group-data-[rich-color='true']:text-primary-foreground"
     >
       <div className="absolute top-0 -inset-e-1">
         <Badge
           style={{
             direction: "ltr",
           }}
-          variant="destructive"
+          variant="default"
           className="p-1 rounded-full size-5 font-en-roboto"
         >
           +99

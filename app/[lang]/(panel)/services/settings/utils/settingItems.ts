@@ -10,9 +10,6 @@ export const settingItems = [
     key: "organizationMembers",
   },
   {
-    key: "general",
-  },
-  {
     key: "shortcuts",
   },
   {

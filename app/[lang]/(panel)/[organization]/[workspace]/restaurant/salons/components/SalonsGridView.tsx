@@ -16,11 +16,9 @@ export default function SalonsGridView() {
                 <MdTouchApp className="size-10 text-neutral-200 dark:text-neutral-800" />
               </div>
               <div className="mb-1 flex gap-2">
-                <span className="font-medium text-3xl text-primary">
-                  {item}
-                </span>
+                <span className="font-medium text-xl">{item}</span>
               </div>
-              <div className="mb-2 flex gap-2">
+              <div className="mb-2 flex gap-2 text-primary font-medium">
                 <span>سالن شماره یک</span>
               </div>
             </button>

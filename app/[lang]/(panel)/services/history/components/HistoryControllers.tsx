@@ -59,7 +59,7 @@ export default function HistoryControllers() {
               type="button"
               variant="ghost"
               size="icon"
-              className="rounded-full bg-transparent text-destructive"
+              className="rounded-full bg-transparent text-destructive group-data-[rich-color='true']:text-primary-foreground"
             >
               <IoArrowBackSharp className="rtl:rotate-180 size-5" />
             </Button>

@@ -6,8 +6,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const historyTest = [
   {
-    type: "tables",
-    title: "میزها",
+    type: "salons",
+    title: "سالن‌ها",
   },
 ];
 

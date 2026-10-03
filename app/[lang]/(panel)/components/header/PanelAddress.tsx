@@ -20,7 +20,7 @@ export default function PanelAddress() {
         <BreadcrumbSeparator className="hidden lg:block" />
         <BreadcrumbItem>
           <BreadcrumbPage className="group-data-[rich-color='true']:text-primary-foreground">
-            میزها
+            سالن‌ها
           </BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
