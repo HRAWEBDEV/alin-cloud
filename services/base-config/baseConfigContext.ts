@@ -11,6 +11,7 @@ interface BaseConfig {
   localeInfo: LocaleInfo;
   appVersion: string;
   appBirthDate: Date;
+  userActiveTimeZone: string;
   setLocale: (newLocale: Locale) => unknown;
   onChangeColorTemplate: (color: (typeof appColorTemplates)[number]) => unknown;
 }

@@ -22,6 +22,7 @@ interface Props {
 }
 
 export default function BaseConfigProvider({ children, activeLocale }: Props) {
+  const [userActiveTimeZone, setUserActiveTimeZone] = useState("");
   const [activeColor, setActiveColor] = useState<
     (typeof appColorTemplates)[number] | null
   >(() => (typeof window === "undefined" ? null : getActiveColorPallete()));
@@ -58,6 +59,7 @@ export default function BaseConfigProvider({ children, activeLocale }: Props) {
     localeInfo: activeLocaleInfo,
     appVersion,
     appBirthDate,
+    userActiveTimeZone,
     setLocale: onChangeLocale,
     onChangeColorTemplate: handleChangeColorTemplate,
   };
@@ -73,6 +75,10 @@ export default function BaseConfigProvider({ children, activeLocale }: Props) {
       signal: ctx.signal,
     });
     return () => ctx.abort();
+  }, []);
+
+  useEffect(() => {
+    setUserActiveTimeZone(new Intl.DateTimeFormat().resolvedOptions().timeZone);
   }, []);
 
   return (
