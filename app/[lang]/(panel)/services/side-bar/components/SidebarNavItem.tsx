@@ -110,7 +110,7 @@ export default function SidebarNavItem({
       key={navItem.name}
       variant="link"
       size="sm"
-      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800"
+      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800 data-[active-menu='true']:bg-primary data-[active-menu='true']:text-primary-foreground"
       nativeButton={false}
       render={
         <Link
@@ -129,7 +129,7 @@ export default function SidebarNavItem({
               type="button"
               variant="ghost"
               size="icon"
-              className="text-amber-700"
+              className="text-amber-500"
               onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();

@@ -109,7 +109,7 @@ export default function EditTableDialog({
             </FieldGroup>
           </div>
           <DialogFooter className="py-2 px-4 sm:items-center">
-            <div className="grow">
+            <div className="grow order-1 md:order-0">
               <Field orientation="horizontal" className="gap-2">
                 <Checkbox className="scale-110" />
                 <FieldLabel className="text-neutral-500">
