@@ -23,6 +23,7 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { Checkbox } from "@/components/ui/checkbox";
 import { Switch } from "@/components/ui/switch";
 import { IoIosAdd } from "react-icons/io";
+import { Calendar } from "@/components/ui/calendar";
 
 export default function EditTableDialog({
   dic,
@@ -46,6 +47,7 @@ export default function EditTableDialog({
       }}
     >
       <DialogContent className="p-0 gap-0 max-h-[90svh] flex flex-col overflow-hidden">
+        <Calendar />
         <form className="flex flex-col overflow-hidden grow">
           <DialogHeader className="border-b border-border p-4">
             <DialogTitle>{dic.editTable.addTable}</DialogTitle>
