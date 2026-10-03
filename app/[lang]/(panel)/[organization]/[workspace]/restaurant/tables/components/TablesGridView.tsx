@@ -4,7 +4,7 @@ import { useTablesControlContext } from "../services/control/tablesControlContex
 import { IoStar } from "react-icons/io5";
 
 export default function TablesGridView() {
-  const { dic } = useTablesControlContext();
+  const { dic, editTable } = useTablesControlContext();
   return (
     <div className="grow overflow-auto">
       <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(10rem,14rem))] content-start justify-center">
@@ -14,6 +14,9 @@ export default function TablesGridView() {
               key={item}
               data-is-vip={item % 2 === 0}
               className="block group border border-border rounded-md p-2 relative isolate overflow-hidden bg-neutral-100 dark:bg-neutral-900  data-[is-vip='true']:border-amber-500 cursor-pointer"
+              onClick={() => {
+                editTable.onToggle(true, item);
+              }}
             >
               <div className="absolute -top-2 -inset-e-2 -z-1">
                 <IoStar className="size-18 text-neutral-500/20 group-data-[is-vip='true']:text-amber-500/20" />
