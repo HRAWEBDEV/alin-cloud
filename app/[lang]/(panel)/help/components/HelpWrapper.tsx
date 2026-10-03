@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Field } from "@/components/ui/field";
 import {
   InputGroup,
@@ -8,6 +8,9 @@ import {
 } from "@/components/ui/input-group";
 import { IoIosSearch } from "react-icons/io";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
+import { useHelpContext } from "../services/HelpContext";
+import HelpItem from "./HelpItem";
+import NoItemFound from "../../components/NoItemFound";
 
 export default function HelpWrapper() {
   const [searchText, setSearchText] = useState("");
@@ -16,6 +19,13 @@ export default function HelpWrapper() {
       components: { help: dic },
     },
   } = useShareDictionary();
+  const { helpList } = useHelpContext();
+
+  const visibleHelpList = useMemo(() => {
+    return helpList.filter((item) => {
+      return dic[item.type].includes(searchText);
+    });
+  }, [helpList, searchText, dic]);
 
   return (
     <div className="pt-0 p-4">
@@ -35,6 +45,14 @@ export default function HelpWrapper() {
               </InputGroupAddon>
             </InputGroup>
           </Field>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        {visibleHelpList.map((help) => (
+          <HelpItem key={help.type} help={help} searchText={searchText} />
+        ))}
+        <div className="last:hidden first:block!">
+          <NoItemFound searchedText={searchText} />
         </div>
       </div>
     </div>

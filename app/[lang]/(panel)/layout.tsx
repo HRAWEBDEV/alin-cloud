@@ -10,24 +10,27 @@ import SettingsModal from "./services/settings/components/SettingsModal";
 import HistoryProivder from "./services/history/HistoryProvider";
 import ShortcutsProvider from "./services/shortcuts/ShortcutsProvider";
 import HistoryTabs from "./services/history/components/HistoryTabs";
+import HelpProvider from "./help/services/HelpProvider";
 
 export default function PanelLayout({ children }: LayoutProps<"/[lang]">) {
   return (
     <ShortcutsProvider>
       <SidebarProvider>
         <ProfileProvider>
-          <SettingsProvider>
-            <HistoryProivder>
-              <AppSidebar />
-              <SidebarInset>
-                <Header />
-                <HistoryTabs />
-                <MainWrapper>{children}</MainWrapper>
-                <TabsNav />
-                <SettingsModal />
-              </SidebarInset>
-            </HistoryProivder>
-          </SettingsProvider>
+          <HelpProvider>
+            <SettingsProvider>
+              <HistoryProivder>
+                <AppSidebar />
+                <SidebarInset>
+                  <Header />
+                  <HistoryTabs />
+                  <MainWrapper>{children}</MainWrapper>
+                  <TabsNav />
+                  <SettingsModal />
+                </SidebarInset>
+              </HistoryProivder>
+            </SettingsProvider>
+          </HelpProvider>
         </ProfileProvider>
       </SidebarProvider>
     </ShortcutsProvider>
