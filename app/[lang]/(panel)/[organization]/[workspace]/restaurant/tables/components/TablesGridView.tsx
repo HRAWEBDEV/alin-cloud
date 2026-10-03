@@ -19,9 +19,8 @@ export default function TablesGridView() {
               }}
             >
               <div className="absolute -top-2 -inset-e-2 -z-1">
-                <IoStar className="size-18 text-neutral-500/20 group-data-[is-vip='true']:text-amber-500/20" />
+                <IoStar className="size-18 text-neutral-500/10 group-data-[is-vip='true']:text-amber-500/20" />
               </div>
-
               <div className="absolute bottom-0 inset-e-0 z-0">
                 <MdTouchApp className="size-10 text-neutral-200 dark:text-neutral-800" />
               </div>
