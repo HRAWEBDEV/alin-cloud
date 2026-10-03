@@ -8,7 +8,10 @@ export default function TablesWrapper() {
     <div className="w-[min(100%,60rem)] mx-auto grow flex flex-col overflow-hidden">
       <TablesFilters />
       <div className="flex flex-col grow overflow-hidden px-4 pb-1">
-        <div className="border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow">
+        <div
+          data-view-mode="list"
+          className="data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow"
+        >
           <TablesList />
           <TablesListPaging />
         </div>

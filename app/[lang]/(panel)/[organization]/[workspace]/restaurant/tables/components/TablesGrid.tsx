@@ -53,7 +53,7 @@ export default function TablesGrid() {
                 <DropdownMenuTrigger
                   render={
                     <Button variant="ghost" size="icon-sm">
-                      <IoEllipsisVertical className="size-4" />
+                      <IoEllipsisVertical className="size-4 text-amber-500/30" />
                     </Button>
                   }
                 />

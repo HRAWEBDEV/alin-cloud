@@ -1,4 +1,10 @@
 import TablesGrid from "./TablesGrid";
+import TablesGridView from "./TablesGridView";
+
 export default function TablesList() {
-  return <TablesGrid />;
+  if (false) {
+    return <TablesGrid />;
+  } else {
+    return <TablesGridView />;
+  }
 }
