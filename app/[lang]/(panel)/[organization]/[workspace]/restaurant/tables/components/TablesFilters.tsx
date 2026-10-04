@@ -35,14 +35,14 @@ export default function TablesFilters() {
     },
   } = useShareDictionary();
   return (
-    <header className="sticky top-0 bg-background z-2 p-4">
+    <header className="sticky top-0 bg-background z-2 p-2">
       {false && (
         <div className="absolute inset-x-0 top-0">
           <LinearLoading />
         </div>
       )}
-      <div className="flex gap-4 flex-wrap items-center justify-between">
-        <div className="grid gap-4 grid-cols-[minmax(10rem,12rem)]">
+      <div className="flex gap-2 flex-wrap items-center justify-between">
+        <div className="grid gap-2 grid-cols-[minmax(10rem,12rem)]">
           <Combobox items={[]}>
             <ComboboxInput showClear>
               <InputGroupAddon align="inline-start">
