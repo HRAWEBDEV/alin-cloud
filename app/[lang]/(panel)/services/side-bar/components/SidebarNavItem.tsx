@@ -14,6 +14,8 @@ import Highlighter from "react-highlight-words";
 import Link from "next/link";
 import { FaBookBookmark } from "react-icons/fa6";
 import { useSidebar } from "../sidebarContext";
+import { usePathname } from "next/navigation";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 export default function SidebarNavItem({
   navItem,
@@ -24,6 +26,8 @@ export default function SidebarNavItem({
   searchText?: string;
   level?: number;
 }) {
+  const pathname = usePathname();
+  const { locale } = useBaseConfig();
   const { setOpenMobile } = useSidebar();
   const [open, setOpen] = useState(false);
   const {
@@ -31,7 +35,7 @@ export default function SidebarNavItem({
       components: { navigation: dic },
     },
   } = useShareDictionary();
-  const basePath = "/main/main";
+  const basePath = `/${locale}/main/main`;
 
   const filteredNavItems = (() => {
     if (!searchText || !navItem.items) return navItem.items;
@@ -100,23 +104,21 @@ export default function SidebarNavItem({
       </Collapsible>
     );
   }
+  const menuPath = `${basePath}${navItem.path}`;
   return (
     <Button
       style={{
         paddingInlineStart:
           level === 1 ? "0.625rem" : (level - 1) * 3.5 + "rem",
       }}
-      data-active-menu={navItem.name === "tablesRack"}
+      data-active-menu={pathname === menuPath}
       key={navItem.name}
       variant="link"
       size="sm"
       className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800 data-[active-menu='true']:bg-primary data-[active-menu='true']:text-primary-foreground"
       nativeButton={false}
       render={
-        <Link
-          href={`${basePath}${navItem.path}`}
-          onClick={() => setOpenMobile(false)}
-        >
+        <Link href={menuPath} onClick={() => setOpenMobile(false)}>
           {getNavigationIcons(navItem.name, {
             className: "size-7",
           })}

@@ -1,7 +1,7 @@
 "use client";
 import * as React from "react";
 import { cn } from "cn";
-import { DayPicker as JalaliDayPicker } from "@daypicker/persian";
+import { faIR, DayPicker as JalaliDayPicker } from "@daypicker/persian";
 import {
   DayPicker,
   type Formatters,
@@ -11,14 +11,24 @@ import {
   type DayButton,
   type Locale,
 } from "react-day-picker";
-import { type Calendar } from "@/internalization/app/localization";
+import {
+  supportedDateFns,
+  type Calendar,
+} from "@/internalization/app/localization";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronDownIcon,
 } from "lucide-react";
-import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import {
+  appBirthDate,
+  useBaseConfig,
+} from "@/services/base-config/baseConfigContext";
+
+const dateFns = supportedDateFns["gregorian"];
+const defaultEndDate = dateFns.addYears(appBirthDate, 50);
+const defaultStartDate = dateFns.addYears(appBirthDate, -30);
 
 function Calendar({
   className,
@@ -30,6 +40,8 @@ function Calendar({
   formatters,
   components,
   calendar,
+  startMonth = defaultStartDate,
+  endMonth = defaultEndDate,
   ...props
 }: React.ComponentProps<typeof DayPicker> & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"];
@@ -38,6 +50,7 @@ function Calendar({
   const { localeInfo } = useBaseConfig();
   const defaultClassNames = getDefaultClassNames();
   const activeCalendarType = calendar || localeInfo.calendar;
+  const activeLocale = locale || faIR;
 
   const mergedClassName = cn(
     "group/calendar bg-background p-3 [--cell-radius:var(--radius-md)] [--cell-size:--spacing(8)] in-data-[slot=card-content]:bg-transparent in-data-[slot=popover-content]:bg-transparent",
@@ -47,7 +60,7 @@ function Calendar({
   );
   const mergeFormatters: Partial<Formatters> = {
     formatMonthDropdown: (date) =>
-      date.toLocaleString(locale?.code, { month: "short" }),
+      date.toLocaleString(activeLocale?.code, { month: "short" }),
     ...formatters,
   };
 
@@ -169,7 +182,7 @@ function Calendar({
       return <ChevronDownIcon className={cn("size-4", className)} {...props} />;
     },
     DayButton: ({ ...props }) => (
-      <CalendarDayButton locale={locale} {...props} />
+      <CalendarDayButton locale={activeLocale} {...props} />
     ),
     WeekNumber: ({ children, ...props }) => {
       return (
@@ -192,6 +205,9 @@ function Calendar({
         formatters={mergeFormatters}
         classNames={mergeClassNames}
         components={customComponents}
+        locale={activeLocale as typeof faIR}
+        endMonth={endMonth}
+        startMonth={startMonth}
         modifiersClassNames={{
           ...props.modifiersClassNames,
           friday: "text-red-500 bg-red-50",
@@ -211,10 +227,12 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={mergedClassName}
       captionLayout={captionLayout}
-      locale={locale}
+      locale={activeLocale}
       formatters={mergeFormatters}
       classNames={mergeClassNames}
       components={customComponents}
+      endMonth={endMonth}
+      startMonth={startMonth}
       {...props}
     />
   );

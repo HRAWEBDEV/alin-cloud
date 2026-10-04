@@ -25,7 +25,7 @@ export default function TablesGrid() {
                   <TableHead
                     key={header.id}
                     className={cn(
-                      "bg-grid-header",
+                      "bg-grid-header text-grid-header-foreground",
                       header.column.columnDef.meta?.headerClassNames,
                     )}
                   >

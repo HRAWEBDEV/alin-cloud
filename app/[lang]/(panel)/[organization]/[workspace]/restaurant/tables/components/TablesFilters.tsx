@@ -82,7 +82,7 @@ export default function TablesFilters() {
                 </Button>
               }
             />
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-auto">
               <DropdownMenuItem
                 className="h-11"
                 onClick={() => {
