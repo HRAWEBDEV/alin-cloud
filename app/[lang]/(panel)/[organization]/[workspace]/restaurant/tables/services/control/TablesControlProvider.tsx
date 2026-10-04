@@ -34,7 +34,7 @@ export default function TablesControlProvider({
   // tables setup
 
   // shortcuts
-  useHotkey(onGetShortcutKeys("general", "addingItem"), () => {
+  useHotkey(onGetShortcutKeys("tables", "addingItem"), () => {
     handleToggleEditTable(true, null);
   });
 

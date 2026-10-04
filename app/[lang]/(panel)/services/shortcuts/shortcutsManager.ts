@@ -23,11 +23,13 @@ const defaultShortcuts = {
     toggleHelp: {
       keys: "F1" as RegisterableHotkey,
     },
-    addingItem: {
-      keys: "C" as RegisterableHotkey,
-    },
     globalSearch: {
       keys: "Control+\/" as RegisterableHotkey,
+    },
+  },
+  tables: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
     },
   },
 } as const;
