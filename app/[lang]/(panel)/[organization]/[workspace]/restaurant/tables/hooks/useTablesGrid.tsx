@@ -14,6 +14,7 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { data, TData } from "../services/tablesApiActions";
+import { IoStar } from "react-icons/io5";
 
 const features = tableFeatures({
   columnMeta: metaHelper<{
@@ -59,6 +60,9 @@ export function useTablesGrid() {
       meta: {
         headerClassNames: "text-center min-w-24 w-24",
         cellClassNames: "text-center",
+      },
+      cell() {
+        return <IoStar className="inline text-amber-500 size-5" />;
       },
     }),
     columnHelper.display({
