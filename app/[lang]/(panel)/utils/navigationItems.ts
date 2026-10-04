@@ -6,7 +6,7 @@ export interface NavigationItem {
 export const navigationItems: NavigationItem[] = [
   {
     name: "tablesRack",
-    path: "",
+    path: "/restaurant/tables-rack",
   },
   {
     name: "capacityAndPricing",

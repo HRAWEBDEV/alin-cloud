@@ -106,7 +106,7 @@ export default function SidebarNavItem({
         paddingInlineStart:
           level === 1 ? "0.625rem" : (level - 1) * 3.5 + "rem",
       }}
-      data-active-menu={navItem.name === "tables"}
+      data-active-menu={navItem.name === "tablesRack"}
       key={navItem.name}
       variant="link"
       size="sm"
