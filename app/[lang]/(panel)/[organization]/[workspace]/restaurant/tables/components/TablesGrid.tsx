@@ -19,63 +19,165 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { FaTrashCan } from "react-icons/fa6";
 import { IoIosStar } from "react-icons/io";
+import {
+  tableFeatures,
+  createColumnHelper,
+  useTable,
+  flexRender,
+  metaHelper,
+} from "@tanstack/react-table";
+import { cn } from "cn";
+
+const features = tableFeatures({
+  columnMeta: metaHelper<{
+    headerClassNames: string;
+    cellClassNames: string;
+  }>(),
+});
+
+interface TData {
+  id: number;
+  tableNo: number;
+  salonName: string;
+  tableType: string;
+  maxCapacity: number;
+  isVip: boolean;
+}
+
+const data = [
+  {
+    id: 1,
+    tableNo: 1,
+    salonName: "سالن اصلی",
+    tableType: "میز",
+    maxCapacity: 10,
+    isVip: true,
+  },
+  {
+    id: 2,
+    tableNo: 2,
+    salonName: "سالن اصلی",
+    tableType: "میز",
+    maxCapacity: 10,
+    isVip: true,
+  },
+];
 
 export default function TablesGrid() {
+  const columnHelper = createColumnHelper<typeof features, TData>();
+
+  const columns = columnHelper.columns([
+    columnHelper.accessor("tableNo", {
+      header: "شماره میز",
+      meta: {
+        headerClassNames: "text-center min-w-24 w-24",
+        cellClassNames: "text-center",
+      },
+    }),
+    columnHelper.accessor("salonName", {
+      header: "نام سالن",
+      meta: {
+        headerClassNames: "text-start min-w-48",
+        cellClassNames: "text-start",
+      },
+    }),
+    columnHelper.accessor("tableType", {
+      header: "نوع",
+      meta: {
+        headerClassNames: "text-center min-w-36 w-36",
+        cellClassNames: "text-center",
+      },
+    }),
+    columnHelper.accessor("maxCapacity", {
+      header: "حداکثر ظرفیت",
+      meta: {
+        headerClassNames: "text-center min-w-24 w-24",
+        cellClassNames: "text-center",
+      },
+    }),
+    columnHelper.accessor("isVip", {
+      header: "VIP",
+      meta: {
+        headerClassNames: "text-center min-w-24 w-24",
+        cellClassNames: "text-center",
+      },
+    }),
+    columnHelper.display({
+      header: "عملیات",
+      cell() {
+        return (
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="ghost" size="icon-sm">
+                  <IoEllipsisVertical className="size-4" />
+                </Button>
+              }
+            />
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem variant="destructive" className="h-11">
+                <FaTrashCan className="size-5" />
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        );
+      },
+      meta: {
+        headerClassNames: "text-center min-w-24 w-24",
+        cellClassNames: "text-center",
+      },
+    }),
+  ]);
+
+  const table = useTable({
+    features,
+    columns,
+    data,
+  });
+
   return (
     <Table>
       <TableHeader>
-        <TableRow className="">
-          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
-            شماره میز
-          </TableHead>
-          <TableHead className="text-start min-w-56 bg-grid-header">
-            نام سالن
-          </TableHead>
-          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
-            نوع
-          </TableHead>
-          <TableHead className="text-center min-w-36 w-36 bg-grid-header">
-            حداکثر ظرفیت
-          </TableHead>
-          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
-            VIP
-          </TableHead>
-          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
-            عملیات
-          </TableHead>
-        </TableRow>
+        {table.getHeaderGroups().map((group) => {
+          return (
+            <TableRow key={group.id}>
+              {group.headers.map((header) => {
+                return (
+                  <TableHead
+                    key={header.id}
+                    className={cn(
+                      "bg-grid-header",
+                      header.column.columnDef.meta?.headerClassNames,
+                    )}
+                  >
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext(),
+                    )}
+                  </TableHead>
+                );
+              })}
+            </TableRow>
+          );
+        })}
       </TableHeader>
       <TableBody>
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-          <TableRow
-            key={item}
-            className="even:bg-neutral-100 dark:even:bg-neutral-900"
-          >
-            <TableCell className="text-center">{item}</TableCell>
-            <TableCell>سالن اصلی</TableCell>
-            <TableCell className="text-center">میز</TableCell>
-            <TableCell className="text-center">{item}</TableCell>
-            <TableCell className="text-center">
-              <IoIosStar className="size-5 inline text-amber-500/30 dark:text-organe-400" />
-            </TableCell>
-            <TableCell className="text-center p-0">
-              <DropdownMenu>
-                <DropdownMenuTrigger
-                  render={
-                    <Button variant="ghost" size="icon-sm">
-                      <IoEllipsisVertical className="size-4" />
-                    </Button>
-                  }
-                />
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem variant="destructive" className="h-11">
-                    <FaTrashCan className="size-5" />
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </TableCell>
-          </TableRow>
-        ))}
+        {table.getRowModel().rows.map((row) => {
+          return (
+            <TableRow key={row.id} className="even:bg-grid-row-stroke">
+              {row.getAllCells().map((cell) => {
+                return (
+                  <TableCell
+                    key={cell.id}
+                    className={cn(cell.column.columnDef.meta?.cellClassNames)}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                );
+              })}
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

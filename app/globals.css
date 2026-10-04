@@ -28,6 +28,7 @@
   --color-sidebar-accent: var(--sidebar-accent);
   --color-grid-header: var(--grid-header);
   --color-grid-header-foreground: var(--grid-header-foreground);
+  --color-grid-row-stroke: var(--grid-row-stroke);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -73,6 +74,7 @@
   --popover-foreground: oklch(0.145 0 0);
   --grid-header: oklch(0.92 0 0);
   --grid-header-foreground: var(--foreground);
+  --grid-row-stroke: oklch(0.97 0 0);
   --primary: oklch(0.52 0.105 223.128);
   --primary-foreground: oklch(0.984 0.019 200.873);
   --secondary: oklch(0.967 0.001 286.375);
@@ -137,6 +139,7 @@
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
   --grid-header: oklch(0.27 0 0);
+  --grid-row-stroke: oklch(0.2 0 0);
   --primary: oklch(0.45 0.085 224.283);
   --primary-foreground: oklch(0.984 0.019 200.873);
   --secondary: oklch(0.274 0.006 286.033);
