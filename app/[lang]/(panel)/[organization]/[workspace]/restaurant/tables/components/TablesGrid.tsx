@@ -23,16 +23,26 @@ import { IoIosStar } from "react-icons/io";
 export default function TablesGrid() {
   return (
     <Table>
-      <TableHeader className="bg-neutral-200 dark:bg-neutral-800">
-        <TableRow>
-          <TableHead className="text-center min-w-24 w-24">شماره میز</TableHead>
-          <TableHead className="text-start min-w-56">نام سالن</TableHead>
-          <TableHead className="text-center min-w-24 w-24">نوع</TableHead>
-          <TableHead className="text-center min-w-36 w-36">
+      <TableHeader>
+        <TableRow className="">
+          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
+            شماره میز
+          </TableHead>
+          <TableHead className="text-start min-w-56 bg-grid-header">
+            نام سالن
+          </TableHead>
+          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
+            نوع
+          </TableHead>
+          <TableHead className="text-center min-w-36 w-36 bg-grid-header">
             حداکثر ظرفیت
           </TableHead>
-          <TableHead className="text-center min-w-24 w-24">VIP</TableHead>
-          <TableHead className="text-center min-w-24 w-24">عملیات</TableHead>
+          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
+            VIP
+          </TableHead>
+          <TableHead className="text-center min-w-24 w-24 bg-grid-header">
+            عملیات
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
