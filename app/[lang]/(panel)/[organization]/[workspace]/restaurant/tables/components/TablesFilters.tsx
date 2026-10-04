@@ -23,10 +23,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/getSettingsIcon";
 import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
+import { getViewOptionIcon } from "../utils/getViewOptionIcon";
 
 export default function TablesFilters() {
   const { toggleOpen } = useSettingsContext();
-  const { dic, editTable } = useTablesControlContext();
+  const { dic, editTable, contentView, onChangeContentView } =
+    useTablesControlContext();
   const {
     shareDictionary: {
       components: { noItemFound, settings },
@@ -81,6 +83,18 @@ export default function TablesFilters() {
               }
             />
             <DropdownMenuContent align="end">
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  onChangeContentView(contentView === "grid" ? "list" : "grid");
+                }}
+              >
+                {getViewOptionIcon(contentView, {
+                  className: "size-5",
+                })}
+                <span>{dic.filters.view}: </span>
+                <span>{dic.filters[contentView]}</span>
+              </DropdownMenuItem>
               <DropdownMenuItem
                 className="h-11"
                 onClick={() => {

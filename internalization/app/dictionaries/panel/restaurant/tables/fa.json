@@ -2,7 +2,10 @@
   "title": "میزها",
   "filters": {
     "salon": "سالن",
-    "newTable": "میز جدید"
+    "newTable": "میز جدید",
+    "view": "نمایش",
+    "grid": "جدول",
+    "list": "لیست"
   },
   "editTable": {
     "addTable": "افزودن میز",
