@@ -32,6 +32,11 @@ const defaultShortcuts = {
       keys: "C" as RegisterableHotkey,
     },
   },
+  salons: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
+  },
 } as const;
 
 export type { ShortcutsSetup, ShortcutsCategory, ShortcutsItem };

@@ -22,7 +22,7 @@ export default function SalonsControlProvider({
   }
 
   // shortcuts
-  useHotkey(onGetShortcutKeys("general", "addingItem"), () => {
+  useHotkey(onGetShortcutKeys("salons", "addingItem"), () => {
     handleToggleEditSalon(true, null);
   });
 
