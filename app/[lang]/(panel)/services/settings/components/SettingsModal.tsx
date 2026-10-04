@@ -17,7 +17,6 @@ import UserInfo from "../../../users/components/user-info/UserInfo";
 import OrganizationInfo from "../../../organization/components/organization-info/OrganizationInfo";
 import HelpWrapper from "../../../help/components/HelpWrapper";
 import { appVersion } from "@/services/base-config/baseConfigContext";
-import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 export default function SettingsModal() {
   const { open, activeTab, toggleOpen, setShowConfirmlogout } =
@@ -27,7 +26,6 @@ export default function SettingsModal() {
       components: { settings: dic },
     },
   } = useShareDictionary();
-  const { userActiveTimeZone } = useBaseConfig();
 
   function renderContent() {
     switch (activeTab) {
@@ -56,9 +54,9 @@ export default function SettingsModal() {
               style={{
                 direction: "ltr",
               }}
-              className="font-en-roboto"
+              className="font-en-roboto text-xs"
             >
-              V({appVersion}) {userActiveTimeZone}
+              V({appVersion})
             </span>
           </DialogTitle>
           <DialogDescription className="hidden">{dic.title}</DialogDescription>

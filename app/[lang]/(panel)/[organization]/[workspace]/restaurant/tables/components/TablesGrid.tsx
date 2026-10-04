@@ -124,7 +124,7 @@ export default function TablesGrid() {
       },
       meta: {
         headerClassNames: "text-center min-w-24 w-24",
-        cellClassNames: "text-center",
+        cellClassNames: "text-center p-0",
       },
     }),
   ]);
