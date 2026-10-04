@@ -28,10 +28,12 @@ There is no test suite/framework configured in this repo — do not assume Jest/
 
 **Route groups under `app/[lang]/`:**
 - `(auth)/` — sign-in flow, no panel chrome.
-- `(panel)/` — the authenticated app shell. Its `layout.tsx` composes, from outside in: `ShortcutsProvider` → `SidebarProvider` → `ProfileProvider` → `SettingsProvider` → `HistoryProvider` → sidebar + header + history tabs + main content + tabs nav + settings modal.
+- `(panel)/` — the authenticated app shell. Its `layout.tsx` composes, from outside in: `ShortcutsProvider` → `SidebarProvider` → `ProfileProvider` → `HelpProvider` → `SettingsProvider` → `HistoryProvider` → sidebar + header + history tabs + main content + tabs nav + settings modal.
 - Inside `(panel)/`, tenant-scoped pages nest under `[organization]/[workspace]/` (e.g. `restaurant/tables`, `restaurant/salons`); each level has its own pass-through `layout.tsx`. `(panel)/users/`, `(panel)/organization/`, and `(panel)/help/` are non-tenant-scoped panel pages (account/org settings and an in-app help list, respectively).
 
 **"services" = colocated feature modules.** Both `app/[lang]/(panel)/services/*` and top-level `services/*` follow the same three-file pattern per concern: `xContext.ts` (context object + `useX` hook that throws `OutOfContext` — see `utils/OutOfContext.ts` — if used outside its provider), `XProvider.tsx` (`"use client"`, holds the state), and `components/` for the feature's UI. Existing services: `side-bar`, `settings`, `shortcuts`, `profile`, `history` (panel-scoped), plus `base-config`, `react-query`, `share-dictionary` (app-wide, under top-level `services/`). `services/userInterface` is the one exception — it's just a `components/` dir (`UserInterfaceSettings.tsx`) with no context/provider, rendered as a tab inside `SettingsProvider`'s own state. The same colocated pattern also shows up inside feature routes, not just under `services/*`: e.g. `(panel)/[organization]/[workspace]/restaurant/tables/services/control/` (`tablesControlContext.ts` + `TablesControlProvider.tsx`) and `restaurant/salons/services/control/` scope grid/filter state to their respective pages, and `(panel)/help/services/` (`HelpContext.ts` + `HelpProvider.tsx`) scopes state to the help page.
+
+**Grid pages (`tables`, `salons`).** Each has a `*Wrapper.tsx` (page entry), a `*Filters.tsx`, and dual List/Grid views (`*List.tsx` / `*GridView.tsx` + `*Grid.tsx`) switched via `utils/contentViewOptions.ts` + `utils/getViewOptionIcon.tsx`. Table-backed grids (e.g. `tables/components/TablesGrid.tsx`) build their column defs in a colocated `hooks/use<X>Grid.tsx` hook using `@tanstack/react-table`'s `createColumnHelper`/`tableFeatures`/`useTable` (see `tables/hooks/useTablesGrid.tsx`) rather than inlining columns in the component.
 
 **Global config surfaces:**
 - `services/base-config/` — active locale, theme (via `next-themes`), and the color-palette CSS class (`utils/colorPalletes.ts` / `colorPalletesManager.ts`), persisted client-side.
@@ -41,7 +43,7 @@ There is no test suite/framework configured in this repo — do not assume Jest/
 
 **i18n dictionaries.** Translation namespaces live in `internalization/app/dictionaries/<namespace>/` as `{en,fa}.json` plus a `"server-only"` `dictionary.ts` that exports a `get<Namespace>Dictionary({ locale })` loader. Top-level namespaces: `auth`, `meta`, `share`, loaded in `app/[lang]/layout.tsx` and exposed to client components via `services/share-dictionary/ShareDictionaryProvider`. `en.json` for `auth` currently just re-imports `fa.json` — not yet translated. Feature-scoped namespaces nest by route instead, e.g. `panel/restaurant/tables/` and `panel/restaurant/salons/`, each loaded directly by its page rather than through `ShareDictionaryProvider`.
 
-**UI components.** `components/ui/` is shadcn-generated (`components.json`: style `base-vega`, neutral base, no Tailwind prefix, RSC on). Prefer extending/composing these over adding new UI primitives from scratch; regenerate/add via the `shadcn` CLI rather than hand-rolling equivalents.
+**UI components.** `components/ui/` is shadcn-generated (`components.json`: style `base-vega`, neutral base, no Tailwind prefix, RSC on, `rtl: true`). Prefer extending/composing these over adding new UI primitives from scratch; regenerate/add via the `shadcn` CLI rather than hand-rolling equivalents.
 
 **Path alias:** `@/*` → repo root (see `tsconfig.json`).
 
