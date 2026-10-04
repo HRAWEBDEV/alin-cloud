@@ -11,6 +11,7 @@ import { useHotkey } from "@tanstack/react-hotkeys";
 import { useShortcutsContext } from "@/app/[lang]/(panel)/services/shortcuts/shortcutsContext";
 import { type ContentViewOption } from "../../utils/contentViewOptions";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useTablesGrid } from "../../hooks/useTablesGrid";
 
 export default function TablesControlProvider({
   dic,
@@ -20,6 +21,7 @@ export default function TablesControlProvider({
   const isMatched = useIsMobile();
   const { onGetShortcutKeys } = useShortcutsContext();
   const [showEditTable, setShowEditTable] = useState(false);
+  const tablesGrid = useTablesGrid();
   const [activeContentView, setActiveContentView] =
     useState<ContentViewOption>("grid");
 
@@ -29,6 +31,8 @@ export default function TablesControlProvider({
   function handleToggleEditTable(state: boolean, id: number | null) {
     setShowEditTable(state);
   }
+  // tables setup
+
   // shortcuts
   useHotkey(onGetShortcutKeys("general", "addingItem"), () => {
     handleToggleEditTable(true, null);
@@ -39,6 +43,7 @@ export default function TablesControlProvider({
     dic,
     contentView: activeContentView,
     onChangeContentView: handleChangeContentView,
+    tablesGrid,
     editTable: {
       open: showEditTable,
       onToggle: handleToggleEditTable,

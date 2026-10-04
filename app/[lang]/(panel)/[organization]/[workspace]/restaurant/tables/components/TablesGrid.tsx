@@ -1,140 +1,19 @@
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { IoEllipsisVertical } from "react-icons/io5";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { FaTrashCan } from "react-icons/fa6";
-import { IoIosStar } from "react-icons/io";
-import {
-  tableFeatures,
-  createColumnHelper,
-  useTable,
-  flexRender,
-  metaHelper,
-} from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import { cn } from "cn";
-
-const features = tableFeatures({
-  columnMeta: metaHelper<{
-    headerClassNames: string;
-    cellClassNames: string;
-  }>(),
-});
-
-interface TData {
-  id: number;
-  tableNo: number;
-  salonName: string;
-  tableType: string;
-  maxCapacity: number;
-  isVip: boolean;
-}
-
-const data = [
-  {
-    id: 1,
-    tableNo: 1,
-    salonName: "سالن اصلی",
-    tableType: "میز",
-    maxCapacity: 10,
-    isVip: true,
-  },
-  {
-    id: 2,
-    tableNo: 2,
-    salonName: "سالن اصلی",
-    tableType: "میز",
-    maxCapacity: 10,
-    isVip: true,
-  },
-];
+import { useTablesControlContext } from "../services/control/tablesControlContext";
 
 export default function TablesGrid() {
-  const columnHelper = createColumnHelper<typeof features, TData>();
-
-  const columns = columnHelper.columns([
-    columnHelper.accessor("tableNo", {
-      header: "شماره میز",
-      meta: {
-        headerClassNames: "text-center min-w-24 w-24",
-        cellClassNames: "text-center",
-      },
-    }),
-    columnHelper.accessor("salonName", {
-      header: "نام سالن",
-      meta: {
-        headerClassNames: "text-start min-w-48",
-        cellClassNames: "text-start",
-      },
-    }),
-    columnHelper.accessor("tableType", {
-      header: "نوع",
-      meta: {
-        headerClassNames: "text-center min-w-36 w-36",
-        cellClassNames: "text-center",
-      },
-    }),
-    columnHelper.accessor("maxCapacity", {
-      header: "حداکثر ظرفیت",
-      meta: {
-        headerClassNames: "text-center min-w-24 w-24",
-        cellClassNames: "text-center",
-      },
-    }),
-    columnHelper.accessor("isVip", {
-      header: "VIP",
-      meta: {
-        headerClassNames: "text-center min-w-24 w-24",
-        cellClassNames: "text-center",
-      },
-    }),
-    columnHelper.display({
-      header: "عملیات",
-      cell() {
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button variant="ghost" size="icon-sm">
-                  <IoEllipsisVertical className="size-4" />
-                </Button>
-              }
-            />
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem variant="destructive" className="h-11">
-                <FaTrashCan className="size-5" />
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
-      },
-      meta: {
-        headerClassNames: "text-center min-w-24 w-24",
-        cellClassNames: "text-center p-0",
-      },
-    }),
-  ]);
-
-  const table = useTable({
-    features,
-    columns,
-    data,
-  });
-
+  const {
+    tablesGrid: { table },
+  } = useTablesControlContext();
   return (
     <Table>
       <TableHeader>

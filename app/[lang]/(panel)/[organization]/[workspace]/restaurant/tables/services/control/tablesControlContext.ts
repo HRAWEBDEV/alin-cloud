@@ -2,12 +2,14 @@ import { use, createContext } from "react";
 import { OutOfContext } from "@/utils/OutOfContext";
 import { type TablesDictionary } from "@/internalization/app/dictionaries/panel/restaurant/tables/dictionary";
 import { type ContentViewOption } from "../../utils/contentViewOptions";
+import { useTablesGrid } from "../../hooks/useTablesGrid";
 
 interface TablesControlContextProps {
   title: "tablesControlContext";
   dic: TablesDictionary;
   contentView: ContentViewOption;
   onChangeContentView(view: ContentViewOption): unknown;
+  tablesGrid: ReturnType<typeof useTablesGrid>;
   editTable: {
     open: boolean;
     onToggle(state: boolean, id: number | null): unknown;
