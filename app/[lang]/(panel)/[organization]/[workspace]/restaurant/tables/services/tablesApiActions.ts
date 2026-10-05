@@ -24,6 +24,30 @@ const data = [
     maxCapacity: 10,
     isVip: true,
   },
+  {
+    id: 3,
+    tableNo: 2,
+    salonName: "سالن اصلی",
+    tableType: "میز",
+    maxCapacity: 10,
+    isVip: true,
+  },
+  {
+    id: 4,
+    tableNo: 2,
+    salonName: "سالن اصلی",
+    tableType: "میز",
+    maxCapacity: 10,
+    isVip: true,
+  },
+  {
+    id: 5,
+    tableNo: 2,
+    salonName: "سالن اصلی",
+    tableType: "میز",
+    maxCapacity: 10,
+    isVip: true,
+  },
 ];
 
 export type { TData };

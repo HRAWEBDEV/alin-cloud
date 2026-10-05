@@ -7,16 +7,16 @@ import { useTablesControlContext } from "../services/control/tablesControlContex
 export default function TablesWrapper() {
   const { contentView } = useTablesControlContext();
   return (
-    <div className="w-[min(100%,60rem)] mx-auto grow flex flex-col overflow-hidden">
+    <div
+      data-view-mode={contentView}
+      className="group w-[min(100%,60rem)] mx-auto grow flex flex-col data-[view-mode='grid']:overflow-hidden"
+    >
       <TablesFilters />
-      <div className="flex flex-col grow overflow-hidden px-2 pb-1">
-        <div
-          data-view-mode={contentView}
-          className="data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow"
-        >
+      <div className="flex flex-col grow group-data-[view-mode='grid']:overflow-hidden px-2 pb-1">
+        <div className="group-data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow rounded-ee-none rounded-es-none border-b-0!">
           <TablesList />
-          <TablesListPaging />
         </div>
+        <TablesListPaging />
       </div>
     </div>
   );

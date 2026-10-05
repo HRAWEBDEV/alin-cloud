@@ -19,7 +19,7 @@ import { NumericFormat } from "react-number-format";
 
 export default function TablesListPaging() {
   return (
-    <div className="shrink-0 border-t border-input p-1 flex gap-2">
+    <div className="sticky bottom-0 shrink-0 border-t border-input p-1 flex gap-2 bg-background z-2">
       <div className="max-w-20">
         <Combobox items={gridRowsCountOptions}>
           <ComboboxInput />

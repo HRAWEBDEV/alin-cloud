@@ -1,6 +1,7 @@
 import { type Locale } from "@/internalization/app/localization";
 import { Metadata } from "next";
 import { getTablesRackDictionary } from "@/internalization/app/dictionaries/panel/restaurant/tables-rack/dictionary";
+import RackControlProvider from "./services/control/RackControlProvider";
 
 export const generateMetadata = async (
   props: LayoutProps<"/[lang]/[organization]/[workspace]/restaurant">,
@@ -15,5 +16,5 @@ export default async function TablesRackPage(
 ) {
   const { lang } = await props.params;
   const dic = await getTablesRackDictionary({ locale: lang as Locale });
-  return <>test</>;
+  return <RackControlProvider dic={dic} />;
 }

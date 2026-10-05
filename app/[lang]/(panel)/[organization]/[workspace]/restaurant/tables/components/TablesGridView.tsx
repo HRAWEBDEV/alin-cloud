@@ -6,7 +6,7 @@ import { IoStar } from "react-icons/io5";
 export default function TablesGridView() {
   const { dic, editTable } = useTablesControlContext();
   return (
-    <div className="grow overflow-auto">
+    <div className="grow">
       <div className="grid gap-2 grid-cols-[repeat(auto-fill,minmax(10rem,14rem))] content-start justify-center">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
           return (
