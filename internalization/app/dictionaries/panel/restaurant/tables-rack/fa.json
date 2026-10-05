@@ -3,6 +3,10 @@
   "filters": {
     "salon": "سالن",
     "filters": "فیلترها",
-    "help": "راهنما"
+    "help": "راهنما",
+    "empty": "خالی",
+    "occupied": "اشغال",
+    "reserved": "رزرو",
+    "lastUpdated": "آخرین به روزرسانی"
   }
 }

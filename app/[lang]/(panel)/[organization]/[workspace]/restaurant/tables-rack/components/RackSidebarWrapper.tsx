@@ -7,7 +7,7 @@ export default function RackSidebarWrapper() {
   return (
     <>
       <Tabs>
-        <TabsList className="w-full sticky top-0 mb-2">
+        <TabsList className="w-full sticky top-0">
           <TabsTrigger value="filters">{dic.filters.filters}</TabsTrigger>
           <TabsTrigger value="help">{dic.filters.help}</TabsTrigger>
         </TabsList>
