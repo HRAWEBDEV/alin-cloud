@@ -3,6 +3,7 @@
   "filters": {
     "shop": "سبد خرید",
     "invoice": "صورتحساب",
-    "filters": "فیلترها"
+    "filters": "فیلترها",
+    "search": "جستجو"
   }
 }

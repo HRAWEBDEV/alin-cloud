@@ -5,7 +5,7 @@ import { useNewOrderControlContext } from "../services/control/newOrderControlCo
 export default function NewOrderEndPanel() {
   const { dic } = useNewOrderControlContext();
   return (
-    <div className="border-s border-border p-2 overflow-auto">
+    <div className="border-s border-border p-2 overflow-auto ">
       <Tabs>
         <TabsList className="w-full sticky top-0">
           <TabsTrigger value="shop">{dic.filters.shop}</TabsTrigger>

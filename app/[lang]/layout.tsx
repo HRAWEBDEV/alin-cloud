@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
+import "keen-slider/keen-slider.min.css";
 import { cn } from "@/lib/utils";
 import localFont from "next/font/local";
 import { DEVELOPMENT } from "@/utils/env";
