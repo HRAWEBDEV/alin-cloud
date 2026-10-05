@@ -9,6 +9,10 @@ export const navigationItems: NavigationItem[] = [
     path: "/restaurant/tables-rack",
   },
   {
+    name: "newOrder",
+    path: "/restaurant/new-order",
+  },
+  {
     name: "capacityAndPricing",
     path: "",
     items: [
