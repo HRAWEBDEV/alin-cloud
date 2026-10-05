@@ -34,7 +34,7 @@ export default function RackTable() {
         )}
         <Button
           variant="outline"
-          className="w-full h-full justify-start flex flex-col test-start items-start bg-background relative p-2"
+          className="w-full h-full justify-start flex flex-col test-start items-start bg-background! relative p-2"
         >
           {true && (
             <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-400/40 dark:text-amber-500/40 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>

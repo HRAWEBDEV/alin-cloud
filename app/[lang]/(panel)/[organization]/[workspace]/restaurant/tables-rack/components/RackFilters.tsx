@@ -18,6 +18,7 @@ import { RiGridFill } from "react-icons/ri";
 import { MdFormatBold } from "react-icons/md";
 import DinnerIcon from "@/app/[lang]/(panel)/components/navigation/icons/DinnerIcon";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { TableStateTypes, getTableStateStyles } from "../utils/tableStates";
 
 export default function RackFilters() {
   const { dic } = useRackControlContext();
@@ -105,20 +106,32 @@ export default function RackFilters() {
             style={{
               direction: "ltr",
             }}
-            id="occupied"
+            id="empty"
             className="scale-120"
           />
-          <Label htmlFor="occupied">{dic.filters.occupied} (4)</Label>
+          <Label
+            htmlFor="empty"
+            className={getTableStateStyles(TableStateTypes.readyToService).text}
+          >
+            {dic.filters.empty} (3)
+          </Label>
         </div>
         <div className="flex gap-4 items-center">
           <Switch
             style={{
               direction: "ltr",
             }}
-            id="empty"
+            id="occupied"
             className="scale-120"
           />
-          <Label htmlFor="empty">{dic.filters.empty} (3)</Label>
+          <Label
+            htmlFor="occupied"
+            className={
+              getTableStateStyles(TableStateTypes.regularCustomer).text
+            }
+          >
+            {dic.filters.occupied} (4)
+          </Label>
         </div>
         <div className="flex gap-4 items-center">
           <Switch
@@ -128,7 +141,13 @@ export default function RackFilters() {
             id="reserved"
             className="scale-120"
           />
-          <Label htmlFor="reserved">{dic.filters.reserved} (2)</Label>
+          <Label
+            htmlFor="reserved"
+
+            className={getTableStateStyles(TableStateTypes.reserved).text}
+          >
+            {dic.filters.reserved} (2)
+          </Label>
         </div>
       </div>
     </div>
