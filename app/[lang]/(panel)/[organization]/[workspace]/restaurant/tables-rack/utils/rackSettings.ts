@@ -4,12 +4,14 @@ interface RackSettings {
   ltrTablesDirection: boolean;
   viewOption: (typeof viewOptions)[number];
   contrastModeOn: boolean;
+  sidebarTab: "filters" | "help";
 }
 
 const defaultRackSettings: RackSettings = {
   ltrTablesDirection: false,
   viewOption: "normal",
   contrastModeOn: false,
+  sidebarTab: "filters",
 };
 
 const rackSettingsKey = "rack-settings";

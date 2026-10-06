@@ -210,7 +210,7 @@ function Calendar({
         startMonth={startMonth}
         modifiersClassNames={{
           ...props.modifiersClassNames,
-          friday: "text-red-500 bg-red-50",
+          friday: "text-red-500 bg-red-50 dark:bg-red-950",
         }}
         modifiers={{
           ...props.modifiers,
