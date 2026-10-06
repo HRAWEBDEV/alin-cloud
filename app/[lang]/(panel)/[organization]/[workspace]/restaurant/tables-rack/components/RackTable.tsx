@@ -6,6 +6,7 @@ import { TableStateTypes, getTableStateStyles } from "../utils/tableStates";
 import { cn } from "cn";
 import { useRackControlContext } from "../services/control/rackControlContext";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import { motion } from "motion/react";
 
 export default function RackTable() {
   const { rackSettings } = useRackControlContext();
@@ -14,7 +15,8 @@ export default function RackTable() {
   const { localeInfo } = useBaseConfig();
 
   return (
-    <div
+    <motion.div
+      layout
       className="grid group"
       data-bold={rackSettings.contrastModeOn}
       data-layout-minimal={rackSettings.viewOption === "minimal"}
@@ -119,6 +121,6 @@ export default function RackTable() {
           </div>
         </Button>
       </div>
-    </div>
+    </motion.div>
   );
 }
