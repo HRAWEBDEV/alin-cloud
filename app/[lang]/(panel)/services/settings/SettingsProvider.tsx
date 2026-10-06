@@ -41,6 +41,7 @@ export default function SettingsProvider({
     },
   } = useShareDictionary();
   const [open, setOpen] = useState(false);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
   const [showConfirmLogout, setShowConfirmlogout] = useState(false);
   const [panelSettings, setPanelSettings] = useState<PanelSettings>(
     () => defaultPanelSettings,
@@ -85,8 +86,10 @@ export default function SettingsProvider({
 
   useEffect(() => {
     setPanelSettings(getPanelSettings());
+    setSettingsLoaded(true);
   }, []);
 
+  if (!settingsLoaded) return null;
   return (
     <SettingsContext.Provider value={ctx}>
       {children}
