@@ -7,6 +7,12 @@ interface NewOrderControlContextProps {
   title: "newOrderControlContext";
   dic: NewOrderDictionary;
   newOrderSettings: NewOrderSettings;
+  showDesktopStartPanel: boolean;
+  showMobileStartPanel: boolean;
+  showDesktopEndPanel: boolean;
+  showMobileEndPanel: boolean;
+  onToggleStartPanel: () => unknown;
+  onToggleEndPanel: () => unknown;
   onChangeNewOrderSettings: <T extends keyof NewOrderSettings>(
     key: T,
     value: NewOrderSettings[T],

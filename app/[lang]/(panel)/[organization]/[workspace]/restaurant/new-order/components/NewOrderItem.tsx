@@ -22,7 +22,7 @@ export default function NewOrderItem() {
         className={cn(
           "grow relative isolate rounded-xl",
           newOrderSettings.showOrderImage
-            ? "shadow-xl"
+            ? "shadow-xl pt-2"
             : "border shadow-lg border-border",
           "bg-background dark:bg-neutral-900",
           false ? "bg-primary/15 dark:bg-primary/15" : "",

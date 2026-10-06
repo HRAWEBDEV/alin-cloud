@@ -30,8 +30,13 @@ import { FaShoppingBasket } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
 
 export default function NewOrderActions() {
-  const { dic, newOrderSettings, onChangeNewOrderSettings } =
-    useNewOrderControlContext();
+  const {
+    dic,
+    newOrderSettings,
+    onChangeNewOrderSettings,
+    onToggleEndPanel,
+    onToggleStartPanel,
+  } = useNewOrderControlContext();
   const { localeInfo } = useBaseConfig();
   const { toggleOpen } = useSettingsContext();
   const {
@@ -40,7 +45,7 @@ export default function NewOrderActions() {
     },
   } = useShareDictionary();
 
-  const itemGroupsButtonClass = `transition-[height_0.4s_ease] w-full ${false ? "min-h-14" : "min-h-20"} border border-border rounded-xl p-2 flex flex-col items-center justify-center gap-1 text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 data-[active="true"]:bg-primary data-[active="true"]:text-white data-[active="true"]:dark:text-primary-foreground cursor-pointer`;
+  const itemGroupsButtonClass = `transition-[height_0.4s_ease] w-full min-h-20 in-data-[scroll-dicretion='down']:min-h-14 border border-border rounded-xl p-2 flex flex-col items-center justify-center gap-1 text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-900 data-[active="true"]:bg-primary data-[active="true"]:text-white data-[active="true"]:dark:text-primary-foreground cursor-pointer`;
 
   const [sliderRef] = useKeenSlider({
     rtl: localeInfo.contentDirection === "rtl",
@@ -71,7 +76,7 @@ export default function NewOrderActions() {
   });
 
   return (
-    <header className="sticky top-0 bg-background z-2 py-2 overflow-hidden mb-2">
+    <header className="sticky top-0 bg-background z-2 py-2 overflow-hidden mb-2 px-2 md:px-0">
       {false && (
         <div className="absolute inset-x-0 top-0">
           <LinearLoading />
@@ -82,7 +87,8 @@ export default function NewOrderActions() {
           <Button
             variant="outline"
             size="icon"
-            className="text-primary border-primary bg-primary/5 relative"
+            className="text-primary border-primary bg-primary/5 relative flex xl:hidden"
+            onClick={onToggleStartPanel}
           >
             <FaInfoCircle className="size-5" />
           </Button>
@@ -102,7 +108,8 @@ export default function NewOrderActions() {
           <Button
             variant="outline"
             size="icon"
-            className="bg-teal-700 dark:bg-teal-600 relative"
+            className="bg-teal-700 dark:bg-teal-600 text-primary-foreground relative flex lg:hidden"
+            onClick={onToggleEndPanel}
           >
             <FaShoppingBasket className="size-5" />
             <div className="absolute -top-1 -inset-e-2">
@@ -200,7 +207,7 @@ export default function NewOrderActions() {
                 data-active={item === 2}
                 className={itemGroupsButtonClass}
               >
-                {true && <DishIcon className="size-8 shrink-0" />}
+                <DishIcon className="size-8 shrink-0 in-data-[scroll-dicretion='down']:hidden" />
                 <p className="text-wrap text-sm font-medium">صبحانه </p>
               </button>
             </div>
