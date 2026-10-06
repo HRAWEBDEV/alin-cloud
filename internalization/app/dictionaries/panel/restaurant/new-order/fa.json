@@ -9,6 +9,7 @@
     "showItemImage": "نمایش تصویر آیتم",
     "doNoShowItemImage": "عدم نمایش تصویر آیتم",
     "showItemPrice": "نمایش قیمت آیتم",
-    "doNoShowItemPrice": "عدم نمایش قیمت آیتم"
+    "doNoShowItemPrice": "عدم نمایش قیمت آیتم",
+    "close": "بستن"
   }
 }

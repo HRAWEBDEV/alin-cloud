@@ -1,6 +1,8 @@
 "use client";
 import NewOrderStartPanel from "./NewOrderStartPanel";
 import NewOrderEndPanel from "./NewOrderEndPanel";
+import NewOrderStartPanelDialog from "./NewOrderStartPanelDialog";
+import NewOrderEndPanelDialog from "./NewOrderEndPanelDialog";
 import NewOrderActions from "./NewOrderActions";
 import NewOrderItems from "./NewOrderItems";
 import { useNewOrderControlContext } from "../services/control/newOrderControlContext";
@@ -10,8 +12,12 @@ import { cn } from "cn";
 
 export default function NewOrderWrapper() {
   const matchedMd = useMatchMedia({ breakPoint: BREAK_POINTS.md });
-  const { showDesktopStartPanel, showDesktopEndPanel } =
-    useNewOrderControlContext();
+  const {
+    showDesktopStartPanel,
+    showDesktopEndPanel,
+    showMobileEndPanel,
+    showMobileStartPanel,
+  } = useNewOrderControlContext();
   return (
     <div className="grid grid-cols-1 md:grid-cols-[14rem_1fr_14rem] grow md:overflow-hidden">
       {showDesktopStartPanel && <NewOrderStartPanel />}
@@ -27,6 +33,8 @@ export default function NewOrderWrapper() {
         <NewOrderItems />
       </div>
       {showDesktopEndPanel && <NewOrderEndPanel />}
+      {showMobileStartPanel && <NewOrderStartPanelDialog />}
+      {showMobileEndPanel && <NewOrderEndPanelDialog />}
     </div>
   );
 }
