@@ -1,11 +1,13 @@
 interface NewOrderSettings {
   showOrderImage: boolean;
   showDescription: boolean;
+  showOrderPrice: boolean;
 }
 
 const defaultNewOrderSettings: NewOrderSettings = {
   showOrderImage: true,
   showDescription: false,
+  showOrderPrice: true,
 };
 
 const newOrderSettingsKey = "new-order-settings";

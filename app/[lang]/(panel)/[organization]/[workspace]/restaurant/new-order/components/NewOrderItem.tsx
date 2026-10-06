@@ -1,3 +1,4 @@
+import { useNewOrderControlContext } from "../services/control/newOrderControlContext";
 import { Button } from "@/components/ui/button";
 import { CiCircleMinus } from "react-icons/ci";
 import { FaCirclePlus } from "react-icons/fa6";
@@ -6,15 +7,30 @@ import Highlighter from "react-highlight-words";
 import { Badge } from "@/components/ui/badge";
 import { MdOutlineKeyboardHide } from "react-icons/md";
 import DishIcon from "@/app/[lang]/(panel)/components/navigation/icons/DishIcon";
+import { cn } from "cn";
 
 export default function NewOrderItem() {
+  const { newOrderSettings } = useNewOrderControlContext();
   return (
-    <div className={`flex flex-col ${true ? "pt-10" : "pt-0"}`}>
+    <div
+      className={cn(
+        "flex flex-col",
+        newOrderSettings.showOrderImage ? "pt-10" : "",
+      )}
+    >
       <div
-        className={`grow relative isolate rounded-xl ${true ? "shadow-xl" : "border shadow-lg border-border pt-2"} bg-background dark:bg-neutral-900 ${false ? "bg-primary/15 dark:bg-primary/15" : ""} ${false ? "bg-neutral-200! dark:bg-neutral-800!" : ""}`}
+        className={cn(
+          "grow relative isolate rounded-xl",
+          newOrderSettings.showOrderImage
+            ? "shadow-xl"
+            : "border shadow-lg border-border",
+          "bg-background dark:bg-neutral-900",
+          false ? "bg-primary/15 dark:bg-primary/15" : "",
+          false ? "bg-neutral-200! dark:bg-neutral-800!" : "",
+        )}
       >
         <div className="absolute bottom-0 start-0 z-1"></div>
-        {true && (
+        {newOrderSettings.showOrderImage && (
           <div
             className="grid place-content-center -mt-12"
             onPointerDown={(e) => e.stopPropagation()}
@@ -24,11 +40,11 @@ export default function NewOrderItem() {
             </div>
           </div>
         )}
-        <div className="text-center">
-          <h3 className="text-base sm:text-lg font-medium text-neutral-800 dark:text-neutral-400">
+        <div className="text-center mt-1">
+          <h3 className="text-base font-medium text-neutral-800 dark:text-neutral-400">
             <Highlighter searchWords={[]} textToHighlight={"املت"} />
           </h3>
-          {true && (
+          {newOrderSettings.showOrderPrice && (
             <>
               <div className="flex flex-col mb-1">
                 {false && (

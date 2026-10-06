@@ -24,9 +24,14 @@ import { useKeenSlider } from "keen-slider/react";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 import DishIcon from "@/app/[lang]/(panel)/components/navigation/icons/DishIcon";
 import { FaInfoCircle } from "react-icons/fa";
+import { MdHideImage, MdImage } from "react-icons/md";
+import { FaEyeSlash, FaEye } from "react-icons/fa6";
+import { FaShoppingBasket } from "react-icons/fa";
+import { Badge } from "@/components/ui/badge";
 
 export default function NewOrderActions() {
-  const { dic } = useNewOrderControlContext();
+  const { dic, newOrderSettings, onChangeNewOrderSettings } =
+    useNewOrderControlContext();
   const { localeInfo } = useBaseConfig();
   const { toggleOpen } = useSettingsContext();
   const {
@@ -94,8 +99,20 @@ export default function NewOrderActions() {
           </Field>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" size="icon">
-            <IoReload className="size-5" />
+          <Button
+            variant="outline"
+            size="icon"
+            className="bg-teal-700 dark:bg-teal-600 relative"
+          >
+            <FaShoppingBasket className="size-5" />
+            <div className="absolute -top-1 -inset-e-2">
+              <Badge
+                variant="default"
+                className="p-1 rounded-full size-5 font-en-roboto"
+              >
+                99+
+              </Badge>
+            </div>
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger
@@ -127,6 +144,46 @@ export default function NewOrderActions() {
                   className: "size-5",
                 })}
                 <span>{settings.help}</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  onChangeNewOrderSettings(
+                    "showOrderImage",
+                    !newOrderSettings.showOrderImage,
+                  );
+                }}
+              >
+                {newOrderSettings.showOrderImage ? (
+                  <MdImage className="size-5" />
+                ) : (
+                  <MdHideImage className="size-5" />
+                )}
+                <span>
+                  {newOrderSettings.showOrderImage
+                    ? dic.filters.showItemImage
+                    : dic.filters.doNoShowItemImage}
+                </span>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  onChangeNewOrderSettings(
+                    "showOrderPrice",
+                    !newOrderSettings.showOrderPrice,
+                  );
+                }}
+              >
+                {newOrderSettings.showOrderPrice ? (
+                  <FaEye className="size-5" />
+                ) : (
+                  <FaEyeSlash className="size-5" />
+                )}
+                <span>
+                  {newOrderSettings.showOrderPrice
+                    ? dic.filters.showItemPrice
+                    : dic.filters.doNoShowItemPrice}
+                </span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

@@ -1,10 +1,16 @@
 import { OutOfContext } from "@/utils/OutOfContext";
 import { use, createContext } from "react";
 import { type NewOrderDictionary } from "@/internalization/app/dictionaries/panel/restaurant/new-order/dictionary";
+import { type NewOrderSettings } from "../../utils/newOrderSettings";
 
 interface NewOrderControlContextProps {
   title: "newOrderControlContext";
   dic: NewOrderDictionary;
+  newOrderSettings: NewOrderSettings;
+  onChangeNewOrderSettings: <T extends keyof NewOrderSettings>(
+    key: T,
+    value: NewOrderSettings[T],
+  ) => unknown;
 }
 
 const NewOrderControlContext =
