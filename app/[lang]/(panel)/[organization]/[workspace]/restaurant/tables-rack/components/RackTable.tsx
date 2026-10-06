@@ -16,7 +16,7 @@ export default function RackTable() {
   return (
     <div
       className="grid group"
-      data-bold={false}
+      data-bold={rackSettings.contrastModeOn}
       data-layout-minimal={rackSettings.viewOption === "minimal"}
       style={{
         direction: localeInfo.contentDirection,
@@ -48,7 +48,10 @@ export default function RackTable() {
         )}
         <Button
           variant="outline"
-          className="w-full h-full justify-start flex flex-col test-start items-start bg-background! relative p-2 gap-1"
+          className={cn(
+            "w-full h-full justify-start flex flex-col test-start items-start bg-background dark:bg-background relative p-2 gap-1",
+            rackSettings.contrastModeOn ? tableStateStyles.backgoundColor : "",
+          )}
         >
           {true && (
             <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-500/40 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>
