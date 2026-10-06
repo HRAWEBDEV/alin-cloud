@@ -2,11 +2,13 @@
 import RackSidebar from "./RackSidebar";
 import RackActions from "./RackActions";
 import RackTable from "./RackTable";
+import RackSidebarDialog from "./RackSidebarDialog";
 import { useRackControlContext } from "../services/control/rackControlContext";
 import { cn } from "cn";
 
 export default function RackWrapper() {
-  const { rackSettings, showDesktopSidebar } = useRackControlContext();
+  const { rackSettings, showDesktopSidebar, showMobileSidebar } =
+    useRackControlContext();
   const tablesGridClass =
     rackSettings.viewOption === "minimal"
       ? "grid gap-2 justify-center grid-cols-[repeat(auto-fill,minmax(6rem,1fr))]"
@@ -19,6 +21,7 @@ export default function RackWrapper() {
       )}
     >
       {showDesktopSidebar && <RackSidebar />}
+      {showMobileSidebar && <RackSidebarDialog />}
       <div className="px-2 lg:overflow-auto">
         <RackActions />
         <div

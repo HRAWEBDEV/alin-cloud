@@ -61,7 +61,7 @@ export default function RackControlProvider({
   useEffect(() => {
     if (!isMobile) return;
     setShowSidebar(false);
-  }, []);
+  }, [isMobile]);
 
   return (
     <RackControlContext.Provider value={ctx}>
