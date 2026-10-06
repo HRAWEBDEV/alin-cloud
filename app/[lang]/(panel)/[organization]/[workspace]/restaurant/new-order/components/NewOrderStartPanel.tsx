@@ -8,7 +8,7 @@ export default function NewOrderStartPanel() {
     <div className="border-e border-border p-2 overflow-auto">
       <Tabs>
         <TabsList className="w-full sticky top-0">
-          <TabsTrigger value="filters">{dic.filters.filters}</TabsTrigger>
+          <TabsTrigger value="filters">{dic.filters.userOrderInfo}</TabsTrigger>
         </TabsList>
         <TabsContent value="filters"></TabsContent>
       </Tabs>

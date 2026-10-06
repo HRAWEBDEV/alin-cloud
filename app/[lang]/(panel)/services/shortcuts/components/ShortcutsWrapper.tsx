@@ -56,8 +56,7 @@ export default function ShortcutsWrapper() {
             const categoryItemsList = Object.entries(categoryItems);
             const visibleItemsList = searchText
               ? categoryItemsList.filter(([item]) => {
-                  const typedItem = item as ShortcutsItem<typeof typedCategory>;
-                  return dic[typedItem].includes(searchText);
+                  return dic[item as keyof typeof dic].includes(searchText);
                 })
               : categoryItemsList;
             if (visibleItemsList.length === 0) return null;

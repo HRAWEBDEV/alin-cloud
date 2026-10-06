@@ -24,8 +24,6 @@ export function getSettingsIcon(
       return <MdOutlineWeb {...props} />;
     case "shortcuts":
       return <FaRegKeyboard {...props} />;
-    case "general":
-      return <IoSettingsSharp {...props} />;
     case "help":
       return <IoIosHelpCircle {...props} />;
     case "logout":

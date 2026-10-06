@@ -21,7 +21,7 @@ export default function RackControlProvider({
   dic: TablesRackDictionary;
 }) {
   const isMobile = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   const [rackSettings, setRackSettings] =
     useState<RackSettings>(defaultRackSettings);
 
@@ -59,8 +59,11 @@ export default function RackControlProvider({
   }, []);
 
   useEffect(() => {
-    if (!isMobile) return;
-    setShowSidebar(false);
+    if (isMobile) {
+      setShowSidebar(false);
+    } else {
+      setShowSidebar(true);
+    }
   }, [isMobile]);
 
   return (
