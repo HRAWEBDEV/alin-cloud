@@ -14,12 +14,12 @@ export default function RackWrapper() {
   return (
     <div
       className={cn(
-        "grow md:overflow-hidden grid grid-cols-1",
-        showDesktopSidebar ? "md:grid-cols-[14rem_1fr]" : "grid-cols-1",
+        "grow lg:overflow-hidden grid grid-cols-1",
+        showDesktopSidebar ? "lg:grid-cols-[14rem_1fr]" : "grid-cols-1",
       )}
     >
       {showDesktopSidebar && <RackSidebar />}
-      <div className="px-2 md:overflow-auto">
+      <div className="px-2 lg:overflow-auto">
         <RackActions />
         <div
           className={tablesGridClass}

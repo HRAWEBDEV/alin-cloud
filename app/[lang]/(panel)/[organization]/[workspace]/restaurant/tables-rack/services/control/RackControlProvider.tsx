@@ -12,14 +12,15 @@ import {
   defaultRackSettings,
   saveRackSettings,
 } from "../../utils/rackSettings";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMatchMedia } from "@/hooks/useMatchMedia";
+import { BREAK_POINTS } from "@/utils/breakPoints";
 
 export default function RackControlProvider({
   dic,
 }: {
   dic: TablesRackDictionary;
 }) {
-  const isMobile = useIsMobile();
+  const isMobile = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
   const [showSidebar, setShowSidebar] = useState(true);
   const [rackSettings, setRackSettings] =
     useState<RackSettings>(defaultRackSettings);
