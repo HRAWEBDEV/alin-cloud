@@ -9,28 +9,28 @@ import DishIcon from "@/app/[lang]/(panel)/components/navigation/icons/DishIcon"
 
 export default function NewOrderItem() {
   return (
-    <div className={`flex flex-col ${true ? "pt-12 min-h-48" : "pt-0"}`}>
+    <div className={`flex flex-col ${true ? "pt-10" : "pt-0"}`}>
       <div
         className={`grow relative isolate rounded-xl ${true ? "shadow-xl" : "border shadow-lg border-border pt-2"} bg-background dark:bg-neutral-900 ${false ? "bg-primary/15 dark:bg-primary/15" : ""} ${false ? "bg-neutral-200! dark:bg-neutral-800!" : ""}`}
       >
         <div className="absolute bottom-0 start-0 z-1"></div>
         {true && (
           <div
-            className="grid place-content-center -mt-12 mb-2"
+            className="grid place-content-center -mt-12"
             onPointerDown={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-center rounded-full size-24 bg-neutral-100 dark:bg-neutral-800 overflow-hidden object-center object-contain">
-              <DishIcon className="size-12" />
+            <div className="flex items-center justify-center rounded-full size-20 bg-neutral-100 dark:bg-neutral-800 overflow-hidden object-center object-contain">
+              <DishIcon className="size-10" />
             </div>
           </div>
         )}
         <div className="text-center">
-          <h3 className="text-base sm:text-lg font-medium text-neutral-800 dark:text-neutral-400 mb-1">
+          <h3 className="text-base sm:text-lg font-medium text-neutral-800 dark:text-neutral-400">
             <Highlighter searchWords={[]} textToHighlight={"املت"} />
           </h3>
           {true && (
             <>
-              <div className="flex flex-col mb-2">
+              <div className="flex flex-col mb-1">
                 {false && (
                   <div className="text-[0.85rem] font-medium text-red-600 dark:text-red-400 line-through">
                     <Badge variant="destructive" className="p-1 me-2 text-sm">

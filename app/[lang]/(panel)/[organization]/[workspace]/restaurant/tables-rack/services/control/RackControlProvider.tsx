@@ -22,6 +22,7 @@ export default function RackControlProvider({
 }) {
   const isMobile = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
   const [showSidebar, setShowSidebar] = useState(false);
+  const [settingsLoaded, setSettingsLoaded] = useState(false);
   const [rackSettings, setRackSettings] =
     useState<RackSettings>(defaultRackSettings);
 
@@ -56,6 +57,7 @@ export default function RackControlProvider({
 
   useEffect(() => {
     setRackSettings(getRackSettings());
+    setSettingsLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -66,6 +68,7 @@ export default function RackControlProvider({
     }
   }, [isMobile]);
 
+  if (!settingsLoaded) return null;
   return (
     <RackControlContext.Provider value={ctx}>
       <RackWrapper />
