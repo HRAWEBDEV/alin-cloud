@@ -21,7 +21,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { TableStateTypes, getTableStateStyles } from "../utils/tableStates";
 
 export default function RackFilters() {
-  const { dic } = useRackControlContext();
+  const { dic, rackSettings, onChangeRackSettings } = useRackControlContext();
   const {
     shareDictionary: {
       components: { noItemFound },
@@ -41,7 +41,18 @@ export default function RackFilters() {
         </div>
       </div>
       <div className="mb-4">
-        <ToggleGroup className="w-full" variant="outline">
+        <ToggleGroup
+          value={[rackSettings.viewOption]}
+          onValueChange={(value) => {
+            if (!value.length) return;
+            onChangeRackSettings(
+              "viewOption",
+              value[0] as typeof rackSettings.viewOption,
+            );
+          }}
+          className="w-full"
+          variant="outline"
+        >
           <ToggleGroupItem
             value="minimal"
             aria-label="Minimal Table View Mode"
@@ -59,7 +70,15 @@ export default function RackFilters() {
         </ToggleGroup>
       </div>
       <div className="mb-4 flex gap-2">
-        <ToggleGroup className="w-full" variant="outline">
+        <ToggleGroup
+          className="w-full"
+          variant="outline"
+          value={rackSettings.contrastModeOn ? ["bold"] : ["normal"]}
+          onValueChange={(value) => {
+            const val = value[0];
+            onChangeRackSettings("contrastModeOn", val === "bold");
+          }}
+        >
           <ToggleGroupItem
             value="bold"
             aria-label="bold Table View Mode"
@@ -68,9 +87,17 @@ export default function RackFilters() {
             <MdFormatBold className="size-5" />
           </ToggleGroupItem>
         </ToggleGroup>
-        <ToggleGroup className="w-full" variant="outline">
+        <ToggleGroup
+          className="w-full"
+          variant="outline"
+          value={rackSettings.ltrTablesDirection ? ["ltr"] : ["normal"]}
+          onValueChange={(value) => {
+            const val = value[0];
+            onChangeRackSettings("ltrTablesDirection", val === "ltr");
+          }}
+        >
           <ToggleGroupItem
-            value="direction"
+            value="ltr"
             aria-label="direction Table View Mode"
             className="cursor-pointer grow"
           >

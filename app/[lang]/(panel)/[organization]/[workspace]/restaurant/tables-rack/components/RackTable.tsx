@@ -4,15 +4,26 @@ import { getTableRows } from "../utils/getTableRows";
 import { IoPrint } from "react-icons/io5";
 import { TableStateTypes, getTableStateStyles } from "../utils/tableStates";
 import { cn } from "cn";
+import { useRackControlContext } from "../services/control/rackControlContext";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 export default function RackTable() {
+  const { rackSettings } = useRackControlContext();
   const tableRows = getTableRows(5, 2);
   const tableStateStyles = getTableStateStyles(TableStateTypes.regularCustomer);
+  const { localeInfo } = useBaseConfig();
 
   return (
-    <div className="grid group" data-bold={false} data-layout-minimal={false}>
-      <div className='relative min-h-36 group-data-[layout-minimal="true"]:min-h-auto isolate px-3'>
-        {true && (
+    <div
+      className="grid group"
+      data-bold={false}
+      data-layout-minimal={rackSettings.viewOption === "minimal"}
+      style={{
+        direction: localeInfo.contentDirection,
+      }}
+    >
+      <div className='relative min-h-36 group-data-[layout-minimal="true"]:min-h-auto isolate group-data-[layout-minimal="false"]px-3'>
+        {rackSettings.viewOption !== "minimal" && (
           <div
             style={{
               direction: "ltr",
@@ -44,7 +55,7 @@ export default function RackTable() {
               VIP
             </div>
           )}
-          {true && (
+          {rackSettings.viewOption !== "minimal" && (
             <div
               className={cn(
                 "p-0.5 rounded-2xl border border-dashed text-center w-full border-destructive text-destructive bg-destructive/10",
@@ -63,14 +74,14 @@ export default function RackTable() {
               <h3
                 className={cn(
                   "text-wrap text-2xl font-en-roboto group-data-[bold=true]:font-black",
-                  false ? "" : "lg:text-3xl",
+                  rackSettings.viewOption === "minimal" ? "" : "lg:text-3xl",
                   tableStateStyles.text,
                 )}
               >
                 02
               </h3>
             </div>
-            {true && (
+            {rackSettings.viewOption !== "minimal" && (
               <div className="whitespace-nowrap grid">
                 <p className="text-sm text-primary group-data-[bold=true]:font-medium truncate">
                   وعده نهار
