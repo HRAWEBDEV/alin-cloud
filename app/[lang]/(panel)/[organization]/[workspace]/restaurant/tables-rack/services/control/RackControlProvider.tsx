@@ -12,14 +12,24 @@ import {
   defaultRackSettings,
   saveRackSettings,
 } from "../../utils/rackSettings";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export default function RackControlProvider({
   dic,
 }: {
   dic: TablesRackDictionary;
 }) {
+  const isMobile = useIsMobile();
+  const [showSidebar, setShowSidebar] = useState(true);
   const [rackSettings, setRackSettings] =
     useState<RackSettings>(defaultRackSettings);
+
+  const showDesktopSidebar = showSidebar && !isMobile;
+  const showMobileSidebar = showSidebar && isMobile;
+
+  function handleToggleSidebar() {
+    setShowSidebar((pre) => !pre);
+  }
 
   function handleChangeRackSettings<T extends keyof RackSettings>(
     key: T,
@@ -37,11 +47,19 @@ export default function RackControlProvider({
     title: "rackControlContext",
     dic,
     rackSettings,
+    showDesktopSidebar,
+    showMobileSidebar,
+    onToggleSidebar: handleToggleSidebar,
     onChangeRackSettings: handleChangeRackSettings,
   };
 
   useEffect(() => {
     setRackSettings(getRackSettings());
+  }, []);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    setShowSidebar(false);
   }, []);
 
   return (

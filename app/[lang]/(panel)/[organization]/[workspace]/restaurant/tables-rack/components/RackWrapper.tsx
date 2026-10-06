@@ -3,21 +3,26 @@ import RackSidebar from "./RackSidebar";
 import RackActions from "./RackActions";
 import RackTable from "./RackTable";
 import { useRackControlContext } from "../services/control/rackControlContext";
+import { cn } from "cn";
 
 export default function RackWrapper() {
-  const { rackSettings } = useRackControlContext();
+  const { rackSettings, showDesktopSidebar } = useRackControlContext();
   const tablesGridClass =
     rackSettings.viewOption === "minimal"
       ? "grid gap-2 justify-center grid-cols-[repeat(auto-fill,minmax(6rem,1fr))]"
       : "grid gap-4 grid-cols-[repeat(auto-fill,minmax(9rem,10rem))] sm:grid-cols-[repeat(auto-fill,minmax(8.8rem,9.8rem))] justify-center";
   return (
-    <div className="grow overflow-hidden grid grid-cols-[14rem_1fr]">
-      <RackSidebar />
-      <div className="px-2">
+    <div
+      className={cn(
+        "grow md:overflow-hidden grid grid-cols-1",
+        showDesktopSidebar ? "md:grid-cols-[14rem_1fr]" : "grid-cols-1",
+      )}
+    >
+      {showDesktopSidebar && <RackSidebar />}
+      <div className="px-2 md:overflow-auto">
         <RackActions />
         <div
           className={tablesGridClass}
-
           style={{
             direction: rackSettings.ltrTablesDirection ? "ltr" : "unset",
           }}

@@ -14,9 +14,11 @@ import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/ge
 import { TbFilterSearch } from "react-icons/tb";
 import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
 import { Badge } from "@/components/ui/badge";
+import { useRackControlContext } from "../services/control/rackControlContext";
 
 export default function RackActions() {
   const { toggleOpen } = useSettingsContext();
+  const { onToggleSidebar } = useRackControlContext();
   const {
     shareDictionary: {
       components: { settings },
@@ -35,6 +37,7 @@ export default function RackActions() {
             variant="outline"
             size="icon"
             className="text-primary border-primary bg-primary/5 relative"
+            onClick={onToggleSidebar}
           >
             <TbFilterSearch className="size-5" />
             <div className="absolute -top-1.5 -inset-e-1.5">

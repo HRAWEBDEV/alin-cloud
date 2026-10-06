@@ -22,7 +22,7 @@ export default function RackTable() {
         direction: localeInfo.contentDirection,
       }}
     >
-      <div className='relative min-h-36 group-data-[layout-minimal="true"]:min-h-auto isolate group-data-[layout-minimal="false"]px-3'>
+      <div className='relative min-h-36 group-data-[layout-minimal="true"]:min-h-auto isolate group-data-[layout-minimal="false"]:px-3'>
         {rackSettings.viewOption !== "minimal" && (
           <div
             style={{

@@ -7,6 +7,9 @@ interface RackControlContextProps {
   title: "rackControlContext";
   dic: TablesRackDictionary;
   rackSettings: RackSettings;
+  showDesktopSidebar: boolean;
+  showMobileSidebar: boolean;
+  onToggleSidebar: () => unknown;
   onChangeRackSettings: <T extends keyof RackSettings>(
     key: T,
     value: RackSettings[T],
