@@ -2,13 +2,16 @@
 import { Button } from "@/components/ui/button";
 import { getTableRows } from "../utils/getTableRows";
 import { IoPrint } from "react-icons/io5";
+import { TableStateTypes, getTableStateStyles } from "../utils/tableStates";
+import { cn } from "cn";
 
 export default function RackTable() {
   const tableRows = getTableRows(5, 2);
+  const tableStateStyles = getTableStateStyles(TableStateTypes.regularCustomer);
 
   return (
     <div className="grid group" data-bold={false} data-layout-minimal={false}>
-      <div className='relative min-h-40 group-data-[layout-minimal="true"]:min-h-auto isolate px-3'>
+      <div className='relative min-h-36 group-data-[layout-minimal="true"]:min-h-auto isolate px-3'>
         {true && (
           <div
             style={{
@@ -34,16 +37,21 @@ export default function RackTable() {
         )}
         <Button
           variant="outline"
-          className="w-full h-full justify-start flex flex-col test-start items-start bg-background! relative p-2"
+          className="w-full h-full justify-start flex flex-col test-start items-start bg-background! relative p-2 gap-1"
         >
           {true && (
-            <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-400/40 dark:text-amber-500/40 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>
+            <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-500/40 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>
               VIP
             </div>
           )}
           {true && (
             <div
-              className={`p-1 rounded-2xl border border-dashed text-center w-full border-destructive text-destructive bg-destructive/10`}
+              className={cn(
+                "p-0.5 rounded-2xl border border-dashed text-center w-full border-destructive text-destructive bg-destructive/10",
+                tableStateStyles.text,
+                tableStateStyles.border,
+                tableStateStyles.backgoundColor,
+              )}
             >
               <span className="text-base font-medium group-data-[bold=true]:font-bold">
                 <span>میز اشغال</span>
@@ -53,7 +61,11 @@ export default function RackTable() {
           <div className="text-start ps-2 grow w-full">
             <div className="flex items-center">
               <h3
-                className={`text-wrap text-2xl font-en-roboto group-data-[bold=true]:font-black ${false ? "" : "lg:text-3xl"} text-destructive`}
+                className={cn(
+                  "text-wrap text-2xl font-en-roboto group-data-[bold=true]:font-black",
+                  false ? "" : "lg:text-3xl",
+                  tableStateStyles.text,
+                )}
               >
                 02
               </h3>
@@ -74,7 +86,7 @@ export default function RackTable() {
               <div className="flex gap-1 items-center">
                 {true && (
                   <IoPrint
-                    className={`${false ? "size-5" : "size-7"} text-primary`}
+                    className={`${false ? "size-5" : "size-6"} text-primary`}
                   />
                 )}
               </div>
@@ -83,7 +95,10 @@ export default function RackTable() {
               style={{
                 direction: "ltr",
               }}
-              className={`font-medium text-base group-data-[bold=true]:font-bold`}
+              className={cn(
+                "font-medium text-md group-data-[bold=true]:font-bold",
+                tableStateStyles.text,
+              )}
             >
               1/3
             </div>

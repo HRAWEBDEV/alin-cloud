@@ -27,6 +27,7 @@ There is no test suite/framework configured in this repo — do not assume Jest/
 **Locale-first routing.** Every route lives under `app/[lang]/`. `proxy.ts` redirects any request whose first path segment isn't a valid locale (`fa` | `en`, defined in `internalization/app/localization.ts`) to a locale-prefixed URL, reading the preferred locale from a cookie (`utils/userLocaleManager.ts`) and defaulting to `fa`. `fa` (Jalali calendar, RTL) is the primary/active locale; `en` exists in the locale table but is marked inactive.
 
 **Route groups under `app/[lang]/`:**
+
 - `(auth)/` — sign-in flow, no panel chrome.
 - `(panel)/` — the authenticated app shell. Its `layout.tsx` composes, from outside in: `ShortcutsProvider` → `SidebarProvider` → `ProfileProvider` → `HelpProvider` → `SettingsProvider` → `HistoryProvider` → sidebar + header + history tabs + main content + tabs nav + settings modal.
 - Inside `(panel)/`, tenant-scoped pages nest under `[organization]/[workspace]/` (e.g. `restaurant/tables`, `restaurant/salons`, `restaurant/tables-rack`, `restaurant/new-order`); each level has its own pass-through `layout.tsx`. `(panel)/users/`, `(panel)/organization/`, and `(panel)/help/` are non-tenant-scoped panel pages (account/org settings and an in-app help list, respectively).
@@ -38,6 +39,7 @@ There is no test suite/framework configured in this repo — do not assume Jest/
 **Sidebar/panel pages (`tables-rack`, `new-order`).** A newer, simpler shape than the grid pages above: a `*Wrapper.tsx` lays out a fixed-width side panel (or panels) next to a scrollable main area — `tables-rack` has `RackSidebar(Wrapper)` + `RackActions` + a card grid of `RackTable`; `new-order` has `NewOrderStartPanel`/`NewOrderEndPanel` flanking `NewOrderActions` + `NewOrderItems`. No List/Grid view toggle and (so far) no `@tanstack/react-table` grid — just the route's own `services/control/` provider plus `utils/` helpers (e.g. `tables-rack/utils/tableStates.ts`, `getTableRows.ts`). Both are registered as top-level entries (not nested under `capacityAndPricing`) in `app/[lang]/(panel)/utils/navigationItems.ts`.
 
 **Global config surfaces:**
+
 - `services/base-config/` — active locale, theme (via `next-themes`), and the color-palette CSS class (`utils/colorPalletes.ts` / `colorPalletesManager.ts`), persisted client-side.
 - `app/[lang]/(panel)/services/shortcuts/` — keyboard shortcuts registry built on `@tanstack/react-hotkeys`; add new shortcuts to the `defaultShortcuts` map in `shortcutsManager.ts` (grouped by category, e.g. `general`).
 - `app/[lang]/(panel)/services/settings/` — panel-wide user settings (active tab via `settingItems.ts`, options like grid row count via `utils/gridRowsCountOptions.ts`), persisted client-side through `utils/panelSettingsManager.ts`.
