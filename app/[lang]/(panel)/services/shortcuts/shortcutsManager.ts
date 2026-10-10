@@ -37,6 +37,16 @@ const defaultShortcuts = {
       keys: "C" as RegisterableHotkey,
     },
   },
+  tablesRack: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
+  },
+  newOrder: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
+  },
 } as const;
 
 export type { ShortcutsSetup, ShortcutsCategory, ShortcutsItem };

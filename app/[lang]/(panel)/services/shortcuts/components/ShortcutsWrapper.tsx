@@ -7,6 +7,7 @@ import {
   InputGroupInput,
 } from "@/components/ui/input-group";
 import { IoIosSearch } from "react-icons/io";
+import { TbCategory2 } from "react-icons/tb";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import { useShortcutsContext } from "../shortcutsContext";
 import {
@@ -20,6 +21,7 @@ import Highlighter from "react-highlight-words";
 
 export default function ShortcutsWrapper() {
   const [searchText, setSearchText] = useState("");
+  const [categorySearch, setCategorySearch] = useState("");
   const {
     shareDictionary: {
       components: { shortcuts: dic },
@@ -30,7 +32,22 @@ export default function ShortcutsWrapper() {
   return (
     <div className="pt-0 p-4">
       <div className="py-4 sticky top-0 bg-popover">
-        <div className="grid gap-2 grid-cols-1">
+        <div className="grid gap-2 grid-cols-2">
+          <Field>
+            <InputGroup className="bg-neutral-100 dark:bg-neutral-900">
+              <InputGroupInput
+                id="category"
+                type="search"
+                autoFocus
+                placeholder={dic.category + " ..."}
+                value={categorySearch}
+                onChange={(e) => setCategorySearch(e.target.value)}
+              />
+              <InputGroupAddon align="inline-start">
+                <TbCategory2 className="size-5" />
+              </InputGroupAddon>
+            </InputGroup>
+          </Field>
           <Field>
             <InputGroup className="bg-neutral-100 dark:bg-neutral-900">
               <InputGroupInput
@@ -53,6 +70,9 @@ export default function ShortcutsWrapper() {
           {Object.entries(shortcuts).map(([category, categoryItems]) => {
             const typedCategory = category as ShortcutsCategory;
             if (typedCategory === "static") return null;
+            const categoryTitle = dic[typedCategory];
+            if (categorySearch && !categoryTitle.includes(categorySearch))
+              return null;
             const categoryItemsList = Object.entries(categoryItems);
             const visibleItemsList = searchText
               ? categoryItemsList.filter(([item]) => {
@@ -63,7 +83,13 @@ export default function ShortcutsWrapper() {
             return (
               <div key={category} className="mb-4 data-[show='false']:hidden">
                 <div className="mb-2">
-                  <h3 className="font-medium">{dic[typedCategory]}</h3>
+                  <h3 className="font-medium">
+                    <Highlighter
+                      textToHighlight={categoryTitle}
+                      searchWords={[categorySearch]}
+                      autoEscape={true}
+                    />
+                  </h3>
                 </div>
                 <ul>
                   {visibleItemsList.map(([item, info]) => {

@@ -80,6 +80,7 @@
     "shortcuts": {
       "title": "میانبرها",
       "search": "جستجو",
+      "category": "بخش",
       "general": "عمومی",
       "toggleHelp": "نمایش راهنما",
       "toggleNavigation": "باز و بستن منو",
@@ -88,7 +89,9 @@
       "addingItem": "افزودن آیتم",
       "globalSearch": "جستجو",
       "tables": "میزها",
-      "salons": "سالن‌ها"
+      "salons": "سالن‌ها",
+      "tablesRack": "رک میزها",
+      "newOrder": "ثبت سفارش"
     },
     "help": {
       "title": "راهنما",
