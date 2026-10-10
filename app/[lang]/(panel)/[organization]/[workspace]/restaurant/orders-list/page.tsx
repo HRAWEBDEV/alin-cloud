@@ -1,6 +1,7 @@
 import { type Locale } from "@/internalization/app/localization";
 import { Metadata } from "next";
 import { getOrdersListDictionary } from "@/internalization/app/dictionaries/panel/restaurant/orders-list/dictionary";
+import OrdersControlProvider from "./services/control/OrdersControlProvider";
 
 export const generateMetadata = async (
   props: LayoutProps<"/[lang]/[organization]/[workspace]/restaurant">,
@@ -10,10 +11,10 @@ export const generateMetadata = async (
   return meta;
 };
 
-export default async function SalonsPage(
+export default async function OrdersPage(
   props: PageProps<"/[lang]/[organization]/[workspace]/restaurant/new-order">,
 ) {
   const { lang } = await props.params;
   const dic = await getOrdersListDictionary({ locale: lang as Locale });
-  return <div>order list</div>;
+  return <OrdersControlProvider dic={dic} />;
 }
