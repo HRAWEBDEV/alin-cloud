@@ -8,12 +8,14 @@ import OrdersWrapper from "../../components/OrdersWrapper";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
 import { BREAK_POINTS } from "@/utils/breakPoints";
 import { useEffect, useState } from "react";
+import { useTablesGrid } from "../../hooks/useTablesGrid";
 
 export default function OrdersControlProvider({
   dic,
 }: {
   dic: OrdersListDictionary;
 }) {
+  const tablesGrid = useTablesGrid();
   const isMobile = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -29,6 +31,7 @@ export default function OrdersControlProvider({
     dic,
     showDesktopSidebar,
     showMobileSidebar,
+    tablesGrid,
     onToggleSidebar: handleToggleSidebar,
   };
 
