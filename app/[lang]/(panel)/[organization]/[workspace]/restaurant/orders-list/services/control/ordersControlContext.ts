@@ -1,8 +1,13 @@
 import { OutOfContext } from "@/utils/OutOfContext";
 import { use, createContext } from "react";
+import { type OrdersListDictionary } from "@/internalization/app/dictionaries/panel/restaurant/orders-list/dictionary";
 
 interface OrdersControlContextProps {
   title: "ordersControlContext";
+  dic: OrdersListDictionary;
+  showDesktopSidebar: boolean;
+  showMobileSidebar: boolean;
+  onToggleSidebar: () => unknown;
 }
 
 const OrdersControlContext = createContext<OrdersControlContextProps | null>(
