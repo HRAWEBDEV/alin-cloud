@@ -15,10 +15,11 @@ import { TbFilterSearch } from "react-icons/tb";
 import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
 import { Badge } from "@/components/ui/badge";
 import { useOrdersControlContext } from "../services/control/ordersControlContext";
+import { FaPlus } from "react-icons/fa6";
 
 export default function OrdersActions() {
   const { toggleOpen } = useSettingsContext();
-  const { onToggleSidebar } = useOrdersControlContext();
+  const { onToggleSidebar, dic } = useOrdersControlContext();
   const {
     shareDictionary: {
       components: { settings },
@@ -54,6 +55,10 @@ export default function OrdersActions() {
           </Button>
         </div>
         <div className="flex gap-2">
+          <Button>
+            <FaPlus />
+            <span className="hidden md:inline">{dic.filters.newOrder}</span>
+          </Button>
           <Button variant="outline" size="icon">
             <IoReload className="size-5" />
           </Button>

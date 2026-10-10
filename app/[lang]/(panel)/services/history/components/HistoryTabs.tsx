@@ -9,6 +9,14 @@ const historyTest = [
     type: "tablesRack",
     title: "رک میزها",
   },
+  {
+    type: "salons",
+    title: "سالن‌ها",
+  },
+  {
+    type: "tables",
+    title: "میزها",
+  },
 ];
 
 export default function HistoryTabs() {

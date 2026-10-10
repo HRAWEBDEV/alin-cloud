@@ -2,6 +2,7 @@
   "title": "لیست سفارشات",
   "filters": {
     "filters": "فیلترها",
+    "newOrder": "سفارش جدید",
     "close": "بستن"
   }
 }
