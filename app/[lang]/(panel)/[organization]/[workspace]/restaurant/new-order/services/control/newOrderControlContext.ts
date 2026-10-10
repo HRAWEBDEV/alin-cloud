@@ -1,11 +1,14 @@
 import { OutOfContext } from "@/utils/OutOfContext";
-import { use, createContext } from "react";
+import { use, createContext, Dispatch, SetStateAction } from "react";
 import { type NewOrderDictionary } from "@/internalization/app/dictionaries/panel/restaurant/new-order/dictionary";
 import { type NewOrderSettings } from "../../utils/newOrderSettings";
+import { type EndPanelTab } from "../../utils/endPanelTabs";
 
 interface NewOrderControlContextProps {
   title: "newOrderControlContext";
   dic: NewOrderDictionary;
+  activeEndPanelTab: EndPanelTab;
+  setActiveEndPanelTab: Dispatch<SetStateAction<EndPanelTab>>;
   newOrderSettings: NewOrderSettings;
   showDesktopStartPanel: boolean;
   showMobileStartPanel: boolean;

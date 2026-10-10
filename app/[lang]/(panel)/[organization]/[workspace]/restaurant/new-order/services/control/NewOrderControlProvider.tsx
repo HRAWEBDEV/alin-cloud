@@ -14,6 +14,7 @@ import {
 } from "../../utils/newOrderSettings";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
 import { BREAK_POINTS } from "@/utils/breakPoints";
+import { type EndPanelTab } from "../../utils/endPanelTabs";
 
 export default function NewOrderControlProvider({
   dic,
@@ -22,6 +23,8 @@ export default function NewOrderControlProvider({
 }) {
   const [showStartPanel, setShowStartPanel] = useState(true);
   const [showEndPanel, setShowEndPanel] = useState(true);
+  const [activeEndPanelTab, setActiveEndPanelTab] =
+    useState<EndPanelTab>("shop");
   const matchedXl = useMatchMedia({ breakPoint: BREAK_POINTS.xl });
   const matchedLg = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
   const [settingsLoaded, setSettingsLoaded] = useState(false);
@@ -61,6 +64,8 @@ export default function NewOrderControlProvider({
     showMobileStartPanel,
     showDesktopEndPanel,
     showMobileEndPanel,
+    activeEndPanelTab,
+    setActiveEndPanelTab,
     onToggleStartPanel: handleToggleStartPanel,
     onToggleEndPanel: handleToggleEndPanel,
     onChangeNewOrderSettings: handleChangeNewOrderSettings,

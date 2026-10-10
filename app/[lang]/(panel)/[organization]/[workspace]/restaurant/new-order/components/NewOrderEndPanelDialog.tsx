@@ -23,7 +23,7 @@ export default function NewOrderEndPanelDialog() {
             {dic.filters.userOrderInfo}
           </DialogDescription>
         </DialogHeader>
-        <div className="grow overflow-auto p-4">
+        <div className="grow overflow-auto p-4 flex flex-col">
           <NewOrderEndPanelWrapper />
         </div>
         <DialogFooter>

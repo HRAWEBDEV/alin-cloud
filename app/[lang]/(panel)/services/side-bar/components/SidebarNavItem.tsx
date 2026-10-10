@@ -115,7 +115,7 @@ export default function SidebarNavItem({
       key={navItem.name}
       variant="link"
       size="sm"
-      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 rounded-none relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800 data-[active-menu='true']:bg-primary data-[active-menu='true']:text-primary-foreground"
+      className="text-[0.85rem] w-full justify-start gap-4 text-foreground font-normal min-h-10 relative pe-8 hover:bg-neutral-200 dark:hover:bg-neutral-800 data-[active-menu='true']:bg-primary data-[active-menu='true']:text-primary-foreground"
       nativeButton={false}
       render={
         <Link href={menuPath} onClick={() => setOpenMobile(false)}>
