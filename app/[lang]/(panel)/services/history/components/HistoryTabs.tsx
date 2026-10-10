@@ -1,44 +1,22 @@
 "use client";
-import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { LiaTimesSolid } from "react-icons/lia";
+import { Tabs, TabsList } from "@/components/ui/tabs";
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const historyTest = [
-  {
-    type: "tablesRack",
-    title: "رک میزها",
-  },
-  {
-    type: "salons",
-    title: "سالن‌ها",
-  },
-  {
-    type: "tables",
-    title: "میزها",
-  },
-];
+import { useHistoryContext } from "../historyContext";
+import HistoryTabItem from "./HistoryTabItem";
+import { usePathname } from "next/navigation";
 
 export default function HistoryTabs() {
-  const [activeTab, setActiveTab] = useState<string>("registration");
+  const pathname = usePathname();
+  const { historyList } = useHistoryContext();
   const matched = useIsMobile();
   return (
     <>
-      {matched ? null : (
+      {matched || !historyList.length ? null : (
         <div>
-          <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <Tabs value={pathname}>
             <TabsList className="rounded-none w-full [&>button]:grow-0 [&>button]:min-w-40 justify-start gap-1">
-              {historyTest.map((item) => (
-                <TabsTrigger
-                  key={item.type}
-                  value={item.type}
-                  className="text-start justify-start bg-neutral-200 dark:bg-neutral-900 cursor-pointer font-normal"
-                >
-                  <div className="grow truncate">{item.title}</div>
-                  <div className="p-1">
-                    <LiaTimesSolid className="text-destructive/50" />
-                  </div>
-                </TabsTrigger>
+              {historyList.slice(-3).map((item) => (
+                <HistoryTabItem key={item.id} item={item} />
               ))}
             </TabsList>
           </Tabs>

@@ -4,10 +4,12 @@ import { OutOfContext } from "@/utils/OutOfContext";
 interface HistoryContextProps {
   title: "historyContext";
   historyList: {
+    id: number;
     path: string;
     search: string;
   }[];
   onGoBack: () => unknown;
+  onDeleteHistory: (id: number) => unknown;
   canGoBack: boolean;
 }
 

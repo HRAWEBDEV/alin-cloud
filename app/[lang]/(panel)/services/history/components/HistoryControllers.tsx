@@ -17,12 +17,15 @@ import {
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { useHistoryContext } from "../historyContext";
+import { useFindNavigationItemByPathname } from "../../../hooks/useFindNavigationItem";
+import { useRouter } from "next/navigation";
 
 export default function HistoryControllers() {
-  const { onGoBack, canGoBack } = useHistoryContext();
+  const { onGoBack, canGoBack, historyList } = useHistoryContext();
+  const checkNavItem = useFindNavigationItemByPathname();
   const {
     shareDictionary: {
-      components: { history: dic },
+      components: { history: dic, navigation: navigationDic },
     },
   } = useShareDictionary();
   return (
@@ -40,17 +43,26 @@ export default function HistoryControllers() {
             </Button>
           }
         />
-        <DropdownMenuContent align="start">
-          <DropdownMenuGroup>
+        <DropdownMenuContent align="start" className="max-h-80">
+          <DropdownMenuGroup className="flex flex-col-reverse">
+            {historyList.map((item) => {
+              const navItem = checkNavItem(item.path);
+              return (
+                <DropdownMenuItem
+                  key={item.id}
+                  className="text-neutral-700 dark:text-neutral-400 min-h-10"
+                >
+                  <span>
+                    {navItem
+                      ? navigationDic[
+                          navItem.name as keyof typeof navigationDic
+                        ]
+                      : ""}
+                  </span>
+                </DropdownMenuItem>
+              );
+            })}
             <DropdownMenuLabel>{dic.histroy}</DropdownMenuLabel>
-            {["سالن‌ها", "رک میزها", "میزها"].map((item) => (
-              <DropdownMenuItem
-                key={item}
-                className="text-neutral-700 dark:text-neutral-400 min-h-10"
-              >
-                <span>{item}</span>
-              </DropdownMenuItem>
-            ))}
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>

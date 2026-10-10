@@ -15,7 +15,7 @@ import Link from "next/link";
 import { FaBookBookmark } from "react-icons/fa6";
 import { useSidebar } from "../sidebarContext";
 import { usePathname } from "next/navigation";
-import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import { useBasePath } from "../../../hooks/useBasePath";
 
 export default function SidebarNavItem({
   navItem,
@@ -27,7 +27,7 @@ export default function SidebarNavItem({
   level?: number;
 }) {
   const pathname = usePathname();
-  const { locale } = useBaseConfig();
+  const basePath = useBasePath();
   const { setOpenMobile } = useSidebar();
   const [open, setOpen] = useState(false);
   const {
@@ -35,7 +35,6 @@ export default function SidebarNavItem({
       components: { navigation: dic },
     },
   } = useShareDictionary();
-  const basePath = `/${locale}/main/main`;
 
   const filteredNavItems = (() => {
     if (!searchText || !navItem.items) return navItem.items;
