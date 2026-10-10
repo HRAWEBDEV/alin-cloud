@@ -2,7 +2,6 @@
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
 import LinearLoading from "@/app/[lang]/(panel)/components/LinearLoading";
 import { Button } from "@/components/ui/button";
-import { IoReload } from "react-icons/io5";
 import { IoSettingsSharp } from "react-icons/io5";
 import {
   DropdownMenu,

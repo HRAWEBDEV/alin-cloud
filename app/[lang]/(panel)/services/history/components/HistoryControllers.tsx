@@ -16,8 +16,10 @@ import {
   DropdownMenuTrigger,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
+import { useHistoryContext } from "../historyContext";
 
 export default function HistoryControllers() {
+  const { onGoBack, canGoBack } = useHistoryContext();
   const {
     shareDictionary: {
       components: { history: dic },
@@ -56,10 +58,12 @@ export default function HistoryControllers() {
         <TooltipTrigger
           render={
             <Button
+              disabled={!canGoBack}
               type="button"
               variant="ghost"
               size="icon"
               className="rounded-full bg-transparent text-destructive group-data-[rich-color='true']:text-primary-foreground"
+              onClick={onGoBack}
             >
               <IoArrowBackSharp className="rtl:rotate-180 size-5" />
             </Button>

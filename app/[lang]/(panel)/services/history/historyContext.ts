@@ -7,6 +7,8 @@ interface HistoryContextProps {
     path: string;
     search: string;
   }[];
+  onGoBack: () => unknown;
+  canGoBack: boolean;
 }
 
 const HistoryContext = createContext<HistoryContextProps | null>(null);

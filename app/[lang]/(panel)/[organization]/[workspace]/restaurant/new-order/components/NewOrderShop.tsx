@@ -2,11 +2,28 @@ import { Button } from "@/components/ui/button";
 import { FaArrowLeft } from "react-icons/fa6";
 import { useNewOrderControlContext } from "../services/control/newOrderControlContext";
 import NoItemFound from "@/app/[lang]/(panel)/components/NoItemFound";
+import { Field } from "@/components/ui/field";
+import {
+  InputGroupInput,
+  InputGroup,
+  InputGroupAddon,
+} from "@/components/ui/input-group";
+import { IoIosSearch } from "react-icons/io";
 
 export default function NewOrderShop() {
   const { setActiveEndPanelTab } = useNewOrderControlContext();
   return (
     <div className="grow flex flex-col">
+      <div className="sticky top-10">
+        <Field>
+          <InputGroup className="bg-background">
+            <InputGroupInput type="search" placeholder={"جستجو" + " ..."} />
+            <InputGroupAddon align="inline-start">
+              <IoIosSearch className="size-5" />
+            </InputGroupAddon>
+          </InputGroup>
+        </Field>
+      </div>
       <div className="grow">
         <NoItemFound />
       </div>
