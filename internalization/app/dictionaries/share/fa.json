@@ -8,7 +8,8 @@
       "newOrder": "ثبت سفارش",
       "tables": "میزها",
       "salons": "سالن‌ها",
-      "settings": "تنظیمات"
+      "settings": "تنظیمات",
+      "ordersList": "لیست سفارش‌ها"
     },
     "noItemFound": {
       "title": "آیتمی یافت نشد",
