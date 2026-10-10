@@ -41,12 +41,12 @@ export default function HistoryControllers() {
         <DropdownMenuContent align="start">
           <DropdownMenuGroup>
             <DropdownMenuLabel>{dic.histroy}</DropdownMenuLabel>
-            {[1, 2, 3].map((item) => (
+            {["سالن‌ها", "رک میزها", "میزها"].map((item) => (
               <DropdownMenuItem
                 key={item}
                 className="text-neutral-700 dark:text-neutral-400 min-h-10"
               >
-                <span>میزها</span>
+                <span>{item}</span>
               </DropdownMenuItem>
             ))}
           </DropdownMenuGroup>
