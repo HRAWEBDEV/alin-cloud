@@ -3,15 +3,18 @@ import { Button } from "@/components/ui/button";
 import LogoShape from "@/components/LogoShape";
 import Link from "next/link";
 import { useGoHome } from "@/app/[lang]/(panel)/hooks/useGoHome";
+import { useSidebar } from "../sidebarContext";
 
 export default function SidebarHotelInfo() {
   const { homePath } = useGoHome();
+  const { setOpenMobile } = useSidebar();
   return (
     <div>
       <Button
         variant="ghost"
         className="w-full justify-stretch text-start p-2 h-auto bg-transparent rounded-none min-h-(--panel-header-height)"
         nativeButton={false}
+        onClick={() => setOpenMobile(false)}
         render={
           <Link href={homePath}>
             <div className="flex gap-4 items-center grow text-neutral-700 dark:text-neutral-400">
