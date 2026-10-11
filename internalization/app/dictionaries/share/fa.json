@@ -3,6 +3,8 @@
   "components": {
     "navigation": {
       "search": "جستجو",
+      "showOnlyBookmarked": "نمایش نشانه‌دارها",
+      "toggleBookmark": "نشانه گذاری",
       "tablesRack": "رک میزها",
       "capacityAndPricing": "قیمت و ظرفیت",
       "newOrder": "ثبت سفارش",

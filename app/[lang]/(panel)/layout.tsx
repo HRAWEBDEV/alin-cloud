@@ -8,6 +8,7 @@ import TabsNav from "./components/tabs/TabsNav";
 import SettingsProvider from "./services/settings/SettingsProvider";
 import SettingsModal from "./services/settings/components/SettingsModal";
 import HistoryProivder from "./services/history/HistoryProvider";
+import BookmarksProvider from "./services/booksmarks/BookmarksProvider";
 import ShortcutsProvider from "./services/shortcuts/ShortcutsProvider";
 import HistoryTabs from "./services/history/components/HistoryTabs";
 import HelpProvider from "./help/services/HelpProvider";
@@ -20,14 +21,16 @@ export default function PanelLayout({ children }: LayoutProps<"/[lang]">) {
           <HelpProvider>
             <SettingsProvider>
               <HistoryProivder>
-                <AppSidebar />
-                <SidebarInset>
-                  <Header />
-                  <HistoryTabs />
-                  <MainWrapper>{children}</MainWrapper>
-                  <TabsNav />
-                  <SettingsModal />
-                </SidebarInset>
+                <BookmarksProvider>
+                  <AppSidebar />
+                  <SidebarInset>
+                    <Header />
+                    <HistoryTabs />
+                    <MainWrapper>{children}</MainWrapper>
+                    <TabsNav />
+                    <SettingsModal />
+                  </SidebarInset>
+                </BookmarksProvider>
               </HistoryProivder>
             </SettingsProvider>
           </HelpProvider>

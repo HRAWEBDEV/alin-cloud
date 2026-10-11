@@ -16,19 +16,28 @@ import { FaBookBookmark } from "react-icons/fa6";
 import { useSidebar } from "../sidebarContext";
 import { usePathname } from "next/navigation";
 import { useBasePath } from "../../../hooks/useBasePath";
+import { useBookmarksContext } from "../../booksmarks/bookmarksContenxt";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 export default function SidebarNavItem({
   navItem,
   searchText,
   level = 1,
+  onlyBookmarks = false,
 }: {
   navItem: NavigationItem;
   searchText?: string;
+  onlyBookmarks?: boolean;
   level?: number;
 }) {
   const pathname = usePathname();
   const basePath = useBasePath();
   const { setOpenMobile } = useSidebar();
+  const { checkIsBookmarked, onToggleBookmark } = useBookmarksContext();
   const [open, setOpen] = useState(false);
   const {
     shareDictionary: {
@@ -37,30 +46,40 @@ export default function SidebarNavItem({
   } = useShareDictionary();
 
   const filteredNavItems = (() => {
-    if (!searchText || !navItem.items) return navItem.items;
+    if (!navItem.items) return navItem.items;
     return navItem.items.filter((item) => {
-      return dic[item.name as keyof typeof dic].includes(searchText);
+      let showItem = true;
+      if (searchText) {
+        showItem = dic[item.name as keyof typeof dic].includes(searchText);
+      }
+      if (onlyBookmarks) {
+        showItem = checkIsBookmarked(item.path);
+      }
+      return showItem;
     });
   })();
-  const isMenuVisible = (() => {
-    if (!searchText) return true;
 
-    if (filteredNavItems && filteredNavItems.length > 0) {
-      return true;
+  const isMenuVisible = (() => {
+    if (!filteredNavItems) {
+      let showItem = true;
+      if (searchText) {
+        showItem = dic[navItem.name as keyof typeof dic].includes(searchText);
+      }
+      if (onlyBookmarks) {
+        showItem = checkIsBookmarked(navItem.path);
+      }
+      return showItem;
     }
-    return (
-      filteredNavItems === undefined &&
-      dic[navItem.name as keyof typeof dic].includes(searchText)
-    );
+    return filteredNavItems.length > 0;
   })();
 
   useEffect(() => {
-    if (searchText) {
+    if (searchText || onlyBookmarks) {
       setOpen(true);
     } else {
       setOpen(false);
     }
-  }, [searchText]);
+  }, [searchText, onlyBookmarks]);
 
   if (!isMenuVisible) return null;
   if (!!filteredNavItems) {
@@ -95,6 +114,7 @@ export default function SidebarNavItem({
                 key={child.name}
                 navItem={child}
                 searchText={searchText}
+                onlyBookmarks={onlyBookmarks}
                 level={level + 1}
               />
             ))}
@@ -126,18 +146,27 @@ export default function SidebarNavItem({
             textToHighlight={dic[navItem.name as keyof typeof dic]}
           />
           <div className="absolute inset-e-0 z-2">
-            <Button
-              type="button"
-              variant="ghost"
-              size="icon"
-              className="text-amber-500"
-              onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-              }}
-            >
-              <FaBookBookmark />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    data-is-bookmarked={checkIsBookmarked(navItem.path)}
+                    type="button"
+                    variant="ghost"
+                    size="icon"
+                    className="text-neutral-500/60 data-[is-bookmarked='true']:text-amber-500"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      onToggleBookmark(navItem.path);
+                    }}
+                  >
+                    <FaBookBookmark />
+                  </Button>
+                }
+              />
+              <TooltipContent>{dic.toggleBookmark}</TooltipContent>
+            </Tooltip>
           </div>
         </Link>
       }

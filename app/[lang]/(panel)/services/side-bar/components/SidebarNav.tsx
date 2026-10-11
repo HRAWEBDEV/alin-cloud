@@ -15,10 +15,16 @@ import { FaBookBookmark } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { useShortcutsContext } from "../../shortcuts/shortcutsContext";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
 
 export default function SidebarNav() {
   const { onGetShortcutKeys } = useShortcutsContext();
   const [searchText, setSearchText] = useState("");
+  const [showOnlyBookmarks, setShowOnlyBookmarks] = useState(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const {
     shareDictionary: {
@@ -47,9 +53,24 @@ export default function SidebarNav() {
               <IoIosSearch className="size-5" />
             </InputGroupAddon>
             <InputGroupAddon align="inline-end" className="-me-2">
-              <Button variant="ghost" size="icon">
-                <FaBookBookmark className="size-4" />
-              </Button>
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      data-only-bookmarks={showOnlyBookmarks}
+                      variant="ghost"
+                      size="icon"
+                      className="text-neutral-500/60 data-[only-bookmarks='true']:text-amber-500"
+                      onClick={() => {
+                        setShowOnlyBookmarks((pre) => !pre);
+                      }}
+                    >
+                      <FaBookBookmark className="size-4" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>{dic.showOnlyBookmarked}</TooltipContent>
+              </Tooltip>
             </InputGroupAddon>
           </InputGroup>
         </Field>
@@ -60,6 +81,7 @@ export default function SidebarNav() {
             key={item.name}
             navItem={item}
             searchText={searchText}
+            onlyBookmarks={showOnlyBookmarks}
           />
         ))}
         <div className="last:hidden first:block!">
