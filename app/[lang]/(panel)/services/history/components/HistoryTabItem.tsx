@@ -28,6 +28,11 @@ export default function HistoryTabItem({
       key={item.id}
       value={`${item.path}?${item.search}`}
       className="text-start justify-start bg-neutral-200 dark:bg-neutral-900 cursor-pointer font-normal"
+      onMouseDown={(e) => {
+        if (e.button === 1) {
+          onDeleteHistory(item.id);
+        }
+      }}
       onClick={() => {
         router.push(`${item.path}?${item.search}`);
       }}
@@ -37,6 +42,7 @@ export default function HistoryTabItem({
             {navItem ? dic[navItem.name as keyof typeof dic] : ""}
           </div>
           <Button
+            nativeButton={false}
             variant="ghost"
             size="sm"
             className="p-1"
@@ -44,9 +50,12 @@ export default function HistoryTabItem({
               e.stopPropagation();
               onDeleteHistory(item.id);
             }}
-          >
-            <LiaTimesSolid className="text-destructive/50" />
-          </Button>
+            render={
+              <div>
+                <LiaTimesSolid className="text-destructive/50" />
+              </div>
+            }
+          />
         </motion.button>
       }
     />
