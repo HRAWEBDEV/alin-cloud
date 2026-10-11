@@ -8,6 +8,7 @@ interface HistoryContextProps {
     path: string;
     search: string;
   }[];
+  numberOfHistoryTabs: number;
   onGoBack: () => unknown;
   onDeleteHistory: (id: number) => unknown;
   canGoBack: boolean;

@@ -4,6 +4,7 @@ import { type HistoryContextProps, HistoryContext } from "./historyContext";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useGoHome } from "../../hooks/useGoHome";
 
+const numberOfHistoryTabs = 4;
 export default function HistoryProivder({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const { goHome } = useGoHome();
@@ -24,16 +25,15 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
           return [newItem];
         }
         if (
-          pre
-            .slice(-3)
-            .some(
-              (item) =>
-                item.path === newItem.path && item.search === newItem.search,
-            )
+          pre.some(
+            (item) =>
+              item.path === newItem.path && item.search === newItem.search,
+          )
         ) {
           return pre;
         }
-        return [...pre, newItem];
+        const newHistoryList = pre.slice(-(numberOfHistoryTabs - 1));
+        return [...newHistoryList, newItem];
       });
     },
     [],
@@ -56,7 +56,9 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     const historyListClone = [...historyList];
     const deletedItem = historyListClone.splice(historyIndex, 1);
     const prevHistoryItem = historyListClone.at(historyIndex - 1);
-    const isActivePath = deletedItem[0].path === pathname;
+    const isActivePath =
+      deletedItem[0]?.path === pathname &&
+      deletedItem[0]?.search === searchParamsString;
     setHistoryList(historyListClone);
     if (!isActivePath) return;
     if (prevHistoryItem === undefined) {
@@ -73,6 +75,7 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     title: "historyContext",
     historyList,
     canGoBack,
+    numberOfHistoryTabs,
     onDeleteHistory: handleDeleteHistory,
     onGoBack: handleGoBack,
   };

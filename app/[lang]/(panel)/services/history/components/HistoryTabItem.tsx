@@ -25,7 +25,7 @@ export default function HistoryTabItem({
   return (
     <TabsTrigger
       key={item.id}
-      value={`${item.path}`}
+      value={`${item.path}?${item.search}`}
       className="text-start justify-start bg-neutral-200 dark:bg-neutral-900 cursor-pointer font-normal"
       onClick={() => {
         router.push(`${item.path}?${item.search}`);
