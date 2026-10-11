@@ -5,6 +5,7 @@ import HistoryTabItem from "./HistoryTabItem";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useMatchMedia } from "@/hooks/useMatchMedia";
 import { BREAK_POINTS } from "@/utils/breakPoints";
+import { AnimatePresence } from "framer-motion";
 
 export default function HistoryTabs() {
   const pathname = usePathname();
@@ -18,9 +19,11 @@ export default function HistoryTabs() {
         <div>
           <Tabs value={`${pathname}?${searchParamsString}`}>
             <TabsList className="rounded-none w-full [&>button]:grow-0 [&>button]:min-w-40 justify-start gap-1">
-              {historyList.slice(-1 * numberOfHistoryTabs).map((item) => (
-                <HistoryTabItem key={item.id} item={item} />
-              ))}
+              <AnimatePresence>
+                {historyList.slice(-1 * numberOfHistoryTabs).map((item) => (
+                  <HistoryTabItem key={item.id} item={item} />
+                ))}
+              </AnimatePresence>
             </TabsList>
           </Tabs>
         </div>

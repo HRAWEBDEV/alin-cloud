@@ -7,6 +7,7 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useHistoryContext } from "../historyContext";
+import { motion } from "framer-motion";
 
 export default function HistoryTabItem({
   item,
@@ -30,21 +31,24 @@ export default function HistoryTabItem({
       onClick={() => {
         router.push(`${item.path}?${item.search}`);
       }}
-    >
-      <div className="grow truncate">
-        {navItem ? dic[navItem.name as keyof typeof dic] : ""}
-      </div>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="p-1"
-        onClick={(e) => {
-          e.stopPropagation();
-          onDeleteHistory(item.id);
-        }}
-      >
-        <LiaTimesSolid className="text-destructive/50" />
-      </Button>
-    </TabsTrigger>
+      render={
+        <motion.button>
+          <div className="grow truncate">
+            {navItem ? dic[navItem.name as keyof typeof dic] : ""}
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="p-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              onDeleteHistory(item.id);
+            }}
+          >
+            <LiaTimesSolid className="text-destructive/50" />
+          </Button>
+        </motion.button>
+      }
+    />
   );
 }

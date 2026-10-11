@@ -3,9 +3,11 @@ import { ReactNode, useState, useEffect, useCallback } from "react";
 import { type HistoryContextProps, HistoryContext } from "./historyContext";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useGoHome } from "../../hooks/useGoHome";
+import { useIsHistoryActivePath } from "./utils/useIsHistoryActivePath";
 
 const numberOfHistoryTabs = 4;
 export default function HistoryProivder({ children }: { children: ReactNode }) {
+  const checkIsActivePath = useIsHistoryActivePath();
   const pathname = usePathname();
   const { goHome } = useGoHome();
   const router = useRouter();
@@ -41,14 +43,17 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
 
   function handleGoBack() {
     if (historyList.length > 1) {
-      const lastItem = historyList.at(-2);
-      if (lastItem === undefined) return;
-      router.push(`${lastItem.path}?${lastItem.search}`);
+      const activePathIndex = historyList.findIndex(checkIsActivePath);
+      const prevHistoryItem = historyList.at(activePathIndex - 1);
+      if (prevHistoryItem === undefined) return;
+      router.push(`${prevHistoryItem.path}?${prevHistoryItem.search}`);
+      setHistoryList((pre) => {
+        if (historyList.length === 0) return pre;
+        const cloneHistoryList = [...pre];
+        cloneHistoryList.splice(activePathIndex, 1);
+        return [...cloneHistoryList];
+      });
     }
-    setHistoryList((pre) => {
-      if (historyList.length === 0) return pre;
-      return [...pre.slice(0, -1)];
-    });
   }
   // on delete history
   function handleDeleteHistory(id: number) {
