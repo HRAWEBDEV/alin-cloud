@@ -16,7 +16,7 @@ interface BaseConfig {
   onChangeColorTemplate: (color: (typeof appColorTemplates)[number]) => unknown;
 }
 
-const appVersion = "0.1.0";
+const appVersion = "0.5.0";
 const appBirthDate = new Date(2026, 9, 7);
 const baseConfigContext = createContext<BaseConfig | null>(null);
 
