@@ -31,11 +31,12 @@ export default function OrdersGrid() {
                     data-action-head={
                       header.column.columnDef.meta?.type === "action"
                     }
+                    data-is-resizing={header.column.getIsResizing()}
                     data-is-pinned={!!header.column.getIsPinned()}
                     colSpan={header.colSpan}
                     key={header.id}
                     className={cn(
-                      "bg-grid-header text-grid-header-foreground overflow-hidden text-ellipsis sticky top-0 z-1 not-last:border-e border-border data-[is-pinned='true']:z-3",
+                      "bg-grid-header text-grid-header-foreground overflow-hidden text-ellipsis sticky top-0 z-1 not-last:border-e border-border data-[is-pinned='true']:z-3 group/head",
                       header.column.columnDef.meta?.headerClassNames,
                     )}
                     style={{
@@ -67,6 +68,28 @@ export default function OrdersGrid() {
                           )}
                         </Button>
                       </div>
+                    )}
+                    {header.column.getCanResize() && (
+                      <div
+                        data-is-resizing={header.column.getIsResizing()}
+                        className='group-hover/head:bg-neutral-600/30 dark:group-hover/head:bg-neutral-400/30 data-[is-resizing="true"]:bg-neutral-800 dark:data-[is-resizing="true"]:bg-neutral-400 absolute top-0 h-full w-1 cursor-col-resize select-none touch-none inset-e-0'
+                        {...{
+                          onDoubleClick: () => header.column.resetSize(),
+                          onMouseDown: header.getResizeHandler(),
+                          onTouchStart: header.getResizeHandler(),
+                          style: {
+                            transform:
+                              false && header.column.getIsResizing()
+                                ? `translateX(${
+                                    table.options.columnResizeDirection ===
+                                    "rtl"
+                                      ? -1
+                                      : 1
+                                  }px)`
+                                : "",
+                          },
+                        }}
+                      />
                     )}
                   </TableHead>
                 );

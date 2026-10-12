@@ -7,8 +7,8 @@ import {
   columnSizingFeature,
   columnOrderingFeature,
   columnVisibilityFeature,
+  columnResizingFeature,
 } from "@tanstack/react-table";
-
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaTrashCan } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
@@ -19,12 +19,14 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { data, type TData } from "../services/ordersApiActions";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 const features = tableFeatures({
   columnPinningFeature,
   columnSizingFeature,
   columnOrderingFeature,
   columnVisibilityFeature,
+  columnResizingFeature,
   columnMeta: metaHelper<{
     headerClassNames: string;
     cellClassNames: string;
@@ -34,6 +36,7 @@ const features = tableFeatures({
 
 export function useTablesGrid() {
   const columnHelper = createColumnHelper<typeof features, TData>();
+  const { localeInfo } = useBaseConfig();
 
   const columns = columnHelper.columns([
     columnHelper.accessor("date", {
@@ -145,6 +148,8 @@ export function useTablesGrid() {
     features,
     columns,
     data,
+    columnResizeDirection: localeInfo.contentDirection,
+    columnResizeMode: "onChange",
     initialState: {
       columnPinning: {
         start: [],
