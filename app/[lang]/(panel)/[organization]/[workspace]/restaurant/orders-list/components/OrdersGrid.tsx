@@ -9,13 +9,18 @@ import {
 import { flexRender } from "@tanstack/react-table";
 import { cn } from "cn";
 import { useOrdersControlContext } from "../services/control/ordersControlContext";
+import { useCommonPinningStyles } from "@/app/[lang]/(panel)/utils/useCommonPinningStyles";
+import { Button } from "@/components/ui/button";
+import { MdOutlinePushPin } from "react-icons/md";
+import { RiUnpinLine } from "react-icons/ri";
 
 export default function OrdersGrid() {
   const {
     tablesGrid: { table },
   } = useOrdersControlContext();
+  const getCommonPinningStyles = useCommonPinningStyles();
   return (
-    <Table>
+    <Table className="table-fixed">
       <TableHeader>
         {table.getHeaderGroups().map((group) => {
           return (
@@ -23,15 +28,45 @@ export default function OrdersGrid() {
               {group.headers.map((header) => {
                 return (
                   <TableHead
+                    data-action-head={
+                      header.column.columnDef.meta?.type === "action"
+                    }
+                    data-is-pinned={!!header.column.getIsPinned()}
+                    colSpan={header.colSpan}
                     key={header.id}
                     className={cn(
-                      "bg-grid-header text-grid-header-foreground",
+                      "bg-grid-header text-grid-header-foreground overflow-hidden text-ellipsis sticky top-0 z-1 not-last:border-e border-border data-[is-pinned='true']:z-3",
                       header.column.columnDef.meta?.headerClassNames,
                     )}
+                    style={{
+                      ...getCommonPinningStyles(header.column),
+                    }}
                   >
                     {flexRender(
                       header.column.columnDef.header,
                       header.getContext(),
+                    )}
+
+                    {header.column.getCanPin() && (
+                      <div className="absolute end-0 top-1/2 -translate-y-1/2 text-neutral-500">
+                        <Button
+                          variant={"ghost"}
+                          size={"icon"}
+                          onClick={() => {
+                            if (header.column.getIsPinned()) {
+                              header.column.pin(false);
+                            } else {
+                              header.column.pin("start");
+                            }
+                          }}
+                        >
+                          {header.column.getIsPinned() ? (
+                            <MdOutlinePushPin />
+                          ) : (
+                            <RiUnpinLine />
+                          )}
+                        </Button>
+                      </div>
                     )}
                   </TableHead>
                 );
@@ -43,12 +78,20 @@ export default function OrdersGrid() {
       <TableBody>
         {table.getRowModel().rows.map((row) => {
           return (
-            <TableRow key={row.id} className="even:bg-grid-row-stroke">
-              {row.getAllCells().map((cell) => {
+            <TableRow key={row.id} className="group even:bg-grid-row-stroke">
+              {row.getVisibleCells().map((cell) => {
                 return (
                   <TableCell
                     key={cell.id}
-                    className={cn(cell.column.columnDef.meta?.cellClassNames)}
+                    data-is-pinned={!!cell.column.getIsPinned()}
+                    data-action-cell={
+                      cell.column.columnDef.meta?.type === "action"
+                    }
+                    className={cn(
+                      cell.column.columnDef.meta?.cellClassNames,
+                      "overflow-hidden text-ellipsis not-last:border-e border-border data-[is-pinned='true']:bg-background data-[is-pinned='true']:z-1 data-[is-pinned='true']:group-even:bg-grid-row-stroke",
+                    )}
+                    style={{ ...getCommonPinningStyles(cell.column) }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
