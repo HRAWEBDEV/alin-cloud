@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   createColumnHelper,
   metaHelper,
@@ -8,6 +9,8 @@ import {
   columnOrderingFeature,
   columnVisibilityFeature,
   columnResizingFeature,
+  rowPaginationFeature,
+  createPaginatedRowModel,
 } from "@tanstack/react-table";
 import { IoEllipsisVertical } from "react-icons/io5";
 import { FaTrashCan } from "react-icons/fa6";
@@ -27,6 +30,8 @@ const features = tableFeatures({
   columnOrderingFeature,
   columnVisibilityFeature,
   columnResizingFeature,
+  rowPaginationFeature,
+  paginatedRowModel: createPaginatedRowModel(),
   columnMeta: metaHelper<{
     headerClassNames: string;
     cellClassNames: string;
@@ -37,6 +42,13 @@ const features = tableFeatures({
 export function useTablesGrid() {
   const columnHelper = createColumnHelper<typeof features, TData>();
   const { localeInfo } = useBaseConfig();
+  const [pagination, setPagination] = useState<{
+    pageIndex: number;
+    pageSize: number;
+  }>({
+    pageIndex: 0,
+    pageSize: 5,
+  });
 
   const columns = columnHelper.columns([
     columnHelper.accessor("date", {
@@ -160,7 +172,10 @@ export function useTablesGrid() {
         end: ["actions"],
       },
     },
-    state: {},
+    state: {
+      pagination,
+    },
+    onPaginationChange: setPagination,
   });
   return { table };
 }
