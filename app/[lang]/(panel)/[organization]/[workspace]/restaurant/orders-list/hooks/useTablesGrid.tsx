@@ -52,6 +52,7 @@ export function useTablesGrid() {
       header: "شماره",
       size: 110,
       minSize: 110,
+      enableResizing: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -71,6 +72,7 @@ export function useTablesGrid() {
       header: "نوع فروش",
       size: 130,
       minSize: 130,
+      enableResizing: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -88,6 +90,7 @@ export function useTablesGrid() {
       header: "نوبت",
       size: 130,
       minSize: 130,
+      enableResizing: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -97,6 +100,7 @@ export function useTablesGrid() {
       header: "میز",
       size: 130,
       minSize: 130,
+      enableResizing: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",

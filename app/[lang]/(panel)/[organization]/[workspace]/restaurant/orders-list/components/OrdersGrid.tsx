@@ -49,7 +49,7 @@ export default function OrdersGrid() {
                     )}
 
                     {header.column.getCanPin() && (
-                      <div className="absolute end-0 top-1/2 -translate-y-1/2 text-neutral-500">
+                      <div className="absolute end-0 top-1/2 -translate-y-1/2 text-neutral-500/50">
                         <Button
                           variant={"ghost"}
                           size={"icon"}
