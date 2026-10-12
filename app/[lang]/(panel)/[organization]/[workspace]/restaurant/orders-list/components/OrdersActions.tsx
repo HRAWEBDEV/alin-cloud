@@ -9,6 +9,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
 import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/getSettingsIcon";
 import { TbFilterSearch } from "react-icons/tb";
@@ -16,10 +17,15 @@ import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/setti
 import { Badge } from "@/components/ui/badge";
 import { useOrdersControlContext } from "../services/control/ordersControlContext";
 import { FaPlus } from "react-icons/fa6";
+import { MdViewColumn } from "react-icons/md";
 
 export default function OrdersActions() {
   const { toggleOpen } = useSettingsContext();
-  const { onToggleSidebar, dic } = useOrdersControlContext();
+  const {
+    onToggleSidebar,
+    dic,
+    tablesGrid: { table },
+  } = useOrdersControlContext();
   const {
     shareDictionary: {
       components: { settings },
@@ -47,12 +53,41 @@ export default function OrdersActions() {
                   direction: "ltr",
                 }}
                 variant="default"
+
                 className="p-1 rounded-full size-5 font-en-roboto"
               >
                 1
               </Badge>
             </div>
           </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-auto text-destructive border-destructive bg-destructive/10 px-2! gap-1"
+                >
+                  <MdViewColumn className="size-5" />
+                </Button>
+              }
+            />
+            <DropdownMenuContent align="start">
+              {table
+                .getAllColumns()
+                .filter((col) => col.getCanHide())
+                .map((col) => (
+                  <DropdownMenuCheckboxItem
+                    key={col.id}
+                    disabled={!col.getCanHide()}
+                    checked={col.getIsVisible()}
+                    onCheckedChange={() => col.toggleVisibility()}
+                  >
+                    {col.columnDef.header as string}
+                  </DropdownMenuCheckboxItem>
+                ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
         <div className="flex gap-2">
           <Button>

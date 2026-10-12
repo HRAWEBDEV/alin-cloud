@@ -49,12 +49,16 @@ export function useTablesGrid() {
     pageIndex: 0,
     pageSize: 5,
   });
+  const [columnVisibility, setColumnVisibility] = useState<
+    Record<string, boolean>
+  >({});
 
   const columns = columnHelper.columns([
     columnHelper.accessor("date", {
       header: "تاریخ",
       size: 110,
       minSize: 110,
+      enableHiding: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -123,6 +127,8 @@ export function useTablesGrid() {
       size: 140,
       minSize: 140,
       enablePinning: true,
+
+      enableHiding: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -132,6 +138,7 @@ export function useTablesGrid() {
       id: "actions",
       header: "عملیات",
       enablePinning: false,
+      enableHiding: false,
       size: 100,
       minSize: 100,
       cell() {
@@ -174,8 +181,10 @@ export function useTablesGrid() {
     },
     state: {
       pagination,
+      columnVisibility,
     },
     onPaginationChange: setPagination,
+    onColumnVisibilityChange: setColumnVisibility,
   });
   return { table };
 }
