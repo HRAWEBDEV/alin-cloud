@@ -21,6 +21,10 @@ export const navigationItems: NavigationItem[] = [
     path: "",
     items: [
       {
+        name: "salesMenus",
+        path: "/restaurant/sales-menus",
+      },
+      {
         name: "tables",
         path: "/restaurant/tables",
       },
