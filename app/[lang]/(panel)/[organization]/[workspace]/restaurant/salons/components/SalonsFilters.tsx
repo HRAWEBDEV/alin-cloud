@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getSettingsIcon } from "@/app/[lang]/(panel)/services/settings/utils/getSettingsIcon";
 import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
+import { IoIosSearch } from "react-icons/io";
 
 export default function SalonsFilters() {
   const { toggleOpen } = useSettingsContext();
@@ -41,9 +42,13 @@ export default function SalonsFilters() {
           <Field>
             <InputGroup>
               <InputGroupAddon align="inline-start">
-                {dic.filters.search}
+                <IoIosSearch className="size-5" />
               </InputGroupAddon>
-              <InputGroupInput type="search" />
+              <InputGroupInput
+                type="search"
+
+                placeholder={dic.filters.search + " ..."}
+              />
             </InputGroup>
           </Field>
         </div>

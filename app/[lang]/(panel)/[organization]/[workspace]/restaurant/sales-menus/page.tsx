@@ -1,6 +1,7 @@
 import { type Locale } from "@/internalization/app/localization";
 import { Metadata } from "next";
 import { getSalesMenusDictionary } from "@/internalization/app/dictionaries/panel/restaurant/sales-menus/dictionary";
+import MenusControlProvider from "./services/control/MenusControlProvider";
 
 export const generateMetadata = async (
   props: LayoutProps<"/[lang]/[organization]/[workspace]/restaurant">,
@@ -15,5 +16,5 @@ export default async function TablesRackPage(
 ) {
   const { lang } = await props.params;
   const dic = await getSalesMenusDictionary({ locale: lang as Locale });
-  return <div></div>;
+  return <MenusControlProvider dic={dic} />;
 }
