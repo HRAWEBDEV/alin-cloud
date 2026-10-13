@@ -36,7 +36,7 @@ export default function RackActions() {
           <Button
             variant="outline"
             size="icon"
-            className="text-primary border-primary bg-primary/5 relative"
+            className="text-primary bg-primary/5 relative"
             onClick={onToggleSidebar}
           >
             <TbFilterSearch className="size-5" />

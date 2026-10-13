@@ -43,7 +43,7 @@ export default function OrdersActions() {
           <Button
             variant="outline"
             size="icon"
-            className="text-primary border-primary bg-primary/5 relative"
+            className="text-primary bg-primary/5 relative"
             onClick={onToggleSidebar}
           >
             <TbFilterSearch className="size-5" />
@@ -63,11 +63,7 @@ export default function OrdersActions() {
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="h-auto text-destructive border-destructive bg-destructive/10 px-2! gap-1"
-                >
+                <Button variant="destructive" size="icon">
                   <MdViewColumn className="size-5" />
                 </Button>
               }
