@@ -120,7 +120,7 @@ export default function OrdersGrid() {
                     }
                     className={cn(
                       cell.column.columnDef.meta?.cellClassNames,
-                      "overflow-hidden text-ellipsis not-last:border-e border-border data-[is-pinned='true']:bg-background data-[is-pinned='true']:text-foreground data-[is-pinned='true']:z-1 data-[is-pinned='true']:group-even:bg-grid-row-stroke",
+                      "overflow-hidden text-ellipsis not-last:border-e border-border data-[is-pinned='true']:bg-background data-[is-pinned='true']:text-foreground data-[is-pinned='true']:z-1 data-[is-pinned='true']:group-even:bg-grid-row-stroke group-data-[is-selected='true']:bg-grid-selected-row-background! group-data-[is-selected='true']:text-grid-selected-row-foreground!",
                     )}
                     style={{ ...getCommonPinningStyles(cell.column) }}
                   >

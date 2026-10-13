@@ -147,12 +147,18 @@ export function useTablesGrid() {
       enableResizing: false,
       size: 100,
       minSize: 100,
-      cell() {
+      cell(info) {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <Button variant="ghost" size="icon-sm">
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
                   <IoEllipsisVertical className="size-4" />
                 </Button>
               }
