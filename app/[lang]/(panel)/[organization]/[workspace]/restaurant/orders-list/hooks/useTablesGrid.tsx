@@ -1,5 +1,8 @@
 import { useState } from "react";
 import {
+  type RowSelectionState,
+  type PaginationState,
+  type ColumnVisibilityState,
   createColumnHelper,
   metaHelper,
   tableFeatures,
@@ -9,6 +12,7 @@ import {
   columnOrderingFeature,
   columnVisibilityFeature,
   columnResizingFeature,
+  rowSelectionFeature,
   rowPaginationFeature,
   createPaginatedRowModel,
 } from "@tanstack/react-table";
@@ -32,6 +36,7 @@ const features = tableFeatures({
   columnVisibilityFeature,
   columnResizingFeature,
   rowPaginationFeature,
+  rowSelectionFeature,
   paginatedRowModel: createPaginatedRowModel(),
   columnMeta: metaHelper<{
     headerClassNames: string;
@@ -44,16 +49,13 @@ export function useTablesGrid() {
   const { panelSettings } = useSettingsContext();
   const columnHelper = createColumnHelper<typeof features, TData>();
   const { localeInfo } = useBaseConfig();
-  const [pagination, setPagination] = useState<{
-    pageIndex: number;
-    pageSize: number;
-  }>({
+  const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: panelSettings.gridDefaultRowsCount,
   });
-  const [columnVisibility, setColumnVisibility] = useState<
-    Record<string, boolean>
-  >({});
+  const [columnVisibility, setColumnVisibility] =
+    useState<ColumnVisibilityState>({});
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
   const columns = columnHelper.columns([
     columnHelper.accessor("date", {
@@ -184,11 +186,14 @@ export function useTablesGrid() {
       },
     },
     state: {
+      rowSelection,
       pagination,
       columnVisibility,
     },
+    enableMultiRowSelection: true,
     onPaginationChange: setPagination,
     onColumnVisibilityChange: setColumnVisibility,
+    onRowSelectionChange: setRowSelection,
   });
   return { table };
 }

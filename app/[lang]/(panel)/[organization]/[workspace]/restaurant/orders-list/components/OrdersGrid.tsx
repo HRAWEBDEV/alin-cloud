@@ -101,7 +101,15 @@ export default function OrdersGrid() {
       <TableBody>
         {table.getRowModel().rows.map((row) => {
           return (
-            <TableRow key={row.id} className="group even:bg-grid-row-stroke">
+            <TableRow
+              data-is-selected={row.getIsSelected()}
+              onClick={() => {
+                if (!row.getCanSelect()) return;
+                row.toggleSelected();
+              }}
+              key={row.id}
+              className="group even:bg-grid-row-stroke data-[is-selected='true']:bg-grid-selected-row-background data-[is-selected='true']:text-grid-selected-row-foreground"
+            >
               {row.getVisibleCells().map((cell) => {
                 return (
                   <TableCell
@@ -112,7 +120,7 @@ export default function OrdersGrid() {
                     }
                     className={cn(
                       cell.column.columnDef.meta?.cellClassNames,
-                      "overflow-hidden text-ellipsis not-last:border-e border-border data-[is-pinned='true']:bg-background data-[is-pinned='true']:z-1 data-[is-pinned='true']:group-even:bg-grid-row-stroke",
+                      "overflow-hidden text-ellipsis not-last:border-e border-border data-[is-pinned='true']:bg-background data-[is-pinned='true']:text-foreground data-[is-pinned='true']:z-1 data-[is-pinned='true']:group-even:bg-grid-row-stroke",
                     )}
                     style={{ ...getCommonPinningStyles(cell.column) }}
                   >

@@ -29,6 +29,8 @@
   --color-grid-header: var(--grid-header);
   --color-grid-header-foreground: var(--grid-header-foreground);
   --color-grid-row-stroke: var(--grid-row-stroke);
+  --color-grid-selected-row-background: var(--grid-selected-row-background);
+  --color-grid-selected-row-foreground: var(--grid-selected-row-foreground);
   --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
@@ -75,6 +77,8 @@
   --grid-header: oklch(0.92 0 0);
   --grid-header-foreground: var(--foreground);
   --grid-row-stroke: oklch(0.97 0 0);
+  --grid-selected-row-background: var(--primary);
+  --grid-selected-row-foreground: var(--primary-foreground);
   --primary: oklch(0.52 0.105 223.128);
   --primary-foreground: oklch(0.984 0.019 200.873);
   --secondary: oklch(0.967 0.001 286.375);
