@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { data, type TData } from "../services/ordersApiActions";
 import { useBaseConfig } from "@/services/base-config/baseConfigContext";
+import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
 
 const features = tableFeatures({
   columnPinningFeature,
@@ -40,6 +41,7 @@ const features = tableFeatures({
 });
 
 export function useTablesGrid() {
+  const { panelSettings } = useSettingsContext();
   const columnHelper = createColumnHelper<typeof features, TData>();
   const { localeInfo } = useBaseConfig();
   const [pagination, setPagination] = useState<{
@@ -47,7 +49,7 @@ export function useTablesGrid() {
     pageSize: number;
   }>({
     pageIndex: 0,
-    pageSize: 5,
+    pageSize: panelSettings.gridDefaultRowsCount,
   });
   const [columnVisibility, setColumnVisibility] = useState<
     Record<string, boolean>
@@ -69,6 +71,7 @@ export function useTablesGrid() {
       size: 110,
       minSize: 110,
       enableResizing: false,
+      enablePinning: false,
       meta: {
         headerClassNames: "text-center",
         cellClassNames: "text-center",
@@ -139,6 +142,7 @@ export function useTablesGrid() {
       header: "عملیات",
       enablePinning: false,
       enableHiding: false,
+      enableResizing: false,
       size: 100,
       minSize: 100,
       cell() {

@@ -25,7 +25,14 @@ export default function OrdersListPaging() {
   return (
     <div className="sticky bottom-0 shrink-0 border-t border-input p-1 flex gap-2 bg-background z-2">
       <div className="max-w-20">
-        <Combobox items={gridRowsCountOptions}>
+        <Combobox
+          items={gridRowsCountOptions}
+          value={table.state.pagination.pageSize}
+          onValueChange={(value) => {
+            if (!value) return;
+            table.setPageSize(value);
+          }}
+        >
           <ComboboxInput />
           <ComboboxContent>
             <ComboboxList>
