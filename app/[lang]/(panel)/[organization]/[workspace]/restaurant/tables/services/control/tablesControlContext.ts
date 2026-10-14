@@ -10,6 +10,8 @@ interface TablesControlContextProps {
   contentView: ContentViewOption;
   onChangeContentView(view: ContentViewOption): unknown;
   tablesGrid: ReturnType<typeof useTablesGrid>;
+  showEditPanel: boolean;
+  showEditModal: boolean;
   editTable: {
     open: boolean;
     onToggle(state: boolean, id: number | null): unknown;

@@ -6,12 +6,13 @@ import {
 } from "./tablesControlContext";
 import TablesWrapper from "../../components/TablesWrapper";
 import { type TablesDictionary } from "@/internalization/app/dictionaries/panel/restaurant/tables/dictionary";
-import EditTableDialog from "../../components/new-table/EditTableDialog";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { useShortcutsContext } from "@/app/[lang]/(panel)/services/shortcuts/shortcutsContext";
 import { type ContentViewOption } from "../../utils/contentViewOptions";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTablesGrid } from "../../hooks/useTablesGrid";
+import { useMatchMedia } from "@/hooks/useMatchMedia";
+import { BREAK_POINTS } from "@/utils/breakPoints";
 
 export default function TablesControlProvider({
   dic,
@@ -19,11 +20,19 @@ export default function TablesControlProvider({
   dic: TablesDictionary;
 }) {
   const isMatched = useIsMobile();
+  const isMatchedXl = useMatchMedia({
+    breakPoint: BREAK_POINTS.xl,
+  });
   const { onGetShortcutKeys } = useShortcutsContext();
   const [showEditTable, setShowEditTable] = useState(false);
   const tablesGrid = useTablesGrid();
   const [activeContentView, setActiveContentView] =
     useState<ContentViewOption>("grid");
+
+  const showEditPanel =
+    !isMatchedXl && activeContentView === "grid" && showEditTable;
+  const showEditModal =
+    (isMatchedXl || activeContentView !== "grid") && showEditTable;
 
   function handleChangeContentView(view: ContentViewOption) {
     setActiveContentView(view);
@@ -42,6 +51,8 @@ export default function TablesControlProvider({
     title: "tablesControlContext",
     dic,
     contentView: activeContentView,
+    showEditPanel,
+    showEditModal,
     onChangeContentView: handleChangeContentView,
     tablesGrid,
     editTable: {

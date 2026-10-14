@@ -15,6 +15,7 @@ import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryC
 import { Switch } from "@/components/ui/switch";
 import { IoIosAdd } from "react-icons/io";
 import { type TablesControlContextProps } from "../../services/control/tablesControlContext";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function EditTableForm({
   dic,
@@ -24,7 +25,7 @@ export default function EditTableForm({
 }) {
   const {
     shareDictionary: {
-      components: { noItemFound },
+      components: { noItemFound, settings },
     },
   } = useShareDictionary();
   return (
@@ -79,6 +80,14 @@ export default function EditTableForm({
             <InputGroup>
               <NumericFormat customInput={InputGroupInput} />
             </InputGroup>
+          </Field>
+        </div>
+        <div className="grow order-1 md:order-0">
+          <Field orientation="horizontal" className="gap-2">
+            <Checkbox className="scale-110" />
+            <FieldLabel className="text-neutral-500">
+              {settings.closeAfter}
+            </FieldLabel>
           </Field>
         </div>
       </FieldGroup>
