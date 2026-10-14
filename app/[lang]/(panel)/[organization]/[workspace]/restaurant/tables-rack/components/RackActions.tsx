@@ -15,10 +15,11 @@ import { TbFilterSearch } from "react-icons/tb";
 import { useSettingsContext } from "@/app/[lang]/(panel)/services/settings/settingsContext";
 import { Badge } from "@/components/ui/badge";
 import { useRackControlContext } from "../services/control/rackControlContext";
+import DinnerIcon from "@/app/[lang]/(panel)/components/navigation/icons/DinnerIcon";
 
 export default function RackActions() {
   const { toggleOpen } = useSettingsContext();
-  const { onToggleSidebar } = useRackControlContext();
+  const { dic, onToggleSidebar } = useRackControlContext();
   const {
     shareDictionary: {
       components: { settings },
@@ -66,6 +67,15 @@ export default function RackActions() {
               }
             />
             <DropdownMenuContent align="end" className="w-auto">
+              <DropdownMenuItem
+                className="h-11"
+                onClick={() => {
+                  toggleOpen(true, "shortcuts");
+                }}
+              >
+                <DinnerIcon className="size-5" />
+                <span>{dic.filters.newTable}</span>
+              </DropdownMenuItem>
               <DropdownMenuItem
                 className="h-11"
                 onClick={() => {
