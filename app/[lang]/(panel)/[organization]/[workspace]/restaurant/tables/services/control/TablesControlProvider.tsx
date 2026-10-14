@@ -58,11 +58,6 @@ export default function TablesControlProvider({
   return (
     <TablesControlContext.Provider value={ctx}>
       <TablesWrapper />
-      <EditTableDialog
-        dic={dic}
-        open={showEditTable}
-        onToggle={handleToggleEditTable}
-      />
     </TablesControlContext.Provider>
   );
 }
