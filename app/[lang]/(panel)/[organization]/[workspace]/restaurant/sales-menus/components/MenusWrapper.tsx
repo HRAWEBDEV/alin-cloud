@@ -11,7 +11,7 @@ export default function MenusWrapper() {
     >
       <MenusFilters />
       <div className="flex flex-col grow group-data-[view-mode='grid']:overflow-hidden px-2 pb-1">
-        <div className="group-data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow rounded-ee-none rounded-es-none border-b-0!"></div>
+        <div className="group-data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow"></div>
       </div>
     </div>
   );
