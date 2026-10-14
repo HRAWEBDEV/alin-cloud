@@ -1,12 +1,12 @@
 import { OutOfContext } from "@/utils/OutOfContext";
 import { use, createContext } from "react";
 import { type OrdersListDictionary } from "@/internalization/app/dictionaries/panel/restaurant/orders-list/dictionary";
-import { useTablesGrid } from "../../hooks/useTablesGrid";
+import { useTableGrid } from "../../hooks/useOrdersTableGrid";
 
 interface OrdersControlContextProps {
   title: "ordersControlContext";
   dic: OrdersListDictionary;
-  tablesGrid: ReturnType<typeof useTablesGrid>;
+  tablesGrid: ReturnType<typeof useTableGrid>;
   showDesktopSidebar: boolean;
   showMobileSidebar: boolean;
   onToggleSidebar: () => unknown;

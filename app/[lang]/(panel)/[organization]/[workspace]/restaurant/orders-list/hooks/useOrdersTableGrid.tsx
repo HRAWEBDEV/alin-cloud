@@ -45,7 +45,7 @@ const features = tableFeatures({
   }>(),
 });
 
-export function useTablesGrid() {
+export function useTableGrid() {
   const { panelSettings } = useSettingsContext();
   const columnHelper = createColumnHelper<typeof features, TData>();
   const { localeInfo } = useBaseConfig();
