@@ -13,7 +13,7 @@ export default function TablesWrapper() {
     <div
       data-show-edit-panel={showEditPanel}
       data-view-mode={contentView}
-      className="group w-[min(100%,60rem)] data-[show-edit-panel='true']:w-[min(100%,70rem)] mx-auto grow flex flex-col data-[view-mode='grid']:overflow-hidden"
+      className="group w-[min(100%,60rem)] data-[show-edit-panel='true']:w-[min(100%,75rem)] mx-auto grow flex flex-col data-[view-mode='grid']:overflow-hidden"
     >
       <div className="grow grid group-data-[view-mode='grid']:overflow-hidden xl:group-data-[show-edit-panel='true']:grid-cols-[1fr_20rem]">
         <div className="flex flex-col grow group-data-[view-mode='grid']:overflow-hidden">
