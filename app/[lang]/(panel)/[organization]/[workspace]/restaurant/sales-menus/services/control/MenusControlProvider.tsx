@@ -8,6 +8,7 @@ import MenusWrapper from "../../components/MenusWrapper";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useEffect, useState } from "react";
 import { type ContentViewOption } from "../../utils/contentViewOptions";
+import { useMenusTable } from "../../hooks/useMenusTable";
 
 export default function MenusControlProvider({
   dic,
@@ -18,6 +19,7 @@ export default function MenusControlProvider({
   const [showEditMenu, setShowEditMenu] = useState(false);
   const [activeContentView, setActiveContentView] =
     useState<ContentViewOption>("grid");
+  const menusGrid = useMenusTable();
 
   function handleChangeContentView(view: ContentViewOption) {
     setActiveContentView(view);
@@ -30,6 +32,7 @@ export default function MenusControlProvider({
   const ctx: MenusControlContextProps = {
     title: "menusControlContext",
     dic,
+    menusGrid,
     contentView: activeContentView,
     onChangeContentView: handleChangeContentView,
   };

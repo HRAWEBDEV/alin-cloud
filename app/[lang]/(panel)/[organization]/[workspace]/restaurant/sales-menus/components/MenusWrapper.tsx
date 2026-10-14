@@ -1,6 +1,7 @@
 "use client";
 import { useMenusControlContext } from "../services/control/menusControlContext";
 import MenusFilters from "./MenusFilters";
+import MenusList from "./MenusList";
 
 export default function MenusWrapper() {
   const { contentView } = useMenusControlContext();
@@ -11,7 +12,9 @@ export default function MenusWrapper() {
     >
       <MenusFilters />
       <div className="flex flex-col grow group-data-[view-mode='grid']:overflow-hidden px-2 pb-1">
-        <div className="group-data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow"></div>
+        <div className="group-data-[view-mode='grid']:border border-border rounded-md grow flex flex-col overflow-hidden **:data-[slot='table-container']:grow">
+          <MenusList />
+        </div>
       </div>
     </div>
   );
