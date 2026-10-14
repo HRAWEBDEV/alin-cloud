@@ -1,6 +1,13 @@
 import {
+  columnOrderingFeature,
+  columnPinningFeature,
+  columnResizingFeature,
+  columnSizingFeature,
+  columnVisibilityFeature,
   createColumnHelper,
   metaHelper,
+  rowPaginationFeature,
+  rowSelectionFeature,
   tableFeatures,
   useTable,
 } from "@tanstack/react-table";
@@ -15,16 +22,26 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { data, TData } from "../services/tablesApiActions";
 import { IoStar } from "react-icons/io5";
+import { useBaseConfig } from "@/services/base-config/baseConfigContext";
 
 const features = tableFeatures({
+  columnPinningFeature,
+  columnSizingFeature,
+  columnOrderingFeature,
+  columnVisibilityFeature,
+  columnResizingFeature,
+  rowPaginationFeature,
+  rowSelectionFeature,
   columnMeta: metaHelper<{
     headerClassNames: string;
     cellClassNames: string;
+    type?: "action";
   }>(),
 });
 
 export function useTablesGrid() {
   const columnHelper = createColumnHelper<typeof features, TData>();
+  const { localeInfo } = useBaseConfig();
 
   const columns = columnHelper.columns([
     columnHelper.accessor("tableNo", {
@@ -66,7 +83,10 @@ export function useTablesGrid() {
       },
     }),
     columnHelper.display({
+      id: "actions",
       header: "عملیات",
+      enableResizing: false,
+      enablePinning: false,
       cell() {
         return (
           <DropdownMenu>
@@ -88,6 +108,7 @@ export function useTablesGrid() {
       meta: {
         headerClassNames: "text-center min-w-24 w-24",
         cellClassNames: "text-center p-0",
+        type: "action",
       },
     }),
   ]);
@@ -96,6 +117,15 @@ export function useTablesGrid() {
     features,
     columns,
     data,
+    columnResizeMode: "onChange",
+    columnResizeDirection: localeInfo.contentDirection,
+    enableMultiRowSelection: true,
+    initialState: {
+      columnPinning: {
+        start: [],
+        end: ["actions"],
+      },
+    },
   });
   return { table };
 }

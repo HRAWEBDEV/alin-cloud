@@ -147,7 +147,7 @@ export function useTableGrid() {
       enableResizing: false,
       size: 100,
       minSize: 100,
-      cell(info) {
+      cell() {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger

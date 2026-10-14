@@ -58,10 +58,22 @@ export function useMenusTable() {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
 
   const columns = columnHelper.columns([
-    columnHelper.accessor("menuName", {
-      header: "عنوان",
+    columnHelper.display({
+      header: "ردیف",
       size: 110,
       minSize: 110,
+      enableHiding: false,
+      enablePinning: false,
+      enableResizing: false,
+      meta: {
+        headerClassNames: "text-center",
+        cellClassNames: "text-center",
+      },
+    }),
+    columnHelper.accessor("menuName", {
+      header: "عنوان",
+      size: 600,
+      minSize: 300,
       enableHiding: false,
       meta: {
         headerClassNames: "text-start",
@@ -76,7 +88,8 @@ export function useMenusTable() {
       enableResizing: false,
       size: 100,
       minSize: 100,
-      cell(info) {
+      maxSize: 100,
+      cell() {
         return (
           <DropdownMenu>
             <DropdownMenuTrigger
