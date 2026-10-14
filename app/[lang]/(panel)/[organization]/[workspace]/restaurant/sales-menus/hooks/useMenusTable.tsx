@@ -59,6 +59,7 @@ export function useMenusTable() {
 
   const columns = columnHelper.columns([
     columnHelper.display({
+      id: "row",
       header: "ردیف",
       size: 110,
       minSize: 110,
@@ -72,8 +73,8 @@ export function useMenusTable() {
     }),
     columnHelper.accessor("menuName", {
       header: "عنوان",
-      size: 600,
-      minSize: 300,
+      size: 400,
+      minSize: 250,
       enableHiding: false,
       meta: {
         headerClassNames: "text-start",
