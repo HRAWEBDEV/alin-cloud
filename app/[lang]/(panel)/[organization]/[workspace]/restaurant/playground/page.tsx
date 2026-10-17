@@ -1,5 +1,3 @@
-"use client";
-
-export default function TablesRackPage() {
+export default async function TablesRackPage() {
   return <div>playground</div>;
 }
