@@ -56,7 +56,7 @@ export default function RackTable() {
           )}
         >
           {true && (
-            <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-500/40 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>
+            <div className='absolute top-11 group-data-[layout-minimal="true"]:top-0 group-data-[layout-minimal="true"]:bottom-11 start-0 end-0 text-end text-4xl text-amber-500/30 font-en-roboto group-data-[bold=true]:font-bold group-data-[layout-minimal="true"]:text-3xl'>
               VIP
             </div>
           )}
@@ -102,7 +102,7 @@ export default function RackTable() {
               <div className="flex gap-1 items-center">
                 {true && (
                   <IoPrint
-                    className={`${false ? "size-5" : "size-6"} text-primary`}
+                    className={`${false ? "size-5" : "size-6"} text-primary/50`}
                   />
                 )}
               </div>

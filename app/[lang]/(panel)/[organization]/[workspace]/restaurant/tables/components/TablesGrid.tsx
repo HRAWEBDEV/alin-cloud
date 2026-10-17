@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import { MdOutlinePushPin } from "react-icons/md";
 import { RiUnpinLine } from "react-icons/ri";
 
-export default function MenusGrid() {
+export default function TablesGrid() {
   const {
     tablesGrid: { table },
   } = useTablesControlContext();

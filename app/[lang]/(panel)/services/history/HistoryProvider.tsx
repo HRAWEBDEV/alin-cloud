@@ -21,21 +21,31 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
   const handleChangePath = useCallback(
     (historyItem: Omit<HistoryContextProps["historyList"][number], "id">) => {
       setHistoryList((pre) => {
-        const lastItem = pre[pre.length - 1];
-        const newItem = { id: lastItem ? lastItem.id + 1 : 1, ...historyItem };
         if (pre.length === 0) {
-          return [newItem];
+          return [
+            {
+              id: 1,
+              ...historyItem,
+            },
+          ];
         }
         if (
           pre.some(
             (item) =>
-              item.path === newItem.path && item.search === newItem.search,
+              item.path === historyItem.path &&
+              item.search === historyItem.search,
           )
         ) {
           return pre;
         }
         const newHistoryList = pre.slice(-(numberOfHistoryTabs - 1));
-        return [...newHistoryList, newItem];
+        return [
+          ...newHistoryList,
+          {
+            id: Date.now(),
+            ...historyItem,
+          },
+        ];
       });
     },
     [],
