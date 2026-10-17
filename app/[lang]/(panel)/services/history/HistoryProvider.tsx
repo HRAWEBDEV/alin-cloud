@@ -40,6 +40,19 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     },
     [],
   );
+  // order tab
+  function handleOrderTab({
+    index,
+    initialIndex,
+  }: {
+    index: number;
+    initialIndex: number;
+  }) {
+    const cloneHistoryList = [...historyList];
+    const historyItem = cloneHistoryList.splice(initialIndex, 1);
+    cloneHistoryList.splice(index, 0, historyItem[0]);
+    setHistoryList(cloneHistoryList);
+  }
 
   function handleGoBack() {
     if (historyList.length > 1) {
@@ -83,6 +96,7 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     numberOfHistoryTabs,
     onDeleteHistory: handleDeleteHistory,
     onGoBack: handleGoBack,
+    onOrderTab: handleOrderTab,
   };
   // when path,search changes
   useEffect(() => {

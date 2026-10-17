@@ -8,12 +8,19 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { useHistoryContext } from "../historyContext";
 import { motion } from "framer-motion";
+import { useSortable } from "@dnd-kit/react/sortable";
 
 export default function HistoryTabItem({
   item,
+  index,
 }: {
   item: HistoryContextProps["historyList"][number];
+  index: number;
 }) {
+  const { ref } = useSortable({
+    id: item.id,
+    index,
+  });
   const router = useRouter();
   const { onDeleteHistory } = useHistoryContext();
   const {
@@ -25,6 +32,7 @@ export default function HistoryTabItem({
   const navItem = check(item.path);
   return (
     <TabsTrigger
+      ref={ref}
       key={item.id}
       value={`${item.path}?${item.search}`}
       className="text-start justify-start bg-neutral-200 dark:bg-neutral-900 cursor-pointer font-normal"
