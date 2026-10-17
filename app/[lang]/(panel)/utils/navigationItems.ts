@@ -5,6 +5,10 @@ export interface NavigationItem {
 }
 export const navigationItems: NavigationItem[] = [
   {
+    name: "playground",
+    path: "/restaurant/playground",
+  },
+  {
     name: "tablesRack",
     path: "/restaurant/tables-rack",
   },
