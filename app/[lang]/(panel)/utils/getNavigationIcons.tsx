@@ -2,7 +2,7 @@ import { SVGProps } from "react";
 import DinnerIcon from "../components/navigation/icons/DinnerIcon";
 import DinninTableIcon from "../components/navigation/icons/DinningTableIcon";
 import DishIcon from "../components/navigation/icons/DishIcon";
-import { FaClipboardList } from "react-icons/fa";
+import { HiClipboardList } from "react-icons/hi";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdOutlineMenuBook } from "react-icons/md";
 
@@ -20,7 +20,7 @@ export function getNavigationIcons(
     case "capacityAndPricing":
       return <MdOutlineMenuBook {...props} />;
     case "ordersList":
-      return <FaClipboardList {...props} />;
+      return <HiClipboardList {...props} />;
     case "settings":
       return <IoSettingsSharp {...props} />;
   }
