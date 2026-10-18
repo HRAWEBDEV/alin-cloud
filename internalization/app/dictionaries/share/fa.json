@@ -13,7 +13,8 @@
       "playground": "playground",
       "salesMenus": "منوهای فروش",
       "settings": "تنظیمات",
-      "ordersList": "لیست سفارش‌ها"
+      "ordersList": "لیست سفارش‌ها",
+      "dinningView": "نمای سالن"
     },
     "noItemFound": {
       "title": "آیتمی یافت نشد",

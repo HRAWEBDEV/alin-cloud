@@ -9,6 +9,10 @@ export const navigationItems: NavigationItem[] = [
     path: "/restaurant/playground",
   },
   {
+    name: "dinningView",
+    path: "/restaurant/dinningView",
+  },
+  {
     name: "tablesRack",
     path: "/restaurant/tables-rack",
   },
