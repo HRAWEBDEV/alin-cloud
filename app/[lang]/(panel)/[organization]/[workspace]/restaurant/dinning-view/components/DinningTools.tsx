@@ -36,7 +36,7 @@ export default function DinningTools() {
                   data-is-table-selected={isTableSelected}
                   variant="outline"
                   key={item.id}
-                  className="h-auto size-14 data-[is-table-selected='true']:bg-primary data-[is-table-selected='true']:text-primary-foreground"
+                  className="h-auto size-14 data-[is-table-selected='true']:bg-primary! data-[is-table-selected='true']:text-primary-foreground!"
                   onClick={() => {
                     if (isTableSelected) return;
                     onAddGridBox({ id: item.id });
