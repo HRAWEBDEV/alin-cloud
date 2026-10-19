@@ -39,12 +39,6 @@ export default function DinningTable({ box }: { box: GridBox }) {
       >
         <h3 className="font-en-roboto text-xl font-medium">{box.id}</h3>
       </Button>
-      {isSelectedBox && (
-        <>
-          <div className="absolute inset-x-0 bottom-0 h-0.75 bg-primary/50 cursor-s-resize z-1"></div>
-          <div className="absolute inset-y-0 inset-e-0 w-0.75 bg-primary/50 cursor-e-resize z-1"></div>
-        </>
-      )}
     </div>
   );
 }
