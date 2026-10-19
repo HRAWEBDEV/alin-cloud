@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { useHistoryContext } from "../historyContext";
 import { motion } from "framer-motion";
 import { useSortable } from "@dnd-kit/react/sortable";
+import { RestrictToHorizontalAxis } from "@dnd-kit/abstract/modifiers";
+import { RefObject } from "react";
 
 export default function HistoryTabItem({
   item,
@@ -16,10 +18,12 @@ export default function HistoryTabItem({
 }: {
   item: HistoryContextProps["historyList"][number];
   index: number;
+  containterRef: RefObject<HTMLDivElement | null>;
 }) {
   const { ref } = useSortable({
     id: item.id,
     index,
+    modifiers: [RestrictToHorizontalAxis],
   });
   const router = useRouter();
   const { onDeleteHistory } = useHistoryContext();

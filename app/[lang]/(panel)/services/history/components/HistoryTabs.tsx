@@ -1,4 +1,5 @@
 "use client";
+import { useRef } from "react";
 import { Tabs, TabsList } from "@/components/ui/tabs";
 import { useHistoryContext } from "../historyContext";
 import HistoryTabItem from "./HistoryTabItem";
@@ -15,12 +16,16 @@ export default function HistoryTabs() {
   const searchParamsString = searchParams.toString();
   const { historyList, numberOfHistoryTabs, onOrderTab } = useHistoryContext();
   const matched = useMatchMedia({ breakPoint: BREAK_POINTS.lg });
+  const containterRef = useRef<HTMLDivElement>(null);
   return (
     <>
       {matched || !historyList.length ? null : (
         <div>
           <Tabs value={`${pathname}?${searchParamsString}`}>
-            <TabsList className="rounded-none w-full [&>button]:grow-0 [&>button]:min-w-40 justify-start gap-1">
+            <TabsList
+              className="rounded-none w-full [&>button]:grow-0 [&>button]:min-w-40 justify-start gap-1"
+              ref={containterRef}
+            >
               <AnimatePresence>
                 <DragDropProvider
                   onDragEnd={(e) => {
@@ -37,7 +42,12 @@ export default function HistoryTabs() {
                   {historyList
                     .slice(-1 * numberOfHistoryTabs)
                     .map((item, i) => (
-                      <HistoryTabItem key={item.id} item={item} index={i} />
+                      <HistoryTabItem
+                        key={item.id}
+                        item={item}
+                        index={i}
+                        containterRef={containterRef}
+                      />
                     ))}
                 </DragDropProvider>
               </AnimatePresence>
