@@ -7,7 +7,8 @@ import { useDinningControlContext } from "../services/control/dinningControlCont
 
 export default function DinningTable({ box }: { box: GridBox }) {
   const { gridLayoutSettings, grid } = useDinningControlContext();
-  const { ref } = useDraggable({
+  const isSelectedBox = grid.selectedBoxID === box.id;
+  const { ref, isDragging } = useDraggable({
     id: box.id,
     modifiers: [
       SnapModifier.configure({
@@ -17,22 +18,33 @@ export default function DinningTable({ box }: { box: GridBox }) {
   });
 
   return (
-    <Button
-      data-selected-box={grid.selectedBoxID === box.id}
-      ref={ref}
+    <div
+      data-selected-box={isSelectedBox}
+      data-is-dragging={isDragging}
       style={{
         width: `${box.width}px`,
         height: `${box.height}px`,
-        translate: `${box.x}px ${box.y}px `,
+        translate: `${box.x}px ${box.y}px`,
       }}
-      variant="outline"
-      className="h-auto bg-neutral-500! text-primary-foreground! origin-top-left absolute data-[selected-box='true']:outline-4 data-[selected-box='true']:outline-solid outline-primary"
-      onClick={(e) => {
-        e.stopPropagation();
-        grid.onChangeSelectedBox(box.id);
-      }}
+      className="absolute rounded-md overflow-hidden data-[selected-box='true']:outline-3 data-[selected-box='true']:outline-solid outline-primary data-[is-dragging='true']:opacity-0"
     >
-      <h3 className="font-en-roboto text-xl font-medium">{box.id}</h3>
-    </Button>
+      <Button
+        ref={ref}
+        variant="outline"
+        className="h-full w-full bg-neutral-500/80! text-primary-foreground! origin-top-left overflow-hidden shadow-2xl"
+        onClick={(e) => {
+          e.stopPropagation();
+          grid.onChangeSelectedBox(box.id);
+        }}
+      >
+        <h3 className="font-en-roboto text-xl font-medium">{box.id}</h3>
+      </Button>
+      {isSelectedBox && (
+        <>
+          <div className="absolute inset-x-0 bottom-0 h-0.75 bg-primary/50 cursor-s-resize z-1"></div>
+          <div className="absolute inset-y-0 inset-e-0 w-0.75 bg-primary/50 cursor-e-resize z-1"></div>
+        </>
+      )}
+    </div>
   );
 }

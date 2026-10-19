@@ -44,7 +44,7 @@ export default function DinningTools() {
           )}
         </div>
       )}
-      <div className="w-[min(100%,40rem)] mx-auto p-0.5 px-1 bg-neutral-200 dark:bg-neutral-800 border border-border mb-2 rounded-full flex">
+      <div className="w-[min(95%,40rem)] mx-auto p-0.5 px-1 bg-neutral-200 dark:bg-neutral-800 border border-border mb-2 rounded-full flex">
         <div className="flex gap-1 items-center">
           <Combobox items={[]}>
             <ComboboxInput
