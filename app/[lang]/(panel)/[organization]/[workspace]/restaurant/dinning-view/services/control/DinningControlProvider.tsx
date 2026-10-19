@@ -11,6 +11,8 @@ import {
   type GridBox,
   getDefaultGridBoxProperties,
 } from "../../utils/gridBoxProperties";
+import { useShortcutsContext } from "@/app/[lang]/(panel)/services/shortcuts/shortcutsContext";
+import { useHotkey } from "@tanstack/react-hotkeys";
 
 type DinningControlProviderProps = {
   dic: DinningViewDictionary;
@@ -19,6 +21,7 @@ type DinningControlProviderProps = {
 export default function DinningControlProvider({
   dic,
 }: DinningControlProviderProps) {
+  const { onGetShortcutKeys } = useShortcutsContext();
   const [showTableslist, setShowTablesList] = useState(false);
   const [gridBoxes, setGridBoxes] = useState<GridBox[]>([]);
   const [selectedBoxID, setSelectedBoxID] = useState<GridBox["id"] | null>(
@@ -26,6 +29,7 @@ export default function DinningControlProvider({
   );
   const [gridLayoutSettings, setGridLayoutSettings] = useState({
     gridSize: 30,
+    layoutSize: 1900,
   });
 
   function handleChangeSelectedBox(id: GridBox["id"] | null) {
@@ -89,6 +93,11 @@ export default function DinningControlProvider({
       });
     });
   }
+  // shortucts
+  useHotkey(onGetShortcutKeys("dinningView", "deleteBox"), () => {
+    if (!selectedBoxID) return;
+    handleRemoveGridBox(selectedBoxID);
+  });
 
   const ctx: DinningControlContextProps = {
     title: "dinning view control",

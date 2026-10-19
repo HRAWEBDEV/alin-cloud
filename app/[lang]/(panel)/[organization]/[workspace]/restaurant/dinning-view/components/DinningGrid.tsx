@@ -18,11 +18,15 @@ export default function DinningGrid() {
       className="grow overflow-auto"
     >
       <div
+        style={{
+          height: gridLayoutSettings.layoutSize,
+          width: gridLayoutSettings.layoutSize,
+        }}
         onClick={() => {
           grid.onChangeSelectedBox(null);
         }}
         ref={contrainerRef}
-        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] size-[1900px] relative"
+        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),var(--color-border)_calc(var(--grid-size)-1px),var(--color-border)_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),var(--color-border)_calc(var(--grid-size)-1px),var(--color-border)_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] relative"
       >
         <DragDropProvider
           onDragEnd={({ operation }) => {

@@ -64,7 +64,7 @@ export default function DinningTable({ box }: { box: GridBox }) {
         <Button
           ref={ref}
           variant="outline"
-          className="h-full w-full bg-neutral-500/80! text-primary-foreground! origin-top-left rounded-md overflow-hidden outline-primary z-1"
+          className="h-full w-full bg-amber-800/80! text-primary-foreground! origin-top-left rounded-md overflow-hidden outline-primary z-1"
           onClick={(e) => {
             e.stopPropagation();
             grid.onChangeSelectedBox(box.id);

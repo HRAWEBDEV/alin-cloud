@@ -5,6 +5,7 @@ import { type GridBox } from "../../utils/gridBoxProperties";
 
 interface GridLayoutSettings {
   gridSize: number;
+  layoutSize: number;
 }
 
 interface DinningControlContextProps {
