@@ -27,7 +27,10 @@ export default function DinningTable({ box }: { box: GridBox }) {
       }}
       variant="outline"
       className="h-auto bg-neutral-500! text-primary-foreground! origin-top-left absolute data-[selected-box='true']:outline-4 data-[selected-box='true']:outline-solid outline-primary"
-      onClick={() => grid.onChangeSelectedBox(box.id)}
+      onClick={(e) => {
+        e.stopPropagation();
+        grid.onChangeSelectedBox(box.id);
+      }}
     >
       <h3 className="font-en-roboto text-xl font-medium">{box.id}</h3>
     </Button>

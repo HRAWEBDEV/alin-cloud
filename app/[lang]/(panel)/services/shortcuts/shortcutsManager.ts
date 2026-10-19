@@ -27,14 +27,9 @@ const defaultShortcuts = {
       keys: "Control+\/" as RegisterableHotkey,
     },
   },
-  tables: {
-    addingItem: {
-      keys: "C" as RegisterableHotkey,
-    },
-  },
-  salons: {
-    addingItem: {
-      keys: "C" as RegisterableHotkey,
+  dinningView: {
+    deleteBox: {
+      keys: "Delete" as RegisterableHotkey,
     },
   },
   tablesRack: {
@@ -43,6 +38,16 @@ const defaultShortcuts = {
     },
   },
   newOrder: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
+  },
+  tables: {
+    addingItem: {
+      keys: "C" as RegisterableHotkey,
+    },
+  },
+  salons: {
     addingItem: {
       keys: "C" as RegisterableHotkey,
     },
