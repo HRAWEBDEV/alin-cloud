@@ -19,9 +19,18 @@ export default function DinningGrid() {
     >
       <div
         ref={contrainerRef}
-        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] size-[3000px]"
+        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] size-[3000px] relative"
       >
-        <DragDropProvider>
+        <DragDropProvider
+          onDragEnd={({ operation }) => {
+            if (operation.canceled || !operation.source?.id) return;
+            grid.onTransforBox({
+              id: operation.source!.id as number,
+              x: operation.transform.x,
+              y: operation.transform.y,
+            });
+          }}
+        >
           {grid.boxes.map((box) => (
             <DinningTable key={box.id} box={box} />
           ))}

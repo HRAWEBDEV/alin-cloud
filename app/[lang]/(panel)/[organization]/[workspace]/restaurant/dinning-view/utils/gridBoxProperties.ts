@@ -7,8 +7,8 @@ interface GridBox {
 }
 
 const defaultGridBoxProperties: Omit<GridBox, "id"> = {
-  width: 30,
-  height: 30,
+  width: 60,
+  height: 60,
   x: 0,
   y: 0,
 };

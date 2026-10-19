@@ -21,9 +21,16 @@ export default function DinningControlProvider({
 }: DinningControlProviderProps) {
   const [showTableslist, setShowTablesList] = useState(false);
   const [gridBoxes, setGridBoxes] = useState<GridBox[]>([]);
+  const [selectedBoxID, setSelectedBoxID] = useState<GridBox["id"] | null>(
+    null,
+  );
   const [gridLayoutSettings, setGridLayoutSettings] = useState({
     gridSize: 30,
   });
+
+  function handleChangeSelectedBox(id: GridBox["id"] | null) {
+    setSelectedBoxID(id);
+  }
 
   function handleToggleTablesList() {
     setShowTablesList((pre) => !pre);
@@ -43,7 +50,43 @@ export default function DinningControlProvider({
   function handleAddGridBox(props: Pick<GridBox, "id">) {
     setGridBoxes((pre) => {
       if (pre.some((item) => item.id === props.id)) return pre;
-      return [...pre, { ...props, ...getDefaultGridBoxProperties() }];
+      const defaultProps = getDefaultGridBoxProperties();
+      return [...pre, { ...props, ...defaultProps }];
+    });
+  }
+  function handleRemoveGridBox(id: GridBox["id"]) {
+    setGridBoxes((pre) => {
+      return pre.filter((item) => item.id !== id);
+    });
+  }
+
+  function handleUpdateGridBoxProperties(
+    props: Partial<GridBox> & { id: GridBox["id"] },
+  ) {
+    setGridBoxes((pre) => {
+      return pre.map((item) => {
+        if (item.id === props.id) {
+          return { ...item, ...props };
+        }
+        return item;
+      });
+    });
+  }
+
+  function handleTransformBox(
+    props: Pick<GridBox, "x" | "y"> & { id: GridBox["id"] },
+  ) {
+    setGridBoxes((pre) => {
+      return pre.map((item) => {
+        if (item.id === props.id) {
+          return {
+            ...item,
+            x: item.x + props.x,
+            y: item.y + props.y,
+          };
+        }
+        return item;
+      });
     });
   }
 
@@ -58,7 +101,12 @@ export default function DinningControlProvider({
     },
     grid: {
       boxes: gridBoxes,
+      selectedBoxID,
+      onChangeSelectedBox: handleChangeSelectedBox,
+      onUpdateGridBoxProperties: handleUpdateGridBoxProperties,
       onAddGridBox: handleAddGridBox,
+      onRemoveGridBox: handleRemoveGridBox,
+      onTransforBox: handleTransformBox,
     },
   };
 
