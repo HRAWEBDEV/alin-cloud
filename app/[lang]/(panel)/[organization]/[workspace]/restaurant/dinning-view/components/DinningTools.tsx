@@ -29,18 +29,25 @@ export default function DinningTools() {
       {showList && (
         <div className="p-2 border border-border bg-neutral-200 dark:bg-neutral-800 mb-1 rounded-md w-[min(95%,60rem)] mx-auto overflow-auto flex gap-1">
           {Array.from({ length: 200 }, (_, i) => ({ id: i + 1 })).map(
-            (item) => (
-              <Button
-                variant="outline"
-                key={item.id}
-                className="h-auto size-14"
-                onClick={() => onAddGridBox({ id: item.id })}
-              >
-                <h3 className="font-en-roboto font-medium text-base">
-                  {item.id.toString().padStart(2, "0")}
-                </h3>
-              </Button>
-            ),
+            (item) => {
+              const isTableSelected = boxes.some((box) => item.id === box.id);
+              return (
+                <Button
+                  data-is-table-selected={isTableSelected}
+                  variant="outline"
+                  key={item.id}
+                  className="h-auto size-14 data-[is-table-selected='true']:bg-primary data-[is-table-selected='true']:text-primary-foreground"
+                  onClick={() => {
+                    if (isTableSelected) return;
+                    onAddGridBox({ id: item.id });
+                  }}
+                >
+                  <h3 className="font-en-roboto font-medium text-base">
+                    {item.id.toString().padStart(2, "0")}
+                  </h3>
+                </Button>
+              );
+            },
           )}
         </div>
       )}

@@ -22,7 +22,7 @@ export default function DinningGrid() {
           grid.onChangeSelectedBox(null);
         }}
         ref={contrainerRef}
-        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] size-[3000px] relative"
+        className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),#ddd_calc(var(--grid-size)-1px),#ddd_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] size-[1900px] relative"
       >
         <DragDropProvider
           onDragEnd={({ operation }) => {
