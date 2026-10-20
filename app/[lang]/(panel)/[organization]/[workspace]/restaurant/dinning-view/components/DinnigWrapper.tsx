@@ -1,6 +1,7 @@
 import { RefObject } from "react";
 import DinningGrid from "./DinningGrid";
 import DinningTools from "./DinningTools";
+import Test from "./Test";
 
 export default function DinnigWrapper({
   gridLayoutRef,

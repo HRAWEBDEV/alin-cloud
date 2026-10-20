@@ -45,14 +45,13 @@ export default function DinningTable({
         defaultGridBoxProperties.width * 5,
         defaultGridBoxProperties.height * 5,
       ]}
-      handle={(handleAxis, ref) => {
-        return isSelectedBox ? (
+      axis="both"
+      handle={(cl, ref) => {
+        return (
           <div
             ref={ref as RefObject<HTMLDivElement>}
-            className={`${handleAxis} absolute z-0 inset-0 border-3 border-primary rounded-md cursor-nwse-resize`}
+            className={`absolute size-4 bottom-1 inset-e-0 z-2 translate-x-1/2 translate-y-1/2 ${cl} rounded-full border-2 border-primary bg-background cursor-se-resize ${isSelectedBox ? "" : "opacity-0"}`}
           ></div>
-        ) : (
-          <div className="hidden"></div>
         );
       }}
       onResize={(_, { size }) => {
@@ -71,7 +70,7 @@ export default function DinningTable({
           height: `${box.height}px`,
           translate: `${box.x}px ${box.y}px`,
         }}
-        className="data-[is-selected-box='true']:p-1 flex flex-col absolute! isolate data-[is-dragging='true']:opacity-0"
+        className="rounded-md data-[is-selected-box='true']:p-1 flex flex-col isolate data-[is-dragging='true']:opacity-0 data-[is-selected-box='true']:outline-3 data-[is-selected-box='true']:outline-primary"
       >
         <Button
           ref={ref}
