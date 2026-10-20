@@ -70,7 +70,7 @@ export default function DinningTable({
           height: `${box.height}px`,
           translate: `${box.x}px ${box.y}px`,
         }}
-        className="rounded-md data-[is-selected-box='true']:p-1 flex flex-col isolate data-[is-dragging='true']:opacity-0 data-[is-selected-box='true']:outline-3 data-[is-selected-box='true']:outline-primary"
+        className="rounded-md data-[is-selected-box='true']:p-1 flex flex-col isolate absolute! data-[is-dragging='true']:opacity-0 data-[is-selected-box='true']:outline-3 data-[is-selected-box='true']:outline-primary"
       >
         <Button
           ref={ref}
