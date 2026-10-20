@@ -95,6 +95,10 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
       router.push(`${prevHistoryItem.path}?${prevHistoryItem.search}`);
     }
   }
+  function handleGetActiveHistoryItem() {
+    return historyList.find(checkIsActivePath) || null;
+  }
+  const activeHistoryItem = handleGetActiveHistoryItem();
   // on clear history
   // on comeback
   const canGoBack = historyList.length > 1;
@@ -105,6 +109,7 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
     canGoBack,
     numberOfHistoryTabs,
     onDeleteHistory: handleDeleteHistory,
+    onGetActiveHistoryItem: handleGetActiveHistoryItem,
     onGoBack: handleGoBack,
     onOrderTab: handleOrderTab,
   };
