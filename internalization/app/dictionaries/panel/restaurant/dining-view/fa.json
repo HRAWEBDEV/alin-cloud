@@ -4,6 +4,9 @@
     "salon": "سالن",
     "tables": "میزها",
     "eraseGrid": "پاک کردن صفحه",
-    "removeBox": "حذف"
+    "removeBox": "حذف",
+    "clearGridBoxConfirmMessage": "صفحه خالی شود؟",
+    "confirm": "تایید",
+    "cancel": "انصراف"
   }
 }

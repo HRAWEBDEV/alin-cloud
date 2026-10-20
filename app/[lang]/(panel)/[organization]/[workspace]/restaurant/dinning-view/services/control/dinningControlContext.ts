@@ -29,6 +29,7 @@ interface DinningControlContextProps {
     }) => unknown;
     onAddGridBox: (props: Pick<GridBox, "id">) => unknown;
     onRemoveGridBoxes: (ids: GridBox["id"][]) => unknown;
+    onClearGridBoxes: () => unknown;
     onUpdateGridBoxProperties: (
       props: Partial<GridBox> & { id: GridBox["id"] },
     ) => unknown;

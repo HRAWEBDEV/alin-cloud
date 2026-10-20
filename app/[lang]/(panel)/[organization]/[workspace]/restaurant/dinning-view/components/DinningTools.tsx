@@ -24,7 +24,13 @@ export default function DinningTools() {
   const {
     dic,
     tables: { showList, onToggleList },
-    grid: { boxes, onAddGridBox, onRemoveGridBoxes, selectedBoxIds },
+    grid: {
+      boxes,
+      onAddGridBox,
+      onRemoveGridBoxes,
+      selectedBoxIds,
+      onClearGridBoxes,
+    },
   } = useDinningControlContext();
   const {
     shareDictionary: {
@@ -95,20 +101,23 @@ export default function DinningTools() {
             />
             <TooltipContent>{dic.tools.tables}</TooltipContent>
           </Tooltip>
-          <Tooltip>
-            <TooltipTrigger
-              render={
-                <Button
-                  size="icon-lg"
-                  variant="outline"
-                  className="rounded-full"
-                >
-                  <BiSolidEraser className="size-5 text-destructive" />
-                </Button>
-              }
-            />
-            <TooltipContent>{dic.tools.eraseGrid}</TooltipContent>
-          </Tooltip>
+          {boxes.length > 0 && (
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <Button
+                    size="icon-lg"
+                    variant="outline"
+                    className="rounded-full"
+                    onClick={() => onClearGridBoxes()}
+                  >
+                    <BiSolidEraser className="size-5 text-destructive" />
+                  </Button>
+                }
+              />
+              <TooltipContent>{dic.tools.eraseGrid}</TooltipContent>
+            </Tooltip>
+          )}
           <div className="grow flex gap-1 items-center justify-end">
             {!!selectedBoxIds.length && (
               <Tooltip>

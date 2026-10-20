@@ -45,7 +45,11 @@ export default function DinningGrid({
           }}
         >
           {grid.boxes.map((box) => (
-            <DinningTable key={box.id} box={box} />
+            <DinningTable
+              key={box.id}
+              box={box}
+              gridLayoutRef={gridLayoutRef}
+            />
           ))}
         </DragDropProvider>
       </div>

@@ -2,18 +2,31 @@
 import { Button } from "@/components/ui/button";
 import { useDraggable } from "@dnd-kit/react";
 import { SnapModifier } from "@dnd-kit/abstract/modifiers";
+import { RestrictToElement } from "@dnd-kit/dom/modifiers";
 import { type GridBox } from "../utils/gridBoxProperties";
 import { useDinningControlContext } from "../services/control/dinningControlContext";
 import { Resizable } from "react-resizable";
 import { RefObject } from "react";
 import { defaultGridBoxProperties } from "../utils/gridBoxProperties";
 
-export default function DinningTable({ box }: { box: GridBox }) {
+export default function DinningTable({
+  box,
+  gridLayoutRef,
+}: {
+  box: GridBox;
+  gridLayoutRef: RefObject<HTMLDivElement | null>;
+}) {
   const { gridLayoutSettings, grid } = useDinningControlContext();
   const isSelectedBox = grid.selectedBoxIds.includes(box.id);
   const { ref, isDragging } = useDraggable({
     id: box.id,
     modifiers: [
+      // eslint-disable-next-line react-hooks/refs
+      RestrictToElement.configure({
+        element() {
+          return gridLayoutRef.current;
+        },
+      }),
       SnapModifier.configure({
         size: gridLayoutSettings.gridSize,
       }),

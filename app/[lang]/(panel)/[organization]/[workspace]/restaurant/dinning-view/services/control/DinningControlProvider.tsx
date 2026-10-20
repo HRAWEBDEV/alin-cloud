@@ -13,6 +13,17 @@ import {
 } from "../../utils/gridBoxProperties";
 import { useShortcutsContext } from "@/app/[lang]/(panel)/services/shortcuts/shortcutsContext";
 import { useHotkey } from "@tanstack/react-hotkeys";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { IoIosWarning } from "react-icons/io";
 
 type DinningControlProviderProps = {
   dic: DinningViewDictionary;
@@ -24,6 +35,8 @@ export default function DinningControlProvider({
   const { onGetShortcutKeys } = useShortcutsContext();
   const [showTableslist, setShowTablesList] = useState(false);
   const [selectedBoxIds, setSelectedBoxIds] = useState<GridBox["id"][]>([]);
+  const [showClearGridBoxesConfirm, setShowClearGridBoxesConfirm] =
+    useState(false);
   const [gridBoxes, setGridBoxes] = useState<GridBox[]>([]);
   const [gridLayoutSettings, setGridLayoutSettings] = useState({
     gridSize: 30,
@@ -101,6 +114,11 @@ export default function DinningControlProvider({
     });
     setSelectedBoxIds([]);
   }
+  function handleClearGridBoxes() {
+    handleRemoveGridBoxes(gridBoxes.map((item) => item.id));
+    setShowClearGridBoxesConfirm(false);
+    setSelectedBoxIds([]);
+  }
 
   function handleUpdateGridBoxProperties(
     props: Partial<GridBox> & { id: GridBox["id"] },
@@ -148,6 +166,9 @@ export default function DinningControlProvider({
     grid: {
       boxes: gridBoxes,
       selectedBoxIds,
+      onClearGridBoxes: () => {
+        setShowClearGridBoxesConfirm(true);
+      },
       onToggleBoxSelection: handleToggleBoxSelection,
       onUpdateGridBoxProperties: handleUpdateGridBoxProperties,
       onAddGridBox: handleAddGridBox,
@@ -162,6 +183,32 @@ export default function DinningControlProvider({
         gridLayoutRef={gridLayoutRef}
         gridLayoutWrapperRef={gridLayoutWrapperRef}
       />
+      <AlertDialog
+        open={showClearGridBoxesConfirm}
+        onOpenChange={(state) => setShowClearGridBoxesConfirm(state)}
+      >
+        <AlertDialogContent size="sm">
+          <AlertDialogHeader>
+            <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
+              <IoIosWarning />
+            </AlertDialogMedia>
+            <AlertDialogTitle>
+              {dic.tools.clearGridBoxConfirmMessage}
+            </AlertDialogTitle>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel variant="outline">
+              {dic.tools.cancel}
+            </AlertDialogCancel>
+            <AlertDialogAction
+              variant="destructive"
+              onClick={() => handleClearGridBoxes()}
+            >
+              {dic.tools.confirm}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </DinningControlContext.Provider>
   );
 }
