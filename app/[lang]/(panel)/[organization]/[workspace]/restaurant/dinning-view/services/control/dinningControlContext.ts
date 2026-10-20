@@ -22,13 +22,16 @@ interface DinningControlContextProps {
   };
   grid: {
     boxes: GridBox[];
+    selectedBoxIds: GridBox["id"][];
+    onToggleBoxSelection: (props: {
+      boxId: GridBox["id"] | null;
+      range?: boolean;
+    }) => unknown;
     onAddGridBox: (props: Pick<GridBox, "id">) => unknown;
-    onRemoveGridBox: (id: GridBox["id"]) => unknown;
+    onRemoveGridBoxes: (ids: GridBox["id"][]) => unknown;
     onUpdateGridBoxProperties: (
       props: Partial<GridBox> & { id: GridBox["id"] },
     ) => unknown;
-    selectedBoxID: GridBox["id"] | null;
-    onChangeSelectedBox: (id: GridBox["id"] | null) => unknown;
     onTransforBox: (
       props: Pick<GridBox, "x" | "y"> & { id: GridBox["id"] },
     ) => unknown;

@@ -1,12 +1,17 @@
 "use client";
-import { useRef, CSSProperties } from "react";
+import { CSSProperties, RefObject } from "react";
 import { DragDropProvider } from "@dnd-kit/react";
 import DinningTable from "./DinningTable";
 import { useDinningControlContext } from "../services/control/dinningControlContext";
 
-export default function DinningGrid() {
+export default function DinningGrid({
+  gridLayoutRef,
+  gridLayoutWrapperRef,
+}: {
+  gridLayoutRef: RefObject<HTMLDivElement | null>;
+  gridLayoutWrapperRef: RefObject<HTMLDivElement | null>;
+}) {
   const { gridLayoutSettings, grid } = useDinningControlContext();
-  const contrainerRef = useRef<HTMLDivElement>(null);
   return (
     <div
       style={
@@ -15,6 +20,7 @@ export default function DinningGrid() {
           "--grid-size": `${gridLayoutSettings.gridSize}px`,
         } as CSSProperties
       }
+      ref={gridLayoutWrapperRef}
       className="grow overflow-auto"
     >
       <div
@@ -23,9 +29,9 @@ export default function DinningGrid() {
           width: gridLayoutSettings.layoutSize,
         }}
         onClick={() => {
-          grid.onChangeSelectedBox(null);
+          grid.onToggleBoxSelection({ boxId: null });
         }}
-        ref={contrainerRef}
+        ref={gridLayoutRef}
         className="bg-[repeating-linear-gradient(0deg,transparent,transparent_calc(var(--grid-size)-1px),var(--color-border)_calc(var(--grid-size)-1px),var(--color-border)_var(--grid-size)),repeating-linear-gradient(-90deg,transparent,transparent_calc(var(--grid-size)-1px),var(--color-border)_calc(var(--grid-size)-1px),var(--color-border)_var(--grid-size))] bg-size-[var(--grid-size)_var(--grid-size)] relative"
       >
         <DragDropProvider

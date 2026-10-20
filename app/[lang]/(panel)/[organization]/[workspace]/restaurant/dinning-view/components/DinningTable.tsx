@@ -10,7 +10,7 @@ import { defaultGridBoxProperties } from "../utils/gridBoxProperties";
 
 export default function DinningTable({ box }: { box: GridBox }) {
   const { gridLayoutSettings, grid } = useDinningControlContext();
-  const isSelectedBox = grid.selectedBoxID === box.id;
+  const isSelectedBox = grid.selectedBoxIds.includes(box.id);
   const { ref, isDragging } = useDraggable({
     id: box.id,
     modifiers: [
@@ -36,7 +36,6 @@ export default function DinningTable({ box }: { box: GridBox }) {
         return isSelectedBox ? (
           <div
             ref={ref as RefObject<HTMLDivElement>}
-            onPointerDown={() => {}}
             className={`${handleAxis} absolute z-0 inset-0 border-3 border-primary rounded-md cursor-nwse-resize`}
           ></div>
         ) : (
@@ -67,7 +66,7 @@ export default function DinningTable({ box }: { box: GridBox }) {
           className="h-full w-full bg-amber-800/80! text-primary-foreground! origin-top-left rounded-md overflow-hidden outline-primary z-1"
           onClick={(e) => {
             e.stopPropagation();
-            grid.onChangeSelectedBox(box.id);
+            grid.onToggleBoxSelection({ boxId: box.id, range: e.ctrlKey });
           }}
         >
           <h3 className="font-en-roboto text-xl font-medium">{box.id}</h3>

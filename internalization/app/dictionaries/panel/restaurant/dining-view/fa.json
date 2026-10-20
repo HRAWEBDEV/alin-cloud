@@ -1,6 +1,9 @@
 {
   "title": "نمای سالن",
   "tools": {
-    "salon": "سالن"
+    "salon": "سالن",
+    "tables": "میزها",
+    "eraseGrid": "پاک کردن صفحه",
+    "removeBox": "حذف"
   }
 }

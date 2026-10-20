@@ -12,12 +12,19 @@ import {
 } from "@/components/ui/combobox";
 import { InputGroupAddon } from "@/components/ui/input-group";
 import { useShareDictionary } from "@/services/share-dictionary/shareDictionaryContext";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { BiSolidEraser } from "react-icons/bi";
+import { FaTrashAlt } from "react-icons/fa";
 
 export default function DinningTools() {
   const {
     dic,
     tables: { showList, onToggleList },
-    grid: { boxes, onAddGridBox },
+    grid: { boxes, onAddGridBox, onRemoveGridBoxes, selectedBoxIds },
   } = useDinningControlContext();
   const {
     shareDictionary: {
@@ -52,7 +59,7 @@ export default function DinningTools() {
         </div>
       )}
       <div className="w-[min(95%,40rem)] mx-auto p-0.5 px-1 bg-neutral-200 dark:bg-neutral-800 border border-border mb-2 rounded-full flex">
-        <div className="flex gap-1 items-center">
+        <div className="flex gap-1 items-center grow">
           <Combobox items={[]}>
             <ComboboxInput
               showClear
@@ -73,14 +80,56 @@ export default function DinningTools() {
               </ComboboxList>
             </ComboboxContent>
           </Combobox>
-          <Button
-            size="icon-lg"
-            variant="outline"
-            className="rounded-full"
-            onClick={onToggleList}
-          >
-            <DinnerIcon className="size-6" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  size="icon-lg"
+                  variant="outline"
+                  className="rounded-full"
+                  onClick={onToggleList}
+                >
+                  <DinnerIcon className="size-6" />
+                </Button>
+              }
+            />
+            <TooltipContent>{dic.tools.tables}</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  size="icon-lg"
+                  variant="outline"
+                  className="rounded-full"
+                >
+                  <BiSolidEraser className="size-5 text-destructive" />
+                </Button>
+              }
+            />
+            <TooltipContent>{dic.tools.eraseGrid}</TooltipContent>
+          </Tooltip>
+          <div className="grow flex gap-1 items-center justify-end">
+            {!!selectedBoxIds.length && (
+              <Tooltip>
+                <TooltipTrigger
+                  render={
+                    <Button
+                      size="icon-lg"
+                      variant="outline"
+                      className="rounded-full"
+                      onClick={() => {
+                        onRemoveGridBoxes(selectedBoxIds);
+                      }}
+                    >
+                      <FaTrashAlt className="size-5 text-destructive" />
+                    </Button>
+                  }
+                />
+                <TooltipContent>{dic.tools.removeBox}</TooltipContent>
+              </Tooltip>
+            )}
+          </div>
         </div>
       </div>
     </div>
