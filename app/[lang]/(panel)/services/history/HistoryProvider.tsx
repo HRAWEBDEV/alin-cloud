@@ -4,6 +4,10 @@ import { type HistoryContextProps, HistoryContext } from "./historyContext";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useGoHome } from "../../hooks/useGoHome";
 import { useIsHistoryActivePath } from "./utils/useIsHistoryActivePath";
+import {
+  HISTORY_ITEM_ID,
+  COMBACK_HISTORY_ITEM_ID,
+} from "./utils/historyQueryHelpers";
 
 const numberOfHistoryTabs = 4;
 export default function HistoryProivder({ children }: { children: ReactNode }) {
@@ -28,6 +32,23 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
               ...historyItem,
             },
           ];
+        }
+        const searchParams = new URLSearchParams(historyItem.search);
+        if (searchParams.has(HISTORY_ITEM_ID)) {
+          const targetHistoryItem = pre.find(
+            (item) => item.id === Number(searchParams.get(HISTORY_ITEM_ID)),
+          );
+          if (targetHistoryItem) {
+            return pre.map((item) => {
+              if (item.id === targetHistoryItem.id) {
+                return {
+                  id: Date.now(),
+                  ...historyItem,
+                };
+              }
+              return item;
+            });
+          }
         }
         if (
           pre.some(
@@ -102,12 +123,31 @@ export default function HistoryProivder({ children }: { children: ReactNode }) {
   // on clear history
   // on comeback
   const canGoBack = historyList.length > 1;
+  function handleComeback(fb: () => unknown) {
+    if (!canGoBack) {
+      fb();
+      return;
+    }
+    if (searchParams.has(COMBACK_HISTORY_ITEM_ID)) {
+      const findGoBackHistoryItem = historyList.find(
+        (item) => item.id === Number(searchParams.get(COMBACK_HISTORY_ITEM_ID)),
+      );
+      if (findGoBackHistoryItem) {
+        router.push(
+          `${findGoBackHistoryItem.path}?${findGoBackHistoryItem.search}`,
+        );
+        return;
+      }
+    }
+    fb();
+  }
 
   const ctx: HistoryContextProps = {
     title: "historyContext",
     historyList,
     canGoBack,
     numberOfHistoryTabs,
+    onComeback: handleComeback,
     onDeleteHistory: handleDeleteHistory,
     onGetActiveHistoryItem: handleGetActiveHistoryItem,
     onGoBack: handleGoBack,

@@ -14,6 +14,7 @@ interface HistoryContextProps {
     HistoryContextProps["historyList"][number] | null;
   onDeleteHistory: (id: number) => unknown;
   onOrderTab: (props: { index: number; initialIndex: number }) => unknown;
+  onComeback: (fb: () => unknown) => unknown;
   canGoBack: boolean;
 }
 
