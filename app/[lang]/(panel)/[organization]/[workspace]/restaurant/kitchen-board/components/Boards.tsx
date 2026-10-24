@@ -18,6 +18,26 @@ export default function Boards() {
           <BoardItem success />
           <BoardItem success />
         </div>
+        <div className="flex flex-col gap-2">
+          <BoardItem success />
+          <BoardItem success />
+          <BoardItem success />
+        </div>
+        <div className="flex flex-col gap-2">
+          <BoardItem success />
+          <BoardItem success />
+          <BoardItem success />
+        </div>
+        <div className="flex flex-col gap-2">
+          <BoardItem success />
+          <BoardItem success />
+          <BoardItem success />
+        </div>
+        <div className="flex flex-col gap-2">
+          <BoardItem success />
+          <BoardItem success />
+          <BoardItem success />
+        </div>
       </div>
     </div>
   );

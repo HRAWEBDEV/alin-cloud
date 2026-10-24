@@ -16,7 +16,7 @@ export default function BoardItem({ success = false }: { success?: boolean }) {
       </div>
       <div className="p-2 bg-neutral-100 dark:bg-neutral-900">
         <div>
-          <h3 className="text-center p-0.5 rounded-md bg-neutral-200 border border-border mb-1 text-neutral-700 dark:text-neutral-400 text-sm">
+          <h3 className="text-center p-0.5 rounded-md bg-neutral-200 dark:bg-neutral-800 border border-border mb-1 text-neutral-700 dark:text-neutral-400 text-sm">
             پیش غذا
           </h3>
           <ul>
